@@ -35,7 +35,7 @@ function Home() {
             <div id="home" className="hero">
                 <div>
                     <p>Heyy! I am Dhruti</p>
-                    <h1 className="frontend">Frontend</h1>
+                    <h1 className="frontend">WEB</h1>
                     <h1>Developer</h1>
                     <p>I'm a passionate web developer based in India, creating
                         <br />
