@@ -33,17 +33,22 @@ function Home() {
                 </div>
             </div>
             <div id="home" className="hero">
-                <p>Heyy! I am Dhruti</p>
-                <h1 className="frontend">Frontend</h1>
-                <h1>Developer</h1>
-                <p>I'm a passionate web developer based in India, creating
-                    <br />
-                    beautiful and functional websites that users will love.</p>
-                <a className="hero-btn" href="#contact">Get In Touch</a>
-                <a className="hero-btn" href="#projects" >Browse Projects</a>
-                <a className="hero-icons" target="_blank" href="https://github.com/KanthariaDhruti"><i class="fa-brands fa-github"></i></a>
-                <a className="hero-icons" target="_blank" href="https://www.linkedin.com/in/dhruti-kantharia-759700255/"><i class="fa-brands fa-linkedin"></i></a>
-                <a className="hero-icons" target="_blank" href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRtswJrTJzwNcnglvVgPnCJXTMXRWxDhrqHCmNWfhBfXzCxQsHxvZtphhGRkztBHNTgjZxl"><i class="fa-solid fa-envelope"></i></a>
+                <div>
+                    <p>Heyy! I am Dhruti</p>
+                    <h1 className="frontend">Frontend</h1>
+                    <h1>Developer</h1>
+                    <p>I'm a passionate web developer based in India, creating
+                        <br />
+                        beautiful and functional websites that users will love.</p>
+                    <a className="hero-btn" href="#contact">Get In Touch</a>
+                    <a className="hero-btn" href="#projects" >Browse Projects</a>
+                    <a className="hero-icons" target="_blank" href="https://github.com/KanthariaDhruti"><i class="fa-brands fa-github"></i></a>
+                    <a className="hero-icons" target="_blank" href="https://www.linkedin.com/in/dhruti-kantharia-759700255/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a className="hero-icons" target="_blank" href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRtswJrTJzwNcnglvVgPnCJXTMXRWxDhrqHCmNWfhBfXzCxQsHxvZtphhGRkztBHNTgjZxl"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+                <div>
+                    <img src="/dhrutiImg.jpg" alt="" />
+                </div>
             </div>
             <div id="about" className="about">
                 <h1>About me</h1>

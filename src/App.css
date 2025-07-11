@@ -54,8 +54,15 @@ a {
 .hero {
     padding: 6rem 0 10.2rem 8rem;
     background-color: #94b4d125;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
 }
-
+.hero img{
+    border-radius: 50%;
+    height: 25rem;
+    width: auto;
+}
 .hero p {
     font-size: 18px;
     color: grey;
