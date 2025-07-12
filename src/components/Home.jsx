@@ -260,11 +260,11 @@ function Home() {
                             <h4>Send a Message</h4>
                             <p>Fill out the form below and I'll get back to you as soon as possible.</p>
                             <div className="name-pass">
-                                <input name="from_name" type="text" placeholder="Your Name" class="form-control" />
-                                <input type="email" name="from_email" class="form-control" placeholder="Your Email" id="inputEmail4" />
+                                <input name="from_name" type="text" placeholder="Your Name" class="form-control" required/>
+                                <input type="email" name="from_email" class="form-control" placeholder="Your Email" id="inputEmail4" required/>
                             </div>
-                            <input type="text" class="form-control" name="subject" id="inputAddress" placeholder="Subject" />
-                            <textarea name="message" class="form-control" placeholder="Your Message" id="floatingTextarea"></textarea>
+                            <input type="text" class="form-control" name="subject" id="inputAddress" placeholder="Subject" required/>
+                            <textarea name="message" class="form-control" placeholder="Your Message" id="floatingTextarea" required></textarea>
                             <button type="submit" class="btn btn-primary">Send Message</button>
                         </form>
                     </div>
