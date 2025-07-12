@@ -177,8 +177,8 @@ function Home() {
                     <div className="project-card">
                         <img src="/to-do-list.png" alt="" />
                         <div className="project-card-info">
-                            <h5>TIC TAC TOE Game</h5>
-                            <p>This project is a mini project in the form a game, made with the help of HTML, CSS, Javascript</p>
+                            <h5>To do list</h5>
+                            <p>A mini project of to do list made with react and javascript</p>
                             <span>React</span>
                             <span>Javascript</span>
                         </div>
