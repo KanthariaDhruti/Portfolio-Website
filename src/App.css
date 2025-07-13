@@ -274,7 +274,6 @@ a {
 .project-card:hover {
     box-shadow: 2px 2px 20px rgb(202, 201, 201);
     transform: scale(1.02);
-    cursor: pointer;
 }
 
 img {
