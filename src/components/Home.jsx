@@ -35,8 +35,8 @@ function Home() {
             <div id="home" className="hero">
                 <div>
                     <p>Heyy! I am Dhruti</p>
-                    <h1 className="frontend">WEB</h1>
-                    <h1>Developer</h1>
+                    <h1 className="frontend">Frontend</h1>
+                    <h1>Web Developer</h1>
                     <p>I'm a passionate web developer based in India, creating
                         <br />
                         beautiful and functional websites that users will love.</p>
@@ -193,7 +193,7 @@ function Home() {
                     <div className="serv">
                         <i class="fa-solid fa-code"></i>
                         <h5>Web Development</h5>
-                        <p>Creating responsive and interactive web applications using HTML, CSS, JavaScript and libraries like Bootstrap, Tailwind and JavaScript libraries like React and Express and also Backend with Node.js and databases like SQL and MongoDB.</p>
+                        <p>Creating responsive and interactive web applications using HTML, CSS, JavaScript and libraries like Bootstrap and JavaScript libraries like React and Express and also Backend with Node.js</p>
                         <ul>
                             <li>Responsive Design</li>
                             <li>Interactive UI</li>
