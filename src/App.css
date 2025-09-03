@@ -467,3 +467,150 @@ img {
     color: #4907e4;
     margin-bottom: 1rem;
 }
+
+/* ===========================
+   Responsive Design
+   =========================== */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .hero {
+    padding: 4rem 2rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero img {
+    height: 18rem;
+    margin-top: 2rem;
+  }
+
+  .about-flex {
+    flex-direction: column;
+    margin: 2rem 1rem;
+  }
+
+  .about-flex1, .about-flex2 {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .skill-cards {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .serv-box {
+    flex-direction: column;
+  }
+
+  .connect-flex {
+    flex-direction: column;
+  }
+
+  .connect-left, .connect-right {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
+
+/* Mobiles */
+@media (max-width: 576px) {
+  /* Navbar */
+  .navibar {
+    flex-direction: column;
+    height: auto;
+    padding: 0.5rem;
+  }
+
+  .navi-button {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navi-button a {
+    font-size: 14px;
+    margin: 0.2rem;
+  }
+
+  .head {
+    font-size: 18px;
+    margin: 0.5rem 0;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .hero img {
+    height: 12rem;
+  }
+
+  .hero-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 14px;
+  }
+
+  .hero-icons {
+    font-size: 18px;
+  }
+
+  /* About */
+  .about-flex1, .about-flex2 {
+    width: 100%;
+    margin: 0.5rem;
+  }
+
+  .abt-card {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Skills */
+  .skill-cards {
+    flex-direction: column;
+  }
+
+  .skill-card {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Projects */
+  .project-card {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Services */
+  .serv {
+    width: 100%;
+    min-height: auto;
+  }
+
+  /* Contact */
+  .name-pass {
+    flex-direction: column;
+  }
+
+  .connect-right input, 
+  .connect-right textarea {
+    width: 100%;
+  }
+
+  /* Footer */
+  .footer h4 {
+    font-size: 16px;
+  }
+}
