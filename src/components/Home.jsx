@@ -110,6 +110,12 @@ function Home() {
       desc: "A mini project of to do list made with react and javascript ",
       techSpan: ["React", "Javascript"],
     },
+    {
+      img:"/notes.png",
+      head: "Write notes",
+      desc:"MERN stack mini project",
+      techSpan: ["MongoDB", "Express", "React", "Node"]
+    }
   ];
 
   const services = [
