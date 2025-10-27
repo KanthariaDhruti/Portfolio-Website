@@ -17,7 +17,7 @@ function Services() {
       icon: "fa-solid fa-palette",
       head: "UI/UX Design",
       desc: "Designing intuitive and visually appealing user interfaces with focus on user experience using Figma and Webflow.",
-      list: ["Wireframing", "Prototyping", "User Friendly"],
+      list: ["Wireframing", "Prototyping", "User Friendly", "Designing"],
     },
   ];
   return (

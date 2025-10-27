@@ -30,12 +30,12 @@ function Home() {
         <div className="mb-5 md:text-5xl font-bold text-gray-900 text-left">
           <span className="text-blue-600 text-6xl">Web </span>
           <span className="mt-3 text-6xl leading-tight">
-            Developer <br /> & Designer
+            Designer <br /> & Developer
           </span>
         </div>
 
         <p className="text-gray-700 text-base text-left md:text-lg leading-relaxed">
-          I’m a web developer based in India, turning ideas into beautiful,{" "}
+          I’m a web designer and developer based in India, turning ideas into beautiful,{" "}
           <br /> user-friendly websites. My goal is to create digital
           experiences <br /> that are not just functional, but also
           unforgettable.
