@@ -1,9 +1,10 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
 function Navbar() {
   const navRef = useRef(null);
   const linksRef = useRef([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const links = [
     { name: "Home", href: "#" },
@@ -16,7 +17,6 @@ function Navbar() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate Navbar itself
       gsap.from(navRef.current, {
         y: -40,
         opacity: 0,
@@ -24,7 +24,6 @@ function Navbar() {
         ease: "power2.out",
       });
 
-      // Animate nav links one by one
       gsap.from(linksRef.current, {
         opacity: 0,
         y: -20,
@@ -35,35 +34,85 @@ function Navbar() {
       });
     }, navRef);
 
-    return () => ctx.revert(); // cleanup on unmount
+    return () => ctx.revert();
   }, []);
 
   return (
-    <div
+    <nav
       ref={navRef}
-      className="w-full sticky top-0 flex md:flex-row justify-between items-center bg-blue-50 px-6 py-2 shadow-sm z-50"
+      className="w-full sticky top-0 bg-blue-50 shadow-sm z-50"
     >
-      {/* Logo / Name */}
-      <div className="text-2xl font-bold tracking-wide mt-2 mb-3 md:mb-0 text-gray-700 hover:text-blue-600 transition">
-        Dhruti Kantharia
+      <div className="flex items-center justify-between px-4 md:px-10 py-3">
+        {/* Logo */}
+        <div className="flex-shrink-0 text-2xl font-bold tracking-wide text-gray-700 hover:text-blue-600 transition">
+          Dhruti Kantharia
+        </div>
+
+        {/* Hamburger (Mobile) */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-gray-700 focus:outline-none"
+        >
+          <svg
+            className="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            {isOpen ? (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            )}
+          </svg>
+        </button>
+
+        {/* Desktop Links */}
+        <div className="hidden md:flex space-x-4 lg:space-x-6">
+          {links.map((link, i) => (
+            <a
+              key={link.name}
+              href={link.href}
+              ref={(el) => (linksRef.current[i] = el)}
+              className="relative text-black hover:text-blue-500 transition-colors duration-300 text-md group whitespace-nowrap"
+              style={{ textDecoration: "none" }}
+            >
+              {link.name}
+              <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
+            </a>
+          ))}
+        </div>
       </div>
 
-      {/* Navigation Links */}
-      <div className="flex flex-wrap justify-center gap-6 text-sm md:text-base">
-        {links.map((link, i) => (
-          <a
-            key={link.name}
-            href={link.href}
-            ref={(el) => (linksRef.current[i] = el)}
-            className="relative text-black hover:text-blue-500 transition-colors duration-300 text-md group"
-            style={{ textDecoration: "none" }}
-          >
-            {link.name}
-            <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
-          </a>
-        ))}
+      {/* Mobile Links */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ${
+          isOpen ? "max-h-96" : "max-h-0"
+        }`}
+      >
+        <div className="flex flex-col items-center bg-blue-50 pb-3">
+          {links.map((link, i) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="block px-3 py-2 text-black hover:text-blue-500 transition-colors duration-300 text-md"
+              onClick={() => setIsOpen(false)}
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
       </div>
-    </div>
+    </nav>
   );
 }
 
