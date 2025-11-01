@@ -174,7 +174,7 @@ function About() {
         </div>
 
         {/* Right Cards Section (Animated) */}
-        <div className="about-flex2 lg:w-1/2">
+        <div className="about-flex2 mx-auto lg:w-1/2">
           <div
             ref={cardsRef}
             className="abt-cards grid grid-cols-1 sm:grid-cols-2 gap-6"
