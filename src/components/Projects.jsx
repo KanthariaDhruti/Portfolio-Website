@@ -36,6 +36,14 @@ function Projects() {
       link: "https://dhrutis-team-app.webflow.io/",
       urlDesc: "Visit the site here",
     },
+    {
+      img: "/fintech.png",
+      head: "Seamless Appointment Booking for a Fintech Platform",
+      desc: "A sleek and responsive appointment booking flow for Fintech, designed to simplify how users connect with financial experts across domains like investments, tax, and insurance.",
+      techSpan: ["Figma"],
+      link: "https://www.figma.com/proto/GVIcgnWj17n4IayKNM01Pw/Untitled?page-id=0%3A1&node-id=50-2435&viewport=2182%2C-707%2C0.39&t=Bf9v609J5InSDtL4-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=40%3A2906",
+      urlDesc: "See the complete Prototype"
+    }
   ];
   return (
     <>
@@ -62,7 +70,7 @@ function Projects() {
               <img
                 src={project.img}
                 alt={project.head}
-                className="h-auto w-full object-contain"
+                className="h-41 w-full object-contain"
               />
 
               {/* Card Info */}
