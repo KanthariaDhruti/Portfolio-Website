@@ -7,18 +7,24 @@ function Projects() {
       head: "Business Card Generator and Downloader",
       desc: "React mini project of a business card generator whene user can fill the details in the form and get a copy of the business card ",
       techSpan: ["React", "Javascript"],
+      link: "https://github.com/KanthariaDhruti/Business-card-generator",
+      urlDesc: "See the code here",
     },
     {
       img: "/to-do-list.png",
       head: "To do list",
       desc: "A mini project of to do list made with react and javascript ",
       techSpan: ["React", "Javascript"],
+      link: "https://github.com/KanthariaDhruti/To-do-List",
+      urlDesc: "See the code here",
     },
     {
       img: "/notes.png",
       head: "Write notes",
       desc: "MERN stack mini project",
       techSpan: ["MongoDB", "Express", "React", "Node"],
+      link: "https://github.com/KanthariaDhruti/Write-notes",
+      urlDesc: "See the code here",
     },
     {
       img: "/chat.png",
@@ -49,6 +55,8 @@ function Projects() {
       head: "Wanderlust – Explore Your Perfect Stay",
       desc: "Discover and book accommodations worldwide with a sleek, user-friendly interface and dynamic listings",
       techSpan: ["MongoDB", "Express", "React", "Node.js", "Tailwind"],
+      link: "https://github.com/KanthariaDhruti/WanderLust",
+      urlDesc: "See the code here",
     },
   ];
   return (
