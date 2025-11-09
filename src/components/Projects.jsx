@@ -42,8 +42,14 @@ function Projects() {
       desc: "A sleek and responsive appointment booking flow for Fintech, designed to simplify how users connect with financial experts across domains like investments, tax, and insurance.",
       techSpan: ["Figma"],
       link: "https://www.figma.com/proto/GVIcgnWj17n4IayKNM01Pw/Untitled?page-id=0%3A1&node-id=50-2435&viewport=2182%2C-707%2C0.39&t=Bf9v609J5InSDtL4-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=40%3A2906",
-      urlDesc: "See the complete Prototype"
-    }
+      urlDesc: "See the complete Prototype",
+    },
+    {
+      img: "/Wanderlust.png",
+      head: "Wanderlust – Explore Your Perfect Stay",
+      desc: "Discover and book accommodations worldwide with a sleek, user-friendly interface and dynamic listings",
+      techSpan: ["MongoDB", "Express", "React", "Node.js", "Tailwind"],
+    },
   ];
   return (
     <>
@@ -108,7 +114,7 @@ function Projects() {
         <a
           href="https://github.com/KanthariaDhruti"
           target="_blank"
-          style={{textDecoration:"none"}}
+          style={{ textDecoration: "none" }}
           rel="noopener noreferrer"
           className="inline-flex group rounded rounded-lg items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all shadow-md"
         >
