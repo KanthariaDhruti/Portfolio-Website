@@ -218,18 +218,26 @@ function Skills() {
       {/* Recent Achievement */}
       <div
         ref={achievementRef}
-        className="recent bg-blue-100 py-8 px-6 rounded-2xl max-w-6xl mx-auto shadow-md"
+        className="recent text-left bg-blue-100 py-8 px-6 rounded-2xl max-w-6xl mx-auto shadow-md"
       >
         <h3 className="text-2xl font-bold text-blue-800 mb-3">
-          Recently Completed
+          Certifications
         </h3>
-        <p className="text-gray-700 mb-2">
-          UI/UX Design Course — Enhancing my design skills and user experience
-          understanding
-        </p>
-        <span className="inline-block mt-2 text-blue-600 font-semibold text-sm bg-white border border-blue-300 rounded-full px-4 py-1 shadow-sm">
-          Certificate Earned
-        </span>
+        <ol className="border-l-2 border-blue-300 pl-6 space-y-4">
+          <li className="relative text-gray-700">
+            <span className="absolute -left-3 top-1 w-3 h-3 bg-blue-500 rounded-full"></span>
+            <p className="font-medium ml-2 text-gray-800">
+              Complete web design — from Figma to Webflow. (Jan ‘25)
+            </p>
+          </li>
+
+          <li className="relative text-gray-700">
+            <span className="absolute -left-3 top-1 w-3 h-3 bg-blue-500 rounded-full"></span>
+            <p className="font-medium ml-2 text-gray-800">
+              Apna College — Full Stack Development using MERN stack (Nov ‘25)
+            </p>
+          </li>
+        </ol>
       </div>
     </div>
   );
