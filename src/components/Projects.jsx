@@ -58,6 +58,12 @@ function Projects() {
       link: "https://github.com/KanthariaDhruti/WanderLust",
       urlDesc: "See the code here",
     },
+    {
+      img: "/magazine.png",
+      head: "Fashion",
+      desc: "A curated fashion magazine designed for the future, blending bold aesthetics, visionary trends, and editorial storytelling.",
+      techSpan: ["Adobe Indesign"],
+    },
   ];
   return (
     <>
