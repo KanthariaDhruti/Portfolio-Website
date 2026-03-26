@@ -16,7 +16,6 @@ function Skills() {
     {
       icon: "fa-solid fa-globe",
       head: "Web Development",
-      desc: "Singing, Dancing, Arts and Sports",
       skillSpan: [
         "HTML",
         "CSS",
@@ -26,25 +25,24 @@ function Skills() {
         "Angular",
         "TypeScript",
         "Express",
+        "SQL",
+        "MongoDB",
       ],
     },
     {
-      icon: "fa-solid fa-palette",
+      icon: "fa-regular fa-object-group",
       head: "UI/UX Design",
-      desc: "Singing, Dancing, Arts and Sports",
       skillSpan: ["Figma", "Responsive Design", "Webflow", "Prototyping"],
     },
     {
       icon: "fa-solid fa-code",
       head: "Other Languages",
-      desc: "Singing, Dancing, Arts and Sports",
       skillSpan: ["Python", "Java"],
     },
     {
-      icon: "fa-solid fa-database",
-      head: "Databases",
-      desc: "Singing, Dancing, Arts and Sports",
-      skillSpan: ["SQL", "MongoDB"],
+      icon: "fa-solid fa-compass-drafting",
+      head: "Graphic Design",
+      skillSpan: ["Adobe Illustrator", "Adobe Indesign", "Figma"],
     },
   ];
 
@@ -67,7 +65,7 @@ function Skills() {
           y: 0,
           duration: 0.8,
           ease: "power3.out",
-        }
+        },
       );
 
       // Subtitle animation
@@ -88,7 +86,7 @@ function Skills() {
           duration: 0.8,
           delay: 0.2,
           ease: "power3.out",
-        }
+        },
       );
 
       // Skill cards animation with stagger
@@ -111,7 +109,7 @@ function Skills() {
             stagger: 0.15,
             duration: 0.9,
             ease: "power2.in",
-          }
+          },
         );
 
         // Animate skill tags inside each card
@@ -136,7 +134,7 @@ function Skills() {
                 duration: 0.5,
                 delay: 0.3 + cardIndex * 0.15,
                 ease: "back.out(1.7)",
-              }
+              },
             );
           }
         });
@@ -161,10 +159,10 @@ function Skills() {
           scale: 1,
           duration: 1,
           ease: "power3.out",
-        }
+        },
       );
     },
-    { scope: skillsRef }
+    { scope: skillsRef },
   );
 
   return (

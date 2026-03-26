@@ -71,9 +71,10 @@ function Home() {
         </p>
 
         <div className="mb-5 font-bold text-gray-900 text-left">
-          <span className="text-blue-600 text-5xl md:text-6xl">Web </span>
+          <span className="text-blue-600 text-5xl md:text-6xl">Graphic </span>
           <span className="mt-3 text-5xl md:text-6xl leading-tight">
-            Designer <br /> & Developer
+            Designer <br /> & <br /> Web
+            <span className="text-blue-600 text-5xl md:text-6xl"> Developer</span>
           </span>
         </div>
 

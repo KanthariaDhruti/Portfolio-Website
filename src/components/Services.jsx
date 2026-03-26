@@ -19,6 +19,12 @@ function Services() {
       desc: "Designing intuitive and visually appealing user interfaces with focus on user experience using Figma and Webflow.",
       list: ["Wireframing", "Prototyping", "User Friendly", "Designing"],
     },
+    {
+      icon: "fa-solid fa-palette",
+      head: "Graphic Design",
+      desc: "Creating modern and visually appealing graphic designs that help brands communicate effectively through social media creatives, branding, and digital content.",
+      list: ["Branding", "Social Media", "Visual Design", "Creative Content"],
+    },
   ];
   return (
     <>
@@ -40,7 +46,9 @@ function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="serv bg-white shadow-md rounded-2xl p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 text-left"
+              className={`serv bg-white shadow-md rounded-2xl p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 text-left
+        ${index === 2 ? "sm:col-span-2 lg:col-span-2 max-w-[500px] mx-auto w-full" : ""}
+      `}
             >
               <div className="text-blue-600 text-4xl mb-4">
                 <i className={service.icon}></i>

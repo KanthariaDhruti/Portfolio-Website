@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import Portfolio from "./Portfolio";
 
 function Projects() {
   const Projects = [
@@ -11,44 +13,12 @@ function Projects() {
       urlDesc: "See the code here",
     },
     {
-      img: "/to-do-list.png",
-      head: "To do list",
-      desc: "A mini project of to do list made with react and javascript ",
-      techSpan: ["React", "Javascript"],
-      link: "https://github.com/KanthariaDhruti/To-do-List",
-      urlDesc: "See the code here",
-    },
-    {
-      img: "/notes.png",
-      head: "Write notes",
-      desc: "MERN stack mini project",
-      techSpan: ["MongoDB", "Express", "React", "Node"],
-      link: "https://github.com/KanthariaDhruti/Write-notes",
-      urlDesc: "See the code here",
-    },
-    {
-      img: "/chat.png",
-      head: "ChatBot",
-      desc: "UI/UX project made with figma and Webflow",
-      techSpan: ["Figma", "Webflow"],
-      link: "https://chatbot-bc1e03.webflow.io/",
-      urlDesc: "Visit the site here",
-    },
-    {
       img: "/team.png",
       head: "Team App",
       desc: "A platform where a team can collab - a responsive UI made with Figma and Webflow",
       techSpan: ["Figma", "Webflow"],
       link: "https://dhrutis-team-app.webflow.io/",
       urlDesc: "Visit the site here",
-    },
-    {
-      img: "/fintech.png",
-      head: "Seamless Appointment Booking for a Fintech Platform",
-      desc: "A sleek and responsive appointment booking flow for Fintech, designed to simplify how users connect with financial experts across domains like investments, tax, and insurance.",
-      techSpan: ["Figma"],
-      link: "https://www.figma.com/proto/GVIcgnWj17n4IayKNM01Pw/Untitled?page-id=0%3A1&node-id=50-2435&viewport=2182%2C-707%2C0.39&t=Bf9v609J5InSDtL4-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=40%3A2906",
-      urlDesc: "See the complete Prototype",
     },
     {
       img: "/Wanderlust.png",
@@ -80,7 +50,7 @@ function Projects() {
         </p>
 
         {/* Project Cards */}
-        <div className="project-flex grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
+        <div className="project-flex grid grid-cols-1 items-center sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
           {Projects.map((project, index) => (
             <div
               key={index}
@@ -122,19 +92,37 @@ function Projects() {
               </div>
             </div>
           ))}
+          <span className="text-2xl text-blue-950 font-semibold">
+            And more...
+          </span>
         </div>
 
         {/* GitHub Button */}
-        <a
-          href="https://github.com/KanthariaDhruti"
-          target="_blank"
-          style={{ textDecoration: "none" }}
-          rel="noopener noreferrer"
-          className="inline-flex group rounded rounded-lg items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all shadow-md"
-        >
-          <i className="fa-brands fa-github text-xl group-hover:text-blue-600"></i>
-          <span className="group-hover:text-blue-600">View More on GitHub</span>
-        </a>
+        <div className="flex justify-center items-center gap-5">
+          <a
+            href="https://github.com/KanthariaDhruti"
+            target="_blank"
+            style={{ textDecoration: "none" }}
+            rel="noopener noreferrer"
+            className="rounded rounded-lg items-center bg-blue-600 flex justify-center gap-2 text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all shadow-md"
+          >
+            <i className="fa-brands fa-github text-xl group-hover:text-blue-600"></i>
+            <span className="group-hover:text-blue-600">
+              View More on GitHub
+            </span>
+          </a>
+
+          <Link
+            to="/portfolio"
+            style={{ textDecoration: "none" }}
+            rel="noopener noreferrer"
+            className="inline-flex group rounded rounded-lg items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all shadow-md"
+          >
+            <i className="fa-regular fa-file text-xl group-hover:text-blue-600"></i>
+            {/* <i className="fa-brands fa-github text-xl group-hover:text-blue-600"></i> */}
+            <span className="group-hover:text-blue-600">View my portfolio</span>
+          </Link>
+        </div>
       </div>
     </>
   );

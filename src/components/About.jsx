@@ -154,27 +154,17 @@ function About() {
             Hi, I'm Dhruti Kantharia!
           </h2>
           <p className="text-gray-700 leading-relaxed text-justify">
-            I'm an aspiring web developer currently pursuing my B.Tech in IT
-            Engineering at Gandhinagar University. With a passion for creating
-            beautiful and functional websites, I'm constantly learning and
-            improving my skills in web development and UI/UX design.
+            I’m currently pursuing my B.Tech in IT Engineering at Gandhinagar University, and I’m someone who genuinely enjoys blending creativity with technology. Whether it’s designing interfaces, building websites, or exploring user experiences, I’m always excited to learn and create something meaningful.
             <br />
             <br />
-            Beyond coding, I'm a creative individual who loves expressing myself
-            through singing, dancing, and various forms of art. My background as
-            an ex-NCC cadet has instilled in me discipline, leadership
-            qualities, and the ability to work effectively in teams.
+            I’m currently interning as a Graphic Designer at Adrta Technologies, where I’m developing practical skills in design, branding, and visual content creation. This experience has allowed me to better understand how design can communicate ideas clearly and leave a lasting impact.
             <br />
-            <br />I recently completed a comprehensive UI/UX course to enhance
-            my design skills and understanding of user experience principles.
-            I'm actively seeking internship opportunities to apply my knowledge
-            and contribute to meaningful projects while continuing to grow as a
-            developer.
+            <br />Apart from academics and internships, I love expressing myself through singing, dancing, and art. Being an ex-NCC cadet has also played a big role in shaping my confidence, discipline, and ability to work well in team environments.
           </p>
         </div>
 
         {/* Right Cards Section (Animated) */}
-        <div className="about-flex2 mx-auto lg:w-1/2">
+        <div className="about-flex2 mx-autoz lg:w-1/2">
           <div
             ref={cardsRef}
             className="abt-cards grid grid-cols-1 sm:grid-cols-2 gap-6"
