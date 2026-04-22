@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Landing from "./components/landing";
+import Landing from "./components/Landing";
 import Portfolio from "./components/Portfolio";
 
 function App() {

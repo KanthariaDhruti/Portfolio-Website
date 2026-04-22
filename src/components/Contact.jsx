@@ -1,5 +1,5 @@
 import React from "react";
-import emailjs, { sendForm } from "emailjs-com";
+import emailjs from "@emailjs/browser";
 
 function Contact() {
   const sendEmail = (e) => {
@@ -66,6 +66,7 @@ function Contact() {
                   <a
                     href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRtswJrTJzwNcnglvVgPnCJXTMXRWxDhrqHCmNWfhBfXzCxQsHxvZtphhGRkztBHNTgjZxl"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-blue-600 hover:underline"
                   >
                     Email me here
