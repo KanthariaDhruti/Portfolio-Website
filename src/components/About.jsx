@@ -12,7 +12,7 @@ function About() {
   const textSectionRef = useRef(null);
   const cardsRef = useRef(null);
 
-  const abtCard = [
+  const abtCards = [
     {
       icon: "fa-solid fa-book-open",
       head: "Education",
@@ -37,54 +37,23 @@ function About() {
 
   useGSAP(
     () => {
-      // Heading animation
-      gsap.fromTo(
-        headingRef.current,
-        {
-          opacity: 0,
-          y: 50,
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: headingRef.current,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
         },
-        {
-          scrollTrigger: {
-            trigger: headingRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-        }
+      });
+
+      tl.fromTo(
+        [headingRef.current, subtitleRef.current],
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, stagger: 0.15, duration: 0.8, ease: "power3.out" }
       );
 
-      // Subtitle animation
-      gsap.fromTo(
-        subtitleRef.current,
-        {
-          opacity: 0,
-          y: 30,
-        },
-        {
-          scrollTrigger: {
-            trigger: subtitleRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          delay: 0.2,
-          ease: "power3.out",
-        }
-      );
-
-      // Text section animation
       gsap.fromTo(
         textSectionRef.current,
-        {
-          opacity: 0,
-          x: -60,
-        },
+        { opacity: 0, x: -50 },
         {
           scrollTrigger: {
             trigger: textSectionRef.current,
@@ -98,25 +67,22 @@ function About() {
         }
       );
 
-      // Cards stagger animation - using fromTo for explicit values
-      const cards = cardsRef.current?.querySelectorAll('.abt-card');
+      const cards = cardsRef.current?.querySelectorAll(".abt-card");
       if (cards && cards.length > 0) {
         gsap.fromTo(
           cards,
-          {
-            opacity: 0,
-            y: 50,
-          },
+          { opacity: 0, y: 40 },
           {
             scrollTrigger: {
               trigger: cardsRef.current,
               start: "top 80%",
+              toggleActions: "play none none reverse",
             },
             opacity: 1,
             y: 0,
-            stagger: 0.15,
+            stagger: 0.12,
             duration: 0.8,
-            ease: "power1.in",
+            ease: "power2.out",
           }
         );
       }
@@ -125,66 +91,88 @@ function About() {
   );
 
   return (
-    <div
+    <section
       ref={aboutRef}
       id="about"
-      className="about bg-white py-20 px-6 md:px-16 lg:px-32 text-center overflow-hidden"
+      className="relative bg-gradient-to-b from-white to-blue-50 py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-100"
     >
-      <h1
-        ref={headingRef}
-        className="text-4xl font-extrabold text-gray-900 mb-4"
-      >
-        About Me
-      </h1>
-      <p
-        ref={subtitleRef}
-        className="text-gray-600 max-w-2xl mx-auto text-lg mb-12"
-      >
-        Get to know more about my journey, passion, and aspirations in web
-        development
-      </p>
+      
 
-      <div className="about-flex flex flex-col lg:flex-row items-start justify-between gap-12">
-        {/* Left Text Section (Animated) */}
-        <div
-          ref={textSectionRef}
-          className="about-flex1 lg:w-1/2 text-left space-y-4"
-        >
-          <h2 className="text-2xl font-bold text-blue-700">
-            Hi, I'm Dhruti Kantharia!
+      <div className="max-w-7xl mx-auto text-center z-10 relative">
+        {/* Section Header */}
+        <div className="mb-16">
+          <h2
+            ref={headingRef}
+            className="text-4xl md:text-5xl font-extrabold text-navy-900 tracking-tight"
+          >
+            About Me
           </h2>
-          <p className="text-gray-700 leading-relaxed text-justify">
-            I’m currently pursuing my B.Tech in IT Engineering at Gandhinagar University, and I’m someone who genuinely enjoys blending creativity with technology. Whether it’s designing interfaces, building websites, or exploring user experiences, I’m always excited to learn and create something meaningful.
-            <br />
-            <br />
-            I’m currently interning as a Graphic Designer at Adrta Technologies, where I’m developing practical skills in design, branding, and visual content creation. This experience has allowed me to better understand how design can communicate ideas clearly and leave a lasting impact.
-            <br />
-            <br />Apart from academics and internships, I love expressing myself through singing, dancing, and art. Being an ex-NCC cadet has also played a big role in shaping my confidence, discipline, and ability to work well in team environments.
+          <div className="w-16 h-1 bg-cyan-500 mx-auto mt-4 rounded-full"></div>
+          <p
+            ref={subtitleRef}
+            className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg mt-4 leading-relaxed font-normal"
+          >
+            Get to know more about my journey, academic credentials, and design passion
           </p>
         </div>
 
-        {/* Right Cards Section (Animated) */}
-        <div className="about-flex2 mx-autoz lg:w-1/2">
+        {/* Content Layout */}
+        <div className="flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-12 text-left">
+          {/* Left Text Block */}
           <div
-            ref={cardsRef}
-            className="abt-cards grid grid-cols-1 sm:grid-cols-2 gap-6"
+            ref={textSectionRef}
+            className="w-full lg:w-1/2 flex flex-col justify-center space-y-6"
           >
-            {abtCard.map((card, index) => (
-              <div
-                key={index}
-                className="abt-card bg-gradient-to-b from-blue-50 to-white p-6 rounded-2xl shadow hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center cursor-pointer"
-              >
-                <i className={`${card.icon} text-3xl text-blue-600 mb-3`}></i>
-                <h4 className="text-lg font-semibold text-gray-800">
-                  {card.head}
-                </h4>
-                <p className="text-gray-600 text-sm mt-2">{card.desc}</p>
-              </div>
-            ))}
+            <h3 className="text-2xl font-bold text-navy-900">
+              Hi, I'm <span className="text-blue-600">Dhruti Kantharia</span>
+            </h3>
+            
+            <div className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed text-justify">
+              <p>
+                I am currently pursuing my B.Tech in IT Engineering at Gandhinagar University. 
+                I genuinely enjoy blending structural code with design to create clean interfaces, 
+                functional websites, and immersive user experiences. I'm always eager to learn and create.
+              </p>
+              <p>
+                As a Graphic Design Intern at Adrta Technologies, I develop practical experience in 
+                brand messaging, layouts, and digital styling. This graphic background gives me a unique 
+                advantage in styling pixel-perfect frontends.
+              </p>
+              <p>
+                Outside of design and development, I find balance through singing, dancing, and fine arts. 
+                My background as an ex-NCC Cadet has also instilled in me strong values of discipline, 
+                collaborative teamwork, and leadership under pressure.
+              </p>
+            </div>
+          </div>
+
+          {/* Right Cards Grid */}
+          <div className="w-full lg:w-1/2 flex items-center">
+            <div
+              ref={cardsRef}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full"
+            >
+              {abtCards.map((card, index) => (
+                <div
+                  key={index}
+                  className="abt-card bg-white border border-navy-100 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-cyan-500/30 transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col justify-between cursor-pointer"
+                >
+                  <div>
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 text-2xl flex items-center justify-center mb-4">
+                      <i className={card.icon}></i>
+                    </div>
+                    <h4 className="text-lg font-bold text-navy-900 mb-2">
+                      {card.head}
+                    </h4>
+                  </div>
+                  <p className="text-slate-500 text-sm leading-relaxed mt-2">{card.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -2,6 +2,7 @@ import React from "react";
 import '../App.css'
 import Home from './Home'
 import About from './About'
+import Experience from './Experience'
 import Skills from './Skills'
 import Projects from './Projects'
 import Services from './Services'
@@ -14,6 +15,7 @@ function Landing() {
     <>
       <Home />
       <About />
+      <Experience />
       <Skills />
       <Projects />
       <Services />
