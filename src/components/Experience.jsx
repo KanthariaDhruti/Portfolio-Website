@@ -203,7 +203,7 @@ function Experience() {
                   }`}
                 >
                   {/* Left / Right content container spacing */}
-                  <div className="w-full md:w-1/2 pr-4 md:pr-12 md:pl-12 flex justify-start md:justify-evenly text-left md:text-right">
+                  <div className="w-full md:w-1/2 pl-12 pr-4 md:pr-12 md:pl-12 flex justify-start md:justify-end text-left md:text-right">
                     <span className="timeline-year text-cyan-400 font-extrabold text-xl tracking-wider py-1 block">
                       {item.year}
                     </span>
