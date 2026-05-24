@@ -28,13 +28,23 @@ function Services() {
       icon: "fa-solid fa-palette",
       head: "UI/UX Design",
       desc: "Designing intuitive and visually appealing user interfaces with focus on user experience using Figma and Webflow.",
-      list: ["Wireframing & UI Flows", "High Fidelity Prototyping", "User Centric Architecture", "Component Systems"],
+      list: [
+        "Wireframing & UI Flows",
+        "High Fidelity Prototyping",
+        "User Centric Architecture",
+        "Component Systems",
+      ],
     },
     {
       icon: "fa-solid fa-compass-drafting",
       head: "Graphic Design",
       desc: "Creating modern and visually appealing graphic designs that help brands communicate effectively through social media, branding, and digital content.",
-      list: ["Branding & Logo Design", "Social Media Graphics", "Visual Design Guidelines", "Creative Content Layouts"],
+      list: [
+        "Branding & Logo Design",
+        "Social Media Graphics",
+        "Visual Design Guidelines",
+        "Creative Content Layouts",
+      ],
     },
   ];
 
@@ -51,7 +61,7 @@ function Services() {
       tl.fromTo(
         [headingRef.current, subtitleRef.current],
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, stagger: 0.15, duration: 0.8, ease: "power3.out" }
+        { opacity: 1, y: 0, stagger: 0.15, duration: 0.8, ease: "power3.out" },
       );
 
       const cards = cardsRef.current?.querySelectorAll(".serv-card");
@@ -70,7 +80,7 @@ function Services() {
             stagger: 0.15,
             duration: 0.8,
             ease: "power2.out",
-          }
+          },
         );
       }
 
@@ -88,10 +98,10 @@ function Services() {
           scale: 1,
           duration: 1,
           ease: "power3.out",
-        }
+        },
       );
     },
-    { scope: containerRef }
+    { scope: containerRef },
   );
 
   return (
@@ -125,7 +135,8 @@ function Services() {
             ref={subtitleRef}
             className="text-slate-400 max-w-2xl mx-auto text-base md:text-lg mt-4 leading-relaxed font-normal"
           >
-            Providing high-quality visual designs and responsive frontend developments
+            Providing high-quality visual designs and responsive frontend
+            developments
           </p>
         </div>
 
@@ -170,8 +181,9 @@ function Services() {
             Ready to Start Your Project?
           </h4>
           <p className="text-slate-400 text-sm md:text-base mb-8 max-w-xl mx-auto leading-relaxed">
-            I am actively seeking internship opportunities and collaborative frontend development projects. 
-            Let's work together to bring your ideas to life!
+            I am actively seeking internship opportunities and collaborative
+            frontend development projects. Let's work together to bring your
+            ideas to life!
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 relative z-10">
             <a

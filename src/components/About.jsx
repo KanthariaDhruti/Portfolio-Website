@@ -16,12 +16,12 @@ function About() {
     {
       icon: "fa-solid fa-book-open",
       head: "Education",
-      desc: "B.Tech IT Engineering, 7th semester",
+      desc: "B.Tech IT Engineering, 8th semester",
     },
     {
       icon: "fa-solid fa-award",
       head: "Academic Performance",
-      desc: "SGPA of 8.43 in latest semester",
+      desc: "SGPA of 7.67 in latest semester",
     },
     {
       icon: "fa-solid fa-user-group",

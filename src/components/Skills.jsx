@@ -56,7 +56,7 @@ function Skills() {
       tl.fromTo(
         [headingRef.current, subtitleRef.current],
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, stagger: 0.15, duration: 0.8, ease: "power3.out" }
+        { opacity: 1, y: 0, stagger: 0.15, duration: 0.8, ease: "power3.out" },
       );
 
       const cards = cardsRef.current?.querySelectorAll(".skill-card");
@@ -75,7 +75,7 @@ function Skills() {
             stagger: 0.12,
             duration: 0.8,
             ease: "power2.out",
-          }
+          },
         );
 
         // Sub-elements tags animation inside cards
@@ -97,7 +97,7 @@ function Skills() {
                 duration: 0.5,
                 delay: 0.2 + index * 0.1,
                 ease: "back.out(1.5)",
-              }
+              },
             );
           }
         });
@@ -117,10 +117,10 @@ function Skills() {
           scale: 1,
           duration: 1,
           ease: "power3.out",
-        }
+        },
       );
     },
-    { scope: skillsRef }
+    { scope: skillsRef },
   );
 
   return (
@@ -129,8 +129,6 @@ function Skills() {
       id="skills"
       className="relative bg-gradient-to-b from-white via-blue-400 to-navy-950 py-24 px-6 md:px-16 lg:px-32 text-center overflow-hidden border-b border-white/5"
     >
-      
-
       {/* Decorative ambient background glows */}
       <div className="absolute top-1/3 left-10 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none"></div>
       <div className="absolute bottom-10 right-10 w-80 h-80 bg-brand-indigo/5 blur-[100px] rounded-full pointer-events-none"></div>
@@ -149,7 +147,8 @@ function Skills() {
             ref={subtitleRef}
             className="text-navy-800 max-w-2xl mx-auto text-base md:text-lg mt-4 leading-relaxed font-normal"
           >
-            My current technical skills, software expertise, and engineering disciplines
+            My current technical skills, software expertise, and engineering
+            disciplines
           </p>
         </div>
 
@@ -190,7 +189,7 @@ function Skills() {
         >
           {/* Subtle overlay glow */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 blur-[80px] pointer-events-none rounded-full"></div>
-          
+
           <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3 relative z-10">
             <i className="fa-solid fa-graduation-cap text-cyan-400"></i>
             <span>Certifications</span>
@@ -207,7 +206,9 @@ function Skills() {
                   January 2025
                 </p>
                 <p className="text-slate-400 text-sm max-w-2xl leading-relaxed mt-1">
-                  Earned competency in end-to-end user experience design, building interface structures, and setting up high-performance layouts on Webflow.
+                  Earned competency in end-to-end user experience design,
+                  building interface structures, and setting up high-performance
+                  layouts on Webflow.
                 </p>
               </div>
             </li>
@@ -222,7 +223,9 @@ function Skills() {
                   November 2025
                 </p>
                 <p className="text-slate-400 text-sm max-w-2xl leading-relaxed mt-1">
-                  Completed advanced training at Apna College, covering MongoDB databases, Express frameworks, React interfaces, and Node.js server architectures.
+                  Completed advanced training at Apna College, covering MongoDB
+                  databases, Express frameworks, React interfaces, and Node.js
+                  server architectures.
                 </p>
               </div>
             </li>

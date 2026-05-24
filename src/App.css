@@ -1,8 +1,8 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 
 @theme {
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
 
   /* Custom Navy Blue Theme Palette */
   --color-navy-50: #f4f6fa;
@@ -21,7 +21,7 @@
   --color-cyan-400: #22d3ee;
   --color-cyan-500: #06b6d4;
   --color-cyan-600: #0891b2;
-  
+
   --color-brand-blue: #3b82f6;
   --color-brand-indigo: #6366f1;
 }
@@ -82,7 +82,7 @@ body {
 }
 
 .gradient-accent-text {
-  background: linear-gradient(135deg, #00D2FF 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, #00d2ff 0%, #3b82f6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -92,20 +92,24 @@ body {
 }
 
 .bg-radial-glow {
-  background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), rgba(34, 211, 238, 0.08), transparent 80%);
+  background: radial-gradient(
+    800px circle at var(--x, 0px) var(--y, 0px),
+    rgba(34, 211, 238, 0.08),
+    transparent 80%
+  );
 }
 
 /* Repeating canvas background grids */
 .bg-grid-dark {
   background-size: 60px 60px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
 .bg-grid-light {
   background-size: 60px 60px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(15, 22, 38, 0.025) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(15, 22, 38, 0.025) 1px, transparent 1px);
 }
@@ -113,10 +117,65 @@ body {
 /* Repeating Dot Matrix Pattern */
 .bg-dots-dark {
   background-size: 24px 24px;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 1px
+  );
 }
 
 .bg-dots-light {
   background-size: 24px 24px;
-  background-image: radial-gradient(rgba(15, 22, 38, 0.03) 1px, transparent 1px);
+  background-image: radial-gradient(
+    rgba(15, 22, 38, 0.03) 1px,
+    transparent 1px
+  );
+}
+
+/* Mobile active states for interactive touch feedback */
+@media (hover: none) {
+  /* Tappable buttons & link CTAs */
+  button:active,
+  a.inline-flex:active,
+  a.bg-gradient-to-r:active,
+  a.border:active,
+  .w-full.sm\:w-auto.inline-flex:active {
+    transform: scale(0.96) !important;
+    opacity: 0.9;
+  }
+
+  /* Social Icons and minor links */
+  a.hover\:text-white:active,
+  a.hover\:text-cyan-400:active,
+  a.hover\:text-red-400:active {
+    transform: scale(0.9) !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  /* Interactive cards feedback (Skills, About, Services, Projects) */
+  .skill-card:active,
+  .abt-card:active,
+  .serv-card:active,
+  .project-card-anim:active {
+    transform: translateY(-2px) scale(0.99) !important;
+    border-color: rgba(34, 211, 238, 0.35) !important;
+    box-shadow: 0 10px 25px -5px rgba(34, 211, 238, 0.15) !important;
+  }
+
+  /* Ensure nested elements styled with group hover variant trigger on group active */
+  .group:active .group-hover\:scale-110 {
+    transform: scale(1.1) !important;
+  }
+
+  .group:active .group-hover\:scale-125 {
+    transform: scale(1.25) !important;
+  }
+
+  .group:active .group-hover\:text-cyan-400 {
+    color: #22d3ee !important;
+  }
+
+  .group:active .group-hover\:bg-cyan-500 {
+    background-color: #06b6d4 !important;
+    color: #0a0f1d !important;
+  }
 }

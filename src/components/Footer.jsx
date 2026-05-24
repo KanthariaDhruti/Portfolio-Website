@@ -15,7 +15,9 @@ function Footer() {
             duration={500}
             className="text-2xl font-extrabold tracking-tight text-white hover:text-cyan-400 transition-colors duration-300 select-none cursor-pointer no-underline flex items-center gap-2 mb-1"
           >
-            <span className="bg-gradient-to-r from-white to-navy-300 bg-clip-text text-transparent">Dhruti</span>
+            <span className="bg-gradient-to-r from-white to-navy-300 bg-clip-text text-transparent">
+              Dhruti
+            </span>
             <span className="text-cyan-400 font-medium">Kantharia</span>
           </Link>
           <p className="text-sm text-slate-500 font-medium">
@@ -25,13 +27,68 @@ function Footer() {
 
         {/* Mini quick-links menu */}
         <div className="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-widest font-semibold text-slate-500 pt-2 pb-2">
-          <Link to="home" smooth={true} duration={500} className="hover:text-white transition duration-300 cursor-pointer">Home</Link>
-          <Link to="about" smooth={true} duration={500} offset={-50} className="hover:text-white transition duration-300 cursor-pointer">About</Link>
-          <Link to="experience" smooth={true} duration={500} offset={-50} className="hover:text-white transition duration-300 cursor-pointer">Experience</Link>
-          <Link to="skills" smooth={true} duration={500} offset={-50} className="hover:text-white transition duration-300 cursor-pointer">Skills</Link>
-          <Link to="projects" smooth={true} duration={500} offset={-50} className="hover:text-white transition duration-300 cursor-pointer">Projects</Link>
-          <Link to="services" smooth={true} duration={500} offset={-50} className="hover:text-white transition duration-300 cursor-pointer">Services</Link>
-          <Link to="contact" smooth={true} duration={500} offset={-50} className="hover:text-white transition duration-300 cursor-pointer">Contact</Link>
+          <Link
+            to="home"
+            smooth={true}
+            duration={500}
+            className="hover:text-white transition duration-300 cursor-pointer"
+          >
+            Home
+          </Link>
+          <Link
+            to="about"
+            smooth={true}
+            duration={500}
+            offset={-50}
+            className="hover:text-white transition duration-300 cursor-pointer"
+          >
+            About
+          </Link>
+          <Link
+            to="experience"
+            smooth={true}
+            duration={500}
+            offset={-50}
+            className="hover:text-white transition duration-300 cursor-pointer"
+          >
+            Experience
+          </Link>
+          <Link
+            to="skills"
+            smooth={true}
+            duration={500}
+            offset={-50}
+            className="hover:text-white transition duration-300 cursor-pointer"
+          >
+            Skills
+          </Link>
+          <Link
+            to="projects"
+            smooth={true}
+            duration={500}
+            offset={-50}
+            className="hover:text-white transition duration-300 cursor-pointer"
+          >
+            Projects
+          </Link>
+          <Link
+            to="services"
+            smooth={true}
+            duration={500}
+            offset={-50}
+            className="hover:text-white transition duration-300 cursor-pointer"
+          >
+            Services
+          </Link>
+          <Link
+            to="contact"
+            smooth={true}
+            duration={500}
+            offset={-50}
+            className="hover:text-white transition duration-300 cursor-pointer"
+          >
+            Contact
+          </Link>
         </div>
 
         {/* Social Icons inside Footer */}

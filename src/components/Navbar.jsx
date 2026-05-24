@@ -42,20 +42,21 @@ function Navbar() {
       tl.fromTo(
         logoRef.current,
         { x: -30, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.8 }
+        { x: 0, opacity: 1, duration: 0.8 },
       );
 
-      const navLinks = linksContainerRef.current?.querySelectorAll(".nav-link-anim");
+      const navLinks =
+        linksContainerRef.current?.querySelectorAll(".nav-link-anim");
       if (navLinks && navLinks.length > 0) {
         tl.fromTo(
           navLinks,
           { y: -20, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.6, stagger: 0.08 },
-          "-=0.5"
+          "-=0.5",
         );
       }
     },
-    { scope: navRef }
+    { scope: navRef },
   );
 
   // Smooth scroll helper for hash links
@@ -90,7 +91,9 @@ function Navbar() {
           ref={logoRef}
           className="text-xl md:text-2xl font-extrabold tracking-tight text-white hover:text-cyan-400 transition-colors duration-300 select-none no-underline flex items-center gap-2"
         >
-          <span className="bg-gradient-to-r from-white to-navy-300 bg-clip-text text-transparent">Dhruti</span>
+          <span className="bg-gradient-to-r from-white to-navy-300 bg-clip-text text-transparent">
+            Dhruti
+          </span>
           <span className="text-cyan-400 font-medium">Kantharia</span>
         </Link>
 
@@ -108,15 +111,26 @@ function Navbar() {
             viewBox="0 0 24 24"
           >
             {isOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             )}
           </svg>
         </button>
 
         {/* Desktop Links */}
-        <div ref={linksContainerRef} className="hidden md:flex items-center space-x-8">
+        <div
+          ref={linksContainerRef}
+          className="hidden md:flex items-center space-x-8"
+        >
           {links.map((link) => (
             <a
               key={link.name}
@@ -134,7 +148,9 @@ function Navbar() {
       {/* Mobile Sidebar Dropdown */}
       <div
         className={`md:hidden absolute top-full left-0 w-full glass-panel transition-all duration-500 ease-in-out origin-top ${
-          isOpen ? "opacity-100 translate-y-0 scale-y-100" : "opacity-0 -translate-y-4 scale-y-0 pointer-events-none"
+          isOpen
+            ? "opacity-100 translate-y-0 scale-y-100"
+            : "opacity-0 -translate-y-4 scale-y-0 pointer-events-none"
         }`}
       >
         <div className="flex flex-col items-center py-6 space-y-4 bg-navy-950/95 border-b border-white/10">

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -10,6 +10,17 @@ function Portfolio() {
   const pageRef = useRef(null);
   const heroRef = useRef(null);
   const rowsRef = useRef([]);
+
+  useEffect(() => {
+    document.title = "Creative Gallery | Dhruti Kantharia Portfolio";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute(
+        "content",
+        "Explore Dhruti Kantharia's Creative Gallery featuring web design concepts, Figma-to-Webflow landing pages, MERN stack full-stack applications, and graphic design editorial layouts.",
+      );
+    }
+  }, []);
 
   const projects = [
     {
@@ -91,7 +102,7 @@ function Portfolio() {
           duration: 0.8,
           stagger: 0.15,
           ease: "power3.out",
-        }
+        },
       );
 
       // ROW ANIMATIONS
@@ -116,7 +127,7 @@ function Portfolio() {
               start: "top 80%",
               toggleActions: "play none none reverse",
             },
-          }
+          },
         );
 
         gsap.fromTo(
@@ -132,15 +143,18 @@ function Portfolio() {
               start: "top 80%",
               toggleActions: "play none none reverse",
             },
-          }
+          },
         );
       });
     },
-    { scope: pageRef }
+    { scope: pageRef },
   );
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-navy-950 text-white overflow-hidden pt-24 font-sans mt-10 relative">
+    <div
+      ref={pageRef}
+      className="min-h-screen bg-navy-950 text-white overflow-hidden pt-24 font-sans mt-10 relative"
+    >
       {/* Back button */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-6 relative z-10">
         <Link
@@ -153,7 +167,10 @@ function Portfolio() {
       </div>
 
       {/* Hero Header */}
-      <header ref={heroRef} className="px-6 pb-20 md:px-12 md:pb-2 max-w-7xl mx-auto relative z-10">
+      <header
+        ref={heroRef}
+        className="px-6 pb-20 md:px-12 md:pb-2 max-w-7xl mx-auto relative z-10"
+      >
         <div className="max-w-4xl">
           <h1 className="hero-animate text-4xl font-extrabold leading-tight text-white md:text-7xl tracking-tight">
             My{" "}
@@ -163,7 +180,8 @@ function Portfolio() {
           </h1>
           <div className="w-16 h-1 bg-cyan-500 mt-4 rounded-full hero-animate"></div>
           <p className="hero-animate mt-6 text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl font-normal">
-            A comprehensive list of my graphic layouts, visual mockups, UI wireframes, and full-stack development implementations.
+            A comprehensive list of my graphic layouts, visual mockups, UI
+            wireframes, and full-stack development implementations.
           </p>
         </div>
       </header>
@@ -178,25 +196,34 @@ function Portfolio() {
             <div
               key={index}
               ref={(el) => (rowsRef.current[index] = el)}
-              className={`w-full py-20 md:py-32 px-6 md:px-12 lg:px-24 flex items-center border-b border-white/5 relative overflow-hidden ${isReverse ? "row-reverse-trigger" : ""
-                } ${isDark
-                  ? "bg-navy-950 text-white"
-                  : "bg-[#f5f8fd] text-navy-950"
-                }`}
+              className={`w-full py-20 md:py-32 px-6 md:px-12 lg:px-24 flex items-center border-b border-white/5 relative overflow-hidden ${
+                isReverse ? "row-reverse-trigger" : ""
+              } ${
+                isDark ? "bg-navy-950 text-white" : "bg-[#f5f8fd] text-navy-950"
+              }`}
             >
               {/* Row Grid Pattern */}
-              <div className={`absolute inset-0 pointer-events-none opacity-30 z-0 ${
-                isDark ? "bg-grid-dark bg-dots-dark" : "bg-grid-light bg-dots-light"
-              }`}></div>
-              <div className={`max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 ${isReverse ? "lg:flex-row-reverse" : ""
-                }`}>
-
+              <div
+                className={`absolute inset-0 pointer-events-none opacity-30 z-0 ${
+                  isDark
+                    ? "bg-grid-dark bg-dots-dark"
+                    : "bg-grid-light bg-dots-light"
+                }`}
+              ></div>
+              <div
+                className={`max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 ${
+                  isReverse ? "lg:flex-row-reverse" : ""
+                }`}
+              >
                 {/* Row Image Container */}
                 <div className="row-image-container w-full lg:w-1/2 flex justify-center z-10">
-                  <div className={`w-full max-w-[550px] aspect-[4/3] rounded-3xl p-4 flex items-center justify-center relative overflow-hidden group shadow-lg ${isDark
-                      ? "bg-navy-900 border border-white/10 hover:border-cyan-400/40"
-                      : "bg-white border border-navy-200 hover:border-blue-500/30"
-                    }`}>
+                  <div
+                    className={`w-full max-w-[550px] aspect-[4/3] rounded-3xl p-4 flex items-center justify-center relative overflow-hidden group shadow-lg ${
+                      isDark
+                        ? "bg-navy-900 border border-white/10 hover:border-cyan-400/40"
+                        : "bg-white border border-navy-200 hover:border-blue-500/30"
+                    }`}
+                  >
                     {/* Real project screenshot */}
                     <img
                       src={project.img}
@@ -208,9 +235,11 @@ function Portfolio() {
 
                 {/* Row Content Container */}
                 <div className="row-content-container w-full lg:w-1/2 flex flex-col justify-center space-y-4 md:space-y-6">
-
-                  <span className={`text-[10px] font-extrabold uppercase tracking-[0.25em] ${isDark ? "text-cyan-400" : "text-blue-600"
-                    }`}>
+                  <span
+                    className={`text-[10px] font-extrabold uppercase tracking-[0.25em] ${
+                      isDark ? "text-cyan-400" : "text-blue-600"
+                    }`}
+                  >
                     Project {String(index + 1).padStart(2, "0")}
                   </span>
 
@@ -218,8 +247,11 @@ function Portfolio() {
                     {project.head}
                   </h2>
 
-                  <p className={`text-sm md:text-base leading-relaxed text-justify ${isDark ? "text-slate-300" : "text-navy-750"
-                    }`}>
+                  <p
+                    className={`text-sm md:text-base leading-relaxed text-justify ${
+                      isDark ? "text-slate-300" : "text-navy-750"
+                    }`}
+                  >
                     {project.desc}
                   </p>
 
@@ -228,10 +260,11 @@ function Portfolio() {
                     {project.techSpan.map((item, i) => (
                       <span
                         key={i}
-                        className={`text-xs font-semibold px-3 py-1 rounded-full border ${isDark
+                        className={`text-xs font-semibold px-3 py-1 rounded-full border ${
+                          isDark
                             ? "bg-navy-950/60 border-white/10 text-slate-300"
                             : "bg-white border-navy-200 text-navy-800"
-                          }`}
+                        }`}
                       >
                         {item}
                       </span>
@@ -245,10 +278,11 @@ function Portfolio() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`inline-flex items-center gap-2.5 font-bold px-7 py-3.5 rounded-full text-xs transition-all duration-300 shadow-md no-underline hover:scale-[1.02] cursor-pointer ${isDark
+                        className={`inline-flex items-center gap-2.5 font-bold px-7 py-3.5 rounded-full text-xs transition-all duration-300 shadow-md no-underline hover:scale-[1.02] cursor-pointer ${
+                          isDark
                             ? "bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white"
                             : "bg-navy-950 text-white hover:bg-cyan-500"
-                          }`}
+                        }`}
                       >
                         <span>{project.urlDesc}</span>
                         <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
@@ -259,9 +293,7 @@ function Portfolio() {
                       </span>
                     )}
                   </div>
-
                 </div>
-
               </div>
             </div>
           );
@@ -275,7 +307,8 @@ function Portfolio() {
             Want to see more of my work?
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto leading-relaxed text-sm md:text-base">
-            Explore experimental files, code sandboxes, mock designs, and graphic folders on my GitHub.
+            Explore experimental files, code sandboxes, mock designs, and
+            graphic folders on my GitHub.
           </p>
           <a
             href="https://github.com/KanthariaDhruti"
@@ -288,7 +321,6 @@ function Portfolio() {
           </a>
         </div>
       </section>
-
     </div>
   );
 }

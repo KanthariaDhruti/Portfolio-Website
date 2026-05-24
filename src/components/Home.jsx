@@ -20,38 +20,42 @@ function Home() {
       // Reset positions to prevent flash of unstyled layouts
       gsap.set(imgRef.current, { opacity: 0 });
       if (infoRef.current) gsap.set(infoRef.current.children, { opacity: 0 });
-      if (buttonsRef.current) gsap.set(buttonsRef.current.children, { opacity: 0 });
-      if (iconsRef.current) gsap.set(iconsRef.current.querySelectorAll("a"), { opacity: 0 });
+      if (buttonsRef.current)
+        gsap.set(buttonsRef.current.children, { opacity: 0 });
+      if (iconsRef.current)
+        gsap.set(iconsRef.current.querySelectorAll("a"), { opacity: 0 });
 
-      tl.fromTo(
-        heroRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.6 }
-      )
-      .fromTo(
-        imgRef.current,
-        { scale: 0.8, y: 50, opacity: 0 },
-        { scale: 1, y: 0, opacity: 1, duration: 1.2, ease: "back.out(1.2)" },
-        "-=0.2"
-      )
-      .fromTo(
-        infoRef.current?.children || [],
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.15, duration: 0.8 },
-        "-=0.6"
-      )
-      .fromTo(
-        buttonsRef.current?.children || [],
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.12 },
-        "-=0.4"
-      )
-      .fromTo(
-        iconsRef.current?.querySelectorAll("a") || [],
-        { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, stagger: 0.08, duration: 0.6, ease: "back.out(1.7)" },
-        "-=0.3"
-      );
+      tl.fromTo(heroRef.current, { opacity: 0 }, { opacity: 1, duration: 0.6 })
+        .fromTo(
+          imgRef.current,
+          { scale: 0.8, y: 50, opacity: 0 },
+          { scale: 1, y: 0, opacity: 1, duration: 1.2, ease: "back.out(1.2)" },
+          "-=0.2",
+        )
+        .fromTo(
+          infoRef.current?.children || [],
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.15, duration: 0.8 },
+          "-=0.6",
+        )
+        .fromTo(
+          buttonsRef.current?.children || [],
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.12 },
+          "-=0.4",
+        )
+        .fromTo(
+          iconsRef.current?.querySelectorAll("a") || [],
+          { scale: 0, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            stagger: 0.08,
+            duration: 0.6,
+            ease: "back.out(1.7)",
+          },
+          "-=0.3",
+        );
 
       // Continuous float animation for profile image
       gsap.to(imgRef.current, {
@@ -72,7 +76,7 @@ function Home() {
         yoyo: true,
       });
     },
-    { scope: heroRef }
+    { scope: heroRef },
   );
 
   return (
@@ -91,7 +95,7 @@ function Home() {
       {/* Decorative Grid Patterns & Designer Canvas indicators */}
       <div className="absolute inset-0 bg-grid-dark pointer-events-none opacity-40 z-0"></div>
       <div className="absolute inset-0 bg-dots-dark pointer-events-none opacity-20 z-0"></div>
-      
+
       {/* Figma/Designer style canvas guides */}
       <div className="absolute top-24 left-10 text-[10px] font-mono text-cyan-500/40 select-none hidden lg:block uppercase tracking-wider">
         [w: 100% / h: auto]
@@ -104,9 +108,11 @@ function Home() {
       </div>
 
       <div className="w-full max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-8 z-10">
-        
         {/* Left Side Info Panel */}
-        <div ref={infoRef} className="w-full mt-15 md:w-3/5 text-center md:text-left flex flex-col space-y-4 md:space-y-6">
+        <div
+          ref={infoRef}
+          className="w-full mt-15 md:w-3/5 text-center md:text-left flex flex-col space-y-4 md:space-y-6"
+        >
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
             Hi, I'm{" "}
             <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-400 bg-clip-text text-transparent">
@@ -115,12 +121,14 @@ function Home() {
           </h1>
 
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-300 leading-snug">
-            Graphic Designer <span className="text-cyan-400">&</span> Web Developer
+            Graphic Designer <span className="text-cyan-400">&</span> Web
+            Developer
           </h2>
 
           <p className="text-slate-400 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl text-justify md:text-left">
-            I turn creative thoughts into responsive, clean code and visually stunning interactive web designs. 
-            Blending technical accuracy with strong layout aesthetics to craft unforgettable digital journeys.
+            I turn creative thoughts into responsive, clean code and visually
+            stunning interactive web designs. Blending technical accuracy with
+            strong layout aesthetics to craft unforgettable digital journeys.
           </p>
 
           {/* Interactive Buttons */}
@@ -128,12 +136,24 @@ function Home() {
             ref={buttonsRef}
             className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4"
           >
-            <Link to="contact" smooth={true} duration={500} offset={-50} className="w-full sm:w-auto">
+            <Link
+              to="contact"
+              smooth={true}
+              duration={500}
+              offset={-50}
+              className="w-full sm:w-auto"
+            >
               <button className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-8 py-3.5 rounded-full shadow-[0_0_20px_rgba(6,182,212,0.25)] hover:shadow-[0_0_30px_rgba(6,182,212,0.45)] hover:scale-[1.03] transition-all duration-300 cursor-pointer text-sm">
                 Get In Touch
               </button>
             </Link>
-            <Link to="projects" smooth={true} duration={500} offset={-50} className="w-full sm:w-auto">
+            <Link
+              to="projects"
+              smooth={true}
+              duration={500}
+              offset={-50}
+              className="w-full sm:w-auto"
+            >
               <button className="w-full sm:w-auto border border-white/20 hover:border-cyan-400 hover:bg-white/5 text-slate-200 hover:text-white font-bold px-8 py-3.5 rounded-full hover:scale-[1.03] transition-all duration-300 cursor-pointer text-sm">
                 Browse Projects
               </button>
@@ -173,7 +193,6 @@ function Home() {
               <i className="fa-solid fa-envelope"></i>
             </a>
           </div>
-
         </div>
 
         {/* Right Side Frame Profile Image */}
@@ -184,7 +203,7 @@ function Home() {
           >
             {/* Soft backdrop overlay */}
             <div className="absolute inset-0 bg-navy-950 rounded-full scale-[0.985]"></div>
-            
+
             {/* Real profile image */}
             <img
               src="/dhrutiImg.jpg"
@@ -193,7 +212,6 @@ function Home() {
             />
           </div>
         </div>
-
       </div>
     </section>
   );

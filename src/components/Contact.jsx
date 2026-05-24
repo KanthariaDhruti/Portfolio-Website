@@ -243,32 +243,40 @@ function Contact() {
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row gap-4">
                   <input
+                    id="contact-form-name"
                     name="from_name"
                     type="text"
                     placeholder="Your Name"
+                    aria-label="Your Name"
                     className="w-full border border-navy-200/80 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 bg-navy-50/20 text-navy-950 placeholder-slate-400 transition-all duration-300"
                     required
                   />
                   <input
+                    id="contact-form-email"
                     type="email"
                     name="from_email"
                     placeholder="Your Email"
+                    aria-label="Your Email"
                     className="w-full border border-navy-200/80 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 bg-navy-50/20 text-navy-950 placeholder-slate-400 transition-all duration-300"
                     required
                   />
                 </div>
 
                 <input
+                  id="contact-form-subject"
                   type="text"
                   name="subject"
                   placeholder="Subject"
+                  aria-label="Subject"
                   className="w-full border border-navy-200/80 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 bg-navy-50/20 text-navy-950 placeholder-slate-400 transition-all duration-300"
                   required
                 />
 
                 <textarea
+                  id="contact-form-message"
                   name="message"
                   placeholder="Your Message"
+                  aria-label="Your Message"
                   rows="5"
                   className="w-full border border-navy-200/80 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 bg-navy-50/20 text-navy-950 placeholder-slate-400 transition-all duration-300 resize-none"
                   required
@@ -276,6 +284,7 @@ function Contact() {
               </div>
 
               <button
+                id="contact-form-submit"
                 type="submit"
                 className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-[1.01] cursor-pointer text-sm mt-4"
               >

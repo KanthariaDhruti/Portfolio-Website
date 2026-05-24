@@ -21,8 +21,8 @@ function Experience() {
       desc: [
         "Developing corporate branding guidelines, vector assets, and digital marketing materials.",
         "Collaborating with frontend development teams to align visual layouts with UI code implementation.",
-        "Creating social media creatives, layout grids, and interactive vector designs using Illustrator and Figma."
-      ]
+        "Creating social media creatives, layout grids, and interactive vector designs using Illustrator and Figma.",
+      ],
     },
   ];
 
@@ -42,8 +42,8 @@ function Experience() {
           y: 0,
           stagger: 0.15,
           duration: 0.8,
-          ease: "power3.out"
-        }
+          ease: "power3.out",
+        },
       );
 
       // Line Drawing Animation on Scroll
@@ -57,9 +57,9 @@ function Experience() {
             trigger: sectionRef.current,
             start: "top 30%",
             end: "bottom 70%",
-            scrub: true
-          }
-        }
+            scrub: true,
+          },
+        },
       );
 
       // Individual Timeline Items Sequential Animations
@@ -84,9 +84,9 @@ function Experience() {
             scrollTrigger: {
               trigger: node,
               start: "top 80%",
-              toggleActions: "play none none reverse"
-            }
-          }
+              toggleActions: "play none none reverse",
+            },
+          },
         );
 
         // Animate year text
@@ -101,9 +101,9 @@ function Experience() {
             scrollTrigger: {
               trigger: node,
               start: "top 80%",
-              toggleActions: "play none none reverse"
-            }
-          }
+              toggleActions: "play none none reverse",
+            },
+          },
         );
 
         // Animate main content block
@@ -118,9 +118,9 @@ function Experience() {
             scrollTrigger: {
               trigger: node,
               start: "top 80%",
-              toggleActions: "play none none reverse"
-            }
-          }
+              toggleActions: "play none none reverse",
+            },
+          },
         );
       });
 
@@ -137,7 +137,7 @@ function Experience() {
         });
       }
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
@@ -177,7 +177,8 @@ function Experience() {
             ref={subtitleRef}
             className="text-slate-400 max-w-2xl mx-auto text-base md:text-lg mt-4 leading-relaxed font-normal"
           >
-            My educational traineeships, graphic internships, and freelance development timeline
+            My educational traineeships, graphic internships, and freelance
+            development timeline
           </p>
         </div>
 
@@ -224,7 +225,10 @@ function Experience() {
                     </h4>
                     <ul className="space-y-2 text-slate-300 text-sm">
                       {item.desc.map((bullet, i) => (
-                        <li key={i} className="flex items-start gap-2 leading-relaxed">
+                        <li
+                          key={i}
+                          className="flex items-start gap-2 leading-relaxed"
+                        >
                           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 flex-shrink-0"></span>
                           <span>{bullet}</span>
                         </li>

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,6 +9,23 @@ gsap.registerPlugin(ScrollTrigger);
 function Projects() {
   const containerRef = useRef(null);
   const cardsRef = useRef(null);
+  const [activeCardIndex, setActiveCardIndex] = useState(null);
+
+  useEffect(() => {
+    if (activeCardIndex === null) return;
+    const handleOutsideClick = () => {
+      setActiveCardIndex(null);
+    };
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [activeCardIndex]);
+
+  const handleCardClick = (e, index) => {
+    e.stopPropagation();
+    setActiveCardIndex((prev) => (prev === index ? null : index));
+  };
 
   const projectsData = [
     {
@@ -99,7 +116,8 @@ function Projects() {
           </div>
           <div className="w-16 h-1 bg-cyan-500 mx-auto mt-2 rounded-full"></div>
           <p className="text-navy-500 max-w-2xl mx-auto text-base md:text-lg mt-4 leading-relaxed font-normal">
-            A handpicked selection of my design interfaces, graphics projects, and web development layouts
+            A handpicked selection of my design interfaces, graphics projects,
+            and web development layouts
           </p>
         </div>
 
@@ -111,14 +129,23 @@ function Projects() {
           {projectsData.map((project, index) => (
             <div
               key={index}
-              className="project-card-anim group relative overflow-hidden rounded-3xl bg-navy-900 border border-navy-800 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-[400px] cursor-pointer"
+              onClick={(e) => handleCardClick(e, index)}
+              className={`project-card-anim group relative overflow-hidden rounded-3xl bg-navy-900 border transition-all duration-500 flex flex-col h-[400px] cursor-pointer ${
+                activeCardIndex === index
+                  ? "shadow-2xl -translate-y-2 border-cyan-400"
+                  : "border-navy-800 shadow-md hover:shadow-2xl hover:-translate-y-2"
+              }`}
             >
               {/* Image Side */}
               <div className="relative w-full h-[220px] overflow-hidden bg-blue-100 flex items-center justify-center p-4 border-b border-white/5">
                 <img
                   src={project.img}
                   alt={project.head}
-                  className="h-full max-h-48 object-contain transition-transform duration-700 group-hover:scale-104"
+                  className={`h-full max-h-48 object-contain transition-transform duration-700 ${
+                    activeCardIndex === index
+                      ? "scale-104"
+                      : "group-hover:scale-104"
+                  }`}
                 />
                 <div className="absolute top-4 right-4 bg-navy-900/80 backdrop-blur-md border border-white/10 text-slate-300 text-xs px-3 py-1 rounded-full font-bold">
                   Project {String(index + 1).padStart(2, "0")}
@@ -128,7 +155,13 @@ function Projects() {
               {/* Lower Info Area (Visible before hover) */}
               <div className="p-6 flex flex-col justify-between flex-1 text-left">
                 <div>
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors line-clamp-1">
+                  <h3
+                    className={`text-lg font-bold transition-colors line-clamp-1 mb-2 ${
+                      activeCardIndex === index
+                        ? "text-cyan-400"
+                        : "text-white group-hover:text-cyan-400"
+                    }`}
+                  >
                     {project.head}
                   </h3>
                   <p className="text-slate-300 text-xs line-clamp-2 leading-relaxed">
@@ -147,12 +180,15 @@ function Projects() {
                 </div>
               </div>
 
-              {/* Overlay Curtain Slide (Reveals on Hover) */}
-              <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-gray-300 flex flex-col justify-between p-8 transition-all duration-500 translate-y-full group-hover:translate-y-0 z-20 text-left">
+              {/* Overlay Curtain Slide (Reveals on Hover / Active touch) */}
+              <div
+                className={`absolute inset-0 bg-gradient-to-b from-blue-50 to-gray-300 flex flex-col justify-between p-8 transition-all duration-500 z-20 text-left ${
+                  activeCardIndex === index
+                    ? "translate-y-0"
+                    : "translate-y-full group-hover:translate-y-0"
+                }`}
+              >
                 <div className="space-y-4">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-blue-900">
-                    Featured Project
-                  </span>
                   <h3 className="text-xl font-bold text-navy-950">
                     {project.head}
                   </h3>
@@ -178,6 +214,7 @@ function Projects() {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-2 px-6 rounded-full text-xs transition-all duration-300 shadow-md cursor-pointer text-center"
                     >
                       <span>{project.urlDesc}</span>
