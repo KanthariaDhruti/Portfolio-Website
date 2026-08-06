@@ -15,12 +15,21 @@ function Experience() {
 
   const experienceData = [
     {
-      year: "Jan 2026 - Present",
+      year: "Jan 2026 - June 2026",
       role: "Graphic Design Intern",
       company: "Adrta Technologies",
       desc: [
         "Developing corporate branding guidelines, vector assets, and digital marketing materials.",
         "Collaborating with frontend development teams to align visual layouts with UI code implementation.",
+        "Creating social media creatives, layout grids, and interactive vector designs using Illustrator and Figma.",
+      ],
+    },
+    {
+      year: "June 2026 - Present",
+      role: "Freelance Graphic Designer ",
+      desc: [
+        "Developing corporate branding guidelines, vector assets, and digital marketing materials.",
+        "Ready to collaborate with brands to align visual layouts with relatable and clean designs.",
         "Creating social media creatives, layout grids, and interactive vector designs using Illustrator and Figma.",
       ],
     },
@@ -70,8 +79,6 @@ function Experience() {
         const content = item.querySelector(".timeline-content");
         const year = item.querySelector(".timeline-year");
 
-        const isEven = index % 2 === 0;
-
         // Animate timeline node dot
         gsap.fromTo(
           node,
@@ -89,10 +96,10 @@ function Experience() {
           },
         );
 
-        // Animate year text
+        // Animate year text (always on left, animate from left)
         gsap.fromTo(
           year,
-          { opacity: 0, x: isEven ? -30 : 30 },
+          { opacity: 0, x: -30 },
           {
             opacity: 1,
             x: 0,
@@ -106,10 +113,10 @@ function Experience() {
           },
         );
 
-        // Animate main content block
+        // Animate main content block (always on right, animate from right)
         gsap.fromTo(
           content,
-          { opacity: 0, x: isEven ? 40 : -40 },
+          { opacity: 0, x: 40 },
           {
             opacity: 1,
             x: 0,
@@ -193,17 +200,13 @@ function Experience() {
           {/* Timeline Items list */}
           <div className="space-y-16 md:space-y-24">
             {experienceData.map((item, index) => {
-              const isEven = index % 2 === 0;
-
               return (
                 <div
                   key={index}
                   ref={(el) => (timelineItemsRef.current[index] = el)}
-                  className={`flex flex-col md:flex-row items-start relative z-10 ${
-                    isEven ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}
+                  className="flex flex-col md:flex-row items-start relative z-10"
                 >
-                  {/* Left / Right content container spacing */}
+                  {/* Left content container (Year) */}
                   <div className="w-full md:w-1/2 pl-12 pr-4 md:pr-12 md:pl-12 flex justify-start md:justify-end text-left md:text-right">
                     <span className="timeline-year text-cyan-400 font-extrabold text-xl tracking-wider py-1 block">
                       {item.year}

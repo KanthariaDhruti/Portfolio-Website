@@ -1,8 +1,18 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Syne:wght@400..800&display=swap");
 
 @theme {
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-syne: "Syne", sans-serif;
+  --font-serif-editorial: "Instrument Serif", serif;
+
+  /* Custom Graphic Designer Palette */
+  --color-carbon-black: #090909;
+  --color-studio-cream: #ebeae5;
+  --color-accent-lime: #d2ff00;
+  --color-studio-gray: #121212;
+  --color-studio-dark-gray: #1a1a1a;
 
   /* Custom Navy Blue Theme Palette */
   --color-navy-50: #f4f6fa;
@@ -178,4 +188,90 @@ body {
     background-color: #06b6d4 !important;
     color: #0a0f1d !important;
   }
+}
+
+/* ==========================================
+   Graphic Designer Page Custom Utilities
+   ========================================== */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Scroll-on-hover effect for browser frames */
+.browser-scroll-container {
+  overflow: hidden;
+  position: relative;
+  height: 280px;
+}
+
+.browser-scroll-image {
+  transition: transform 4s cubic-bezier(0.43, 0.13, 0.23, 0.96);
+  transform: translateY(0);
+  width: 100%;
+}
+
+.browser-scroll-container:hover .browser-scroll-image {
+  transform: translateY(calc(-100% + 280px));
+}
+
+/* Glassmorphism custom card for graphic design page */
+.studio-glass-panel {
+  background: rgba(26, 26, 26, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.studio-glass-panel:hover {
+  border-color: rgba(210, 255, 0, 0.25);
+  background: rgba(26, 26, 26, 0.55);
+}
+
+/* Custom noise/paper texture overlay */
+.studio-noise-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.02;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 1;
+}
+
+/* Typography styles */
+.font-syne {
+  font-family: var(--font-syne), sans-serif;
+}
+
+.font-serif-editorial {
+  font-family: var(--font-serif-editorial), serif;
+}
+
+/* Glassmorphism custom card for graphic design page (light mode) */
+.studio-glass-panel-light {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(28, 28, 28, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.studio-glass-panel-light:hover {
+  border-color: rgba(28, 28, 28, 0.25);
+  background: rgba(255, 255, 255, 0.65);
 }
