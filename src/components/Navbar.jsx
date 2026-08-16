@@ -11,10 +11,6 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  if (location.pathname.startsWith("/portfolio")) {
-    return null;
-  }
-
   const links = [
     { name: "Home", href: "/" },
     { name: "About", href: "/#about" },
@@ -78,6 +74,10 @@ function Navbar() {
       }
     }
   };
+
+  if (location.pathname === "/portfolio") {
+    return null;
+  }
 
   return (
     <nav
