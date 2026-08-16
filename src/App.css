@@ -1,39 +1,39 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Syne:wght@400..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-sans: "Playwrite US Modern", system-ui, -apple-system, sans-serif;
   --font-syne: "Syne", sans-serif;
-  --font-serif-editorial: "Instrument Serif", serif;
+  --font-serif-editorial: "IBM Plex Serif", serif;
 
   /* Custom Graphic Designer Palette */
-  --color-carbon-black: #090909;
-  --color-studio-cream: #ebeae5;
-  --color-accent-lime: #d2ff00;
-  --color-studio-gray: #121212;
-  --color-studio-dark-gray: #1a1a1a;
+  --color-carbon-black: #2b3b48;
+  --color-studio-cream: #fffdfa;
+  --color-accent-lime: #5d768b;
+  --color-studio-gray: #f2d9c7;
+  --color-studio-dark-gray: #e3c9a4;
 
-  /* Custom Navy Blue Theme Palette */
-  --color-navy-50: #f4f6fa;
-  --color-navy-100: #e8ecf5;
-  --color-navy-200: #d1dbed;
-  --color-navy-300: #a9bedb;
-  --color-navy-400: #7b9cc5;
-  --color-navy-500: #5579ab;
-  --color-navy-600: #425e89;
-  --color-navy-700: #354a6e;
-  --color-navy-800: #1e2a3f;
-  --color-navy-900: #0f1626;
-  --color-navy-950: #0a0f1d;
+  /* Custom Navy Blue Theme Palette (Mapped to Ivory Breeze / Ocean Deep Blue / Pink & Sandy Beige) */
+  --color-navy-50: #fffdfa; /* Ivory Breeze */
+  --color-navy-100: #f2d9c7; /* Soft Seashell Pink */
+  --color-navy-200: #e3c9a4; /* Golden Driftwood */
+  --color-navy-300: #c8b39b; /* Warm Sandy Beige */
+  --color-navy-400: #96a6b5; /* Muted blue-grey */
+  --color-navy-500: #7a8e9e; /* Medium blue-grey */
+  --color-navy-600: #5d768b; /* Ocean Deep Blue */
+  --color-navy-700: #4b5e70; /* Deep blue-grey */
+  --color-navy-800: #384857; /* Dark Ocean Blue */
+  --color-navy-900: #2b3b48; /* Darkest Ocean Blue (text default) */
+  --color-navy-950: #fffdfa; /* Ivory Breeze (background default) */
 
   /* Premium Bright Accents */
-  --color-cyan-400: #22d3ee;
-  --color-cyan-500: #06b6d4;
-  --color-cyan-600: #0891b2;
+  --color-cyan-400: #f2d9c7; /* Soft Seashell Pink */
+  --color-cyan-500: #e3c9a4; /* Golden Driftwood */
+  --color-cyan-600: #5d768b; /* Ocean Deep Blue */
 
-  --color-brand-blue: #3b82f6;
-  --color-brand-indigo: #6366f1;
+  --color-brand-blue: #5d768b;
+  --color-brand-indigo: #c8b39b;
 }
 
 /* Custom Base Styles */
@@ -44,14 +44,19 @@ html {
 
 body {
   background-color: var(--color-navy-950);
-  color: #ffffff;
+  color: var(--color-navy-900);
   overflow-x: hidden;
 }
 
 /* Selection Color styling */
 ::selection {
-  background-color: rgba(34, 211, 238, 0.3);
-  color: #ffffff;
+  background-color: rgba(
+    242,
+    217,
+    199,
+    0.5
+  ); /* Soft Seashell Pink background */
+  color: var(--color-navy-900);
 }
 
 /* Custom modern scrollbar */
@@ -62,50 +67,62 @@ body {
   background: var(--color-navy-950);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-navy-800);
+  background: var(--color-navy-300); /* Warm Sandy Beige scrollbar */
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-navy-700);
+  background: var(--color-navy-400);
 }
 
 /* Glassmorphism utility card styles */
 .glass-panel {
-  background: rgba(15, 22, 38, 0.6);
+  background: rgba(248, 239, 229, 0.7); /* Ivory Breeze transparent */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(93, 118, 139, 0.15); /* Soft Ocean Blue border */
 }
 
 .glass-panel-light {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 253, 252, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(15, 22, 38, 0.05);
+  border: 1px solid rgba(200, 179, 155, 0.15); /* Soft Sandy Beige border */
 }
 
 /* Custom interactive gradients */
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 30%, #a9bedb 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-navy-900) 30%,
+    var(--color-navy-600) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-accent-text {
-  background: linear-gradient(135deg, #00d2ff 0%, #3b82f6 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-navy-700) 0%,
+    var(--color-cyan-600) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .bg-gradient-navy {
-  background: radial-gradient(circle at top, #141f36 0%, #0a0f1d 100%);
+  background: radial-gradient(
+    circle at top,
+    #fffbf7 0%,
+    #fffdfa 100%
+  ); /* soft Ivory Breeze radial */
 }
 
 .bg-radial-glow {
   background: radial-gradient(
     800px circle at var(--x, 0px) var(--y, 0px),
-    rgba(34, 211, 238, 0.08),
-    transparent 80%
+    rgba(242, 217, 199, 0.25),
+    /* Soft Seashell Pink glow */ transparent 80%
   );
 }
 
@@ -113,22 +130,22 @@ body {
 .bg-grid-dark {
   background-size: 60px 60px;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    linear-gradient(to right, rgba(93, 118, 139, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(93, 118, 139, 0.04) 1px, transparent 1px);
 }
 
 .bg-grid-light {
   background-size: 60px 60px;
   background-image:
-    linear-gradient(to right, rgba(15, 22, 38, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 22, 38, 0.025) 1px, transparent 1px);
+    linear-gradient(to right, rgba(200, 179, 155, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(200, 179, 155, 0.05) 1px, transparent 1px);
 }
 
 /* Repeating Dot Matrix Pattern */
 .bg-dots-dark {
   background-size: 24px 24px;
   background-image: radial-gradient(
-    rgba(255, 255, 255, 0.04) 1px,
+    rgba(93, 118, 139, 0.06) 1px,
     transparent 1px
   );
 }
@@ -136,7 +153,7 @@ body {
 .bg-dots-light {
   background-size: 24px 24px;
   background-image: radial-gradient(
-    rgba(15, 22, 38, 0.03) 1px,
+    rgba(200, 179, 155, 0.06) 1px,
     transparent 1px
   );
 }
@@ -194,8 +211,12 @@ body {
    Graphic Designer Page Custom Utilities
    ========================================== */
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee {

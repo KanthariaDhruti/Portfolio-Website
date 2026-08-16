@@ -94,7 +94,7 @@ function About() {
     <section
       ref={aboutRef}
       id="about"
-      className="relative bg-gradient-to-b from-white to-blue-50 py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-100"
+      className="relative bg-[#FFFDFA] py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
     >
       
 
@@ -107,10 +107,10 @@ function About() {
           >
             About Me
           </h2>
-          <div className="w-16 h-1 bg-cyan-500 mx-auto mt-4 rounded-full"></div>
+          <div className="w-16 h-1 bg-cyan-650 mx-auto mt-4 rounded-full"></div>
           <p
             ref={subtitleRef}
-            className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg mt-4 leading-relaxed font-normal"
+            className="text-navy-700 max-w-2xl mx-auto md:text-xl mt-4 leading-relaxed font-normal font-[Ibm-plex-serif]"
           >
             Get to know more about my journey, academic credentials, and design passion
           </p>
@@ -124,10 +124,10 @@ function About() {
             className="w-full lg:w-1/2 flex flex-col justify-center space-y-6"
           >
             <h3 className="text-2xl font-bold text-navy-900">
-              Hi, I'm <span className="text-blue-600">Dhruti Kantharia</span>
+              Hi, I'm <span className="text-cyan-650">Dhruti Kantharia</span>
             </h3>
             
-            <div className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed text-justify">
+            <div className="space-y-4 text-navy-800 text-lg leading-relaxed text-justify font-[Ibm-plex-serif]">
               <p>
                 I am currently pursuing my B.Tech in IT Engineering at Gandhinagar University. 
                 I genuinely enjoy blending structural code with design to create clean interfaces, 
@@ -155,17 +155,17 @@ function About() {
               {abtCards.map((card, index) => (
                 <div
                   key={index}
-                  className="abt-card bg-white border border-navy-100 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-cyan-500/30 transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col justify-between cursor-pointer"
+                  className="abt-card bg-white border border-navy-300 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-cyan-600/35 transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col justify-between cursor-pointer"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 text-2xl flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-cyan-400 text-cyan-600 text-2xl flex items-center justify-center mb-4">
                       <i className={card.icon}></i>
                     </div>
                     <h4 className="text-lg font-bold text-navy-900 mb-2">
                       {card.head}
                     </h4>
                   </div>
-                  <p className="text-slate-500 text-sm leading-relaxed mt-2">{card.desc}</p>
+                  <p className="text-navy-700 font-[Ibm-plex-serif] leading-relaxed mt-2">{card.desc}</p>
                 </div>
               ))}
             </div>

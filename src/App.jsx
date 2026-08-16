@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import Portfolio from "./components/Portfolio";
+import ProjectDetail from "./components/ProjectDetail";
 
 function App() {
   useEffect(() => {
@@ -24,6 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio/:id" element={<ProjectDetail />} />
         </Routes>
       </Router>
     </>

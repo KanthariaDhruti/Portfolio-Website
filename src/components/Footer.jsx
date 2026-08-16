@@ -5,7 +5,7 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy-950 border-t border-white/5 py-12 px-6 text-center text-slate-400">
+    <footer className="bg-[#F2D9C7] border-t border-navy-300/40 py-12 px-6 text-center text-navy-800">
       <div className="max-w-7xl mx-auto flex flex-col items-center space-y-6">
         {/* Logo / Brand Name */}
         <div className="flex flex-col items-center">
@@ -13,25 +13,25 @@ function Footer() {
             to="home"
             smooth={true}
             duration={500}
-            className="text-2xl font-extrabold tracking-tight text-white hover:text-cyan-400 transition-colors duration-300 select-none cursor-pointer no-underline flex items-center gap-2 mb-1"
+            className="text-2xl font-extrabold tracking-tight text-navy-900 hover:text-cyan-650 transition-colors duration-300 select-none cursor-pointer no-underline flex items-center gap-2 mb-1"
           >
-            <span className="bg-gradient-to-r from-white to-navy-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-navy-900 to-navy-600 bg-clip-text text-transparent">
               Dhruti
             </span>
-            <span className="text-cyan-400 font-medium">Kantharia</span>
+            <span className="text-cyan-650 font-medium">Kantharia</span>
           </Link>
-          <p className="text-sm text-slate-500 font-medium">
-            Web Developer • UI/UX Designer • B.Tech IT Student
+          <p className="text-navy-700 font-[Ibm-plex-serif] font-medium">
+            Web Designer • UI/UX Designer • B.Tech IT • Freelance Graphic Designer 
           </p>
         </div>
 
         {/* Mini quick-links menu */}
-        <div className="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-widest font-semibold text-slate-500 pt-2 pb-2">
+        <div className="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-widest font-semibold text-navy-700 pt-2 pb-2">
           <Link
             to="home"
             smooth={true}
             duration={500}
-            className="hover:text-white transition duration-300 cursor-pointer"
+            className="hover:text-navy-900 transition duration-300 cursor-pointer"
           >
             Home
           </Link>
@@ -40,7 +40,7 @@ function Footer() {
             smooth={true}
             duration={500}
             offset={-50}
-            className="hover:text-white transition duration-300 cursor-pointer"
+            className="hover:text-navy-900 transition duration-300 cursor-pointer"
           >
             About
           </Link>
@@ -49,7 +49,7 @@ function Footer() {
             smooth={true}
             duration={500}
             offset={-50}
-            className="hover:text-white transition duration-300 cursor-pointer"
+            className="hover:text-navy-900 transition duration-300 cursor-pointer"
           >
             Experience
           </Link>
@@ -58,7 +58,7 @@ function Footer() {
             smooth={true}
             duration={500}
             offset={-50}
-            className="hover:text-white transition duration-300 cursor-pointer"
+            className="hover:text-navy-900 transition duration-300 cursor-pointer"
           >
             Skills
           </Link>
@@ -67,7 +67,7 @@ function Footer() {
             smooth={true}
             duration={500}
             offset={-50}
-            className="hover:text-white transition duration-300 cursor-pointer"
+            className="hover:text-navy-900 transition duration-300 cursor-pointer"
           >
             Projects
           </Link>
@@ -76,7 +76,7 @@ function Footer() {
             smooth={true}
             duration={500}
             offset={-50}
-            className="hover:text-white transition duration-300 cursor-pointer"
+            className="hover:text-navy-900 transition duration-300 cursor-pointer"
           >
             Services
           </Link>
@@ -85,19 +85,19 @@ function Footer() {
             smooth={true}
             duration={500}
             offset={-50}
-            className="hover:text-white transition duration-300 cursor-pointer"
+            className="hover:text-navy-900 transition duration-300 cursor-pointer"
           >
             Contact
           </Link>
         </div>
 
         {/* Social Icons inside Footer */}
-        <div className="flex items-center gap-6 text-lg text-slate-500 pt-2 border-t border-white/5 w-full max-w-[250px] justify-center">
+        <div className="flex items-center gap-6 text-lg text-navy-700 pt-2 border-t border-navy-300/40 w-full max-w-[250px] justify-center">
           <a
             href="https://github.com/KanthariaDhruti"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors duration-300"
+            className="hover:text-navy-900 transition-colors duration-300"
             title="GitHub"
           >
             <i className="fa-brands fa-github"></i>
@@ -106,7 +106,7 @@ function Footer() {
             href="https://www.linkedin.com/in/dhruti-kantharia-759700255/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-cyan-400 transition-colors duration-300"
+            className="hover:text-cyan-650 transition-colors duration-300"
             title="LinkedIn"
           >
             <i className="fa-brands fa-linkedin"></i>
@@ -115,7 +115,7 @@ function Footer() {
             href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRtswJrTJzwNcnglvVgPnCJXTMXRWxDhrqHCmNWfhBfXzCxQsHxvZtphhGRkztBHNTgjZxl"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-red-400 transition-colors duration-300"
+            className="hover:text-cyan-655 transition-colors duration-300"
             title="Email"
           >
             <i className="fa-solid fa-envelope"></i>
@@ -123,9 +123,9 @@ function Footer() {
         </div>
 
         {/* Copyright notice */}
-        <div className="pt-4 text-xs text-slate-600 font-medium">
+        <div className="pt-4 font-[Ibm-plex-serif] text-navy-850 font-medium">
           <p>© {currentYear} Dhruti Kantharia. All rights reserved.</p>
-          <p className="mt-1">Designed & built with Tailwind CSS & GSAP</p>
+          <p className=" mt-1">Designed & built with Tailwind CSS & GSAP</p>
         </div>
       </div>
     </footer>

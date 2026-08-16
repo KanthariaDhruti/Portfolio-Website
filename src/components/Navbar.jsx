@@ -11,7 +11,7 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  if (location.pathname === "/portfolio") {
+  if (location.pathname.startsWith("/portfolio")) {
     return null;
   }
 
@@ -84,7 +84,7 @@ function Navbar() {
       ref={navRef}
       className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "py-3 bg-navy-950/80 backdrop-blur-lg border-b border-white/10 shadow-[0_10px_30px_-10px_rgba(3,7,18,0.3)]"
+          ? "py-3 bg-navy-950/90 backdrop-blur-lg border-b border-navy-200/50 shadow-[0_8px_20px_-8px_rgba(93,118,139,0.15)]"
           : "py-5 bg-transparent"
       }`}
     >
@@ -93,18 +93,15 @@ function Navbar() {
         <Link
           to="/"
           ref={logoRef}
-          className="text-xl md:text-2xl font-extrabold tracking-tight text-white hover:text-cyan-400 transition-colors duration-300 select-none no-underline flex items-center gap-2"
+          className="text-xl md:text-2xl font-extrabold tracking-tight text-navy-900 hover:text-cyan-600 transition-colors duration-300 select-none no-underline flex items-center gap-2"
         >
-          <span className="bg-gradient-to-r from-white to-navy-300 bg-clip-text text-transparent">
-            Dhruti
-          </span>
-          <span className="text-cyan-400 font-medium">Kantharia</span>
+          <img src="/designedbydhruti-logo.png" alt="logo" className="w-12 h-12" />
         </Link>
 
         {/* Hamburger (Mobile) */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-white focus:outline-none p-2 rounded-lg border border-white/10 hover:bg-white/5 transition"
+          className="md:hidden text-navy-900 focus:outline-none p-2 rounded-lg border border-navy-200 hover:bg-navy-100 transition"
           aria-label="Toggle menu"
         >
           <svg
@@ -140,10 +137,10 @@ function Navbar() {
               key={link.name}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
-              className="nav-link-anim relative text-slate-300 hover:text-white font-medium text-sm tracking-wide transition-colors duration-300 py-1 group no-underline"
+              className="nav-link-anim relative text-navy-700 hover:text-navy-900 font-medium text-sm tracking-wide transition-colors duration-300 py-1 group no-underline"
             >
               {link.name}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-600 transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
         </div>
@@ -157,13 +154,13 @@ function Navbar() {
             : "opacity-0 -translate-y-4 scale-y-0 pointer-events-none"
         }`}
       >
-        <div className="flex flex-col items-center py-6 space-y-4 bg-navy-950/95 border-b border-white/10">
+        <div className="flex flex-col items-center py-6 space-y-4 bg-navy-950/95 border-b border-navy-200">
           {links.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
-              className="w-full text-center py-2 text-slate-300 hover:text-cyan-400 font-semibold transition-colors duration-300 no-underline"
+              className="w-full text-center py-2 text-navy-700 hover:text-cyan-600 font-semibold transition-colors duration-300 no-underline"
             >
               {link.name}
             </a>

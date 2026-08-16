@@ -1,0 +1,281 @@
+export const projectsData = [
+  {
+    id: "no-limit-routes",
+    title: "No Limit Routes",
+    category: "Branding",
+    subtitle: "Brand Identity & Strategy",
+    description: "A premium outdoors brand and custom cycling routes layout, combining raw nature vibes with functional design systems.",
+    thumbnail: "/magazine.png",
+    heroImage: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1600",
+    aboutBrandText: "No Limit Routes is a premium cycling tour and apparel brand tailored for adventure-seeking cyclists. Designed for high performance under extreme conditions, the brand elements require a sleek, modern visual hierarchy. The brief was to craft a bold identity that stands out in print and digital mediums.",
+    aboutBrandImg: "/LIMS.jpg",
+    designsText: "The design system adapts a high-contrast dark green and sandy beige color palette. Bold condensed typography commands attention, while thin geometric lines mirror elevation grids and mapping coordinates. The brand icon symbolizes movement and limitless boundaries.",
+    designsImages: [
+      "https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&q=80&w=800"
+    ],
+    carouselImages: [
+      "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?auto=format&fit=crop&q=80&w=600",
+      "https://images.unsplash.com/photo-1444491741275-3747c53c99b4?auto=format&fit=crop&q=80&w=600",
+      "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?auto=format&fit=crop&q=80&w=600"
+    ],
+    testimonial: {
+      quote: "Outstanding branding. The identity translates seamlessly across our products and online platforms, conveying both adventure and high premium quality.",
+      author: "Founder, No Limit Routes"
+    },
+    showcaseImg: "/magazine.png",
+    brandIcons: [
+      "fa-solid fa-route", "fa-solid fa-compass", "fa-solid fa-mountain",
+      "fa-solid fa-bicycle", "fa-solid fa-map-location-dot", "fa-solid fa-wind"
+    ],
+    fullBannerImg: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1600"
+  },
+  {
+    id: "fashion-magazine",
+    title: "Fashion Magazine Layout",
+    category: "Editorial Design",
+    subtitle: "Creative Editorial Print layout",
+    description: "An avant-garde editorial magazine concept. Adapts asymmetrical grids, vertical typography guides, and large font titles to display lifestyle imagery.",
+    thumbnail: "/magazine.png",
+    heroImage: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=1600",
+    aboutBrandText: "Crafting a luxury print layout with clean editorial visual lines, emphasizing asymmetrical column grids, custom headline letterspacing, and large atmospheric negative spaces. The objective was to elevate lifestyle storytelling to an art form.",
+    aboutBrandImg: "/magazine.png",
+    designsText: "We focused on a layout where images dictate text flows. Monospaced annotations run vertically down the pages to act as secondary elements, letting high-fashion photography take full center stage. Body copies are set in readable sans-serifs, contrasted with extreme-serif headings.",
+    designsImages: [
+      "/magazine.png",
+      "/brochure1.png"
+    ],
+    carouselImages: [
+      "/magazine.png",
+      "/brochure1.png",
+      "/magazine.png"
+    ],
+    testimonial: {
+      quote: "The layout captures our design philosophy perfectly. Clean, daring, and absolutely beautiful to flip through.",
+      author: "Creative Director, La Mode"
+    },
+    showcaseImg: "/brochure1.png",
+    brandIcons: [
+      "fa-solid fa-signature", "fa-solid fa-feather-pointed", "fa-solid fa-glasses",
+      "fa-solid fa-newspaper", "fa-solid fa-bookmark", "fa-solid fa-palette"
+    ],
+    fullBannerImg: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1600"
+  },
+  {
+    id: "lims-brochure",
+    title: "LIMS Brochure Design",
+    category: "Product Brochure",
+    subtitle: "Company Technical Brochure",
+    description: "A product brochure designed to introduce and communicate the key capabilities of a Laboratory Information Management System.",
+    thumbnail: "/LIMS.jpg",
+    heroImage: "https://images.unsplash.com/photo-1579154204601-01588f351167?auto=format&fit=crop&q=80&w=1600",
+    aboutBrandText: "For Adrta Technologies' LIMS, we required a clean, informative print media architecture. The focus lay on transforming complex database management terms into simple, readable graphic blocks that communicate software benefits to decision makers.",
+    aboutBrandImg: "/LIMS.jpg",
+    designsText: "The design applies technical cyan-blue lines, strict tabular hierarchies, and clear screenshot mockups. Soft drop shadows and thin grid separations ensure the text density remains comfortable to read.",
+    designsImages: [
+      "/LIMS.jpg",
+      "/Vista.jpg"
+    ],
+    carouselImages: [
+      "/LIMS.jpg",
+      "/Vista.jpg",
+      "/LIMS.jpg"
+    ],
+    testimonial: {
+      quote: "Our clients love the brochure format. It makes complex laboratory workflows clear and visually compelling.",
+      author: "Product Head, Adrta Technologies"
+    },
+    showcaseImg: "/LIMS.jpg",
+    brandIcons: [
+      "fa-solid fa-flask", "fa-solid fa-vial", "fa-solid fa-microscope",
+      "fa-solid fa-dna", "fa-solid fa-chart-line", "fa-solid fa-shield-halved"
+    ],
+    fullBannerImg: "https://images.unsplash.com/photo-1532187643603-ba119ca4109e?auto=format&fit=crop&q=80&w=1600"
+  },
+  {
+    id: "clinical-brochure",
+    title: "Clinical Trial Product Brochure",
+    category: "Product Brochure",
+    subtitle: "Healthcare Software Brochure",
+    description: "A product brochure designed to present a Clinical Trial Management Software and its role in streamlining trial planning.",
+    thumbnail: "/Vista.jpg",
+    heroImage: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&q=80&w=1600",
+    aboutBrandText: "Designing healthcare software catalogs requires balancing strict industry compliance details with engaging visual representations. The Vista brochure accomplishes this through harmonious clinical spacing.",
+    aboutBrandImg: "/Vista.jpg",
+    designsText: "Warm sepia tones paired with slate colors make it look premium. Minimal vector layout blocks describe clinical modules, data security compliance, and user roles.",
+    designsImages: [
+      "/Vista.jpg",
+      "/LIMS.jpg"
+    ],
+    carouselImages: [
+      "/Vista.jpg",
+      "/LIMS.jpg",
+      "/Vista.jpg"
+    ],
+    testimonial: {
+      quote: "Simplifies key clinical points in a clean document architecture. Excellent representation of our software.",
+      author: "Manager, Vista Clinical Research"
+    },
+    showcaseImg: "/Vista.jpg",
+    brandIcons: [
+      "fa-solid fa-notes-medical", "fa-solid fa-stethoscope", "fa-solid fa-heart-pulse",
+      "fa-solid fa-file-medical", "fa-solid fa-user-doctor", "fa-solid fa-laptop-medical"
+    ],
+    fullBannerImg: "https://images.unsplash.com/photo-1516841273335-e39b37888115?auto=format&fit=crop&q=80&w=1600"
+  },
+  {
+    id: "chatbot-landing",
+    title: "ChatBot UI/UX Landing",
+    category: "Branding & Web Design",
+    subtitle: "Figma to Webflow Prototyping",
+    description: "A custom chatbot branding layout and lead generation page, designed in Figma and coded to Webflow.",
+    thumbnail: "/chat.png",
+    heroImage: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1600",
+    aboutBrandText: "A futuristic AI companion app landing page designed to optimize sign-up conversions. Featuring soft glassmorphism panels, glowing neon elements, and sleek message bubbles.",
+    aboutBrandImg: "/chat.png",
+    designsText: "Coded directly in Webflow using a solid client-first design system. Smooth entrance triggers, custom interactive states, and a clean mobile-responsive layout.",
+    designsImages: [
+      "/chat.png",
+      "/team.png"
+    ],
+    carouselImages: [
+      "/chat.png",
+      "/team.png",
+      "/chat.png"
+    ],
+    testimonial: {
+      quote: "A stunning layout that converts extremely well. Visual flow and micro-interactions are perfect.",
+      author: "Founder, Chatify AI"
+    },
+    showcaseImg: "/chat.png",
+    brandIcons: [
+      "fa-solid fa-robot", "fa-solid fa-comment-dots", "fa-solid fa-bolt",
+      "fa-solid fa-headset", "fa-solid fa-share-nodes", "fa-solid fa-keyboard"
+    ],
+    fullBannerImg: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1600"
+  },
+  {
+    id: "team-app",
+    title: "Team App Workspace",
+    category: "Branding & Web Design",
+    subtitle: "Collaborative SaaS Layout",
+    description: "A futuristic web dashboard mockup optimized for collaboration, featuring metrics widgets and chat feeds.",
+    thumbnail: "/team.png",
+    heroImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1600",
+    aboutBrandText: "Modern SaaS platforms require high usability. The Team App dashboard concept organizes team chat, calendar boards, and metrics into a single unified visual grid.",
+    aboutBrandImg: "/team.png",
+    designsText: "Using Figma UI components, we created a clean layout with dark and light themes, ensuring high-contrast data visualization and smooth list transitions.",
+    designsImages: [
+      "/team.png",
+      "/chat.png"
+    ],
+    carouselImages: [
+      "/team.png",
+      "/chat.png",
+      "/team.png"
+    ],
+    testimonial: {
+      quote: "The interface layout is incredibly intuitive and visually polished. Best dashboard concept we've seen.",
+      author: "CEO, CollabSphere"
+    },
+    showcaseImg: "/team.png",
+    brandIcons: [
+      "fa-solid fa-users", "fa-solid fa-square-poll-vertical", "fa-solid fa-calendar-days",
+      "fa-solid fa-paperclip", "fa-solid fa-magnifying-glass", "fa-solid fa-bell"
+    ],
+    fullBannerImg: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=1600"
+  },
+  {
+    id: "fintech-flow",
+    title: "Fintech Appointment Flow",
+    category: "UI/UX Design",
+    subtitle: "Interactive Booking Experience",
+    description: "A micro-frontend appointment workflow concept built for clean, frictionless finance consultations.",
+    thumbnail: "/fintech.png",
+    heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600",
+    aboutBrandText: "Frictionless checkout and booking are key to fintech conversions. This flow presents clear calendar selectors, payment inputs, and advisor profile summaries.",
+    aboutBrandImg: "/fintech.png",
+    designsText: "We focused on a clean mobile-first layout with high-readability text sizes, green-success badges, and quick options that reduce booking drop-offs.",
+    designsImages: [
+      "/fintech.png",
+      "/team.png"
+    ],
+    carouselImages: [
+      "/fintech.png",
+      "/team.png",
+      "/fintech.png"
+    ],
+    testimonial: {
+      quote: "Reduced our drop-off rates by 40% immediately. Visual cues make booking super straightforward.",
+      author: "Product Designer, PayFlow"
+    },
+    showcaseImg: "/fintech.png",
+    brandIcons: [
+      "fa-solid fa-wallet", "fa-solid fa-credit-card", "fa-solid fa-hand-holding-dollar",
+      "fa-solid fa-user-tie", "fa-solid fa-clock", "fa-solid fa-circle-check"
+    ],
+    fullBannerImg: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=1600"
+  },
+  {
+    id: "wanderlust-stays",
+    title: "Wanderlust – Explore Stays",
+    category: "Web Design & Development",
+    subtitle: "MERN Stack Design Integration",
+    description: "A complete lodging catalog platform showcasing list elements, interactive map elements, and high-fidelity search components.",
+    thumbnail: "/Wanderlust.png",
+    heroImage: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=1600",
+    aboutBrandText: "A high-fidelity travel marketplace where users can find vacation rentals, interact with maps, and post reviews. The visual concept focuses on high-quality images and bold cards.",
+    aboutBrandImg: "/Wanderlust.png",
+    designsText: "Built using React, Node.js, Express, and MongoDB. Coded using responsive CSS grids, animated map indicators, and absolute image card proportions.",
+    designsImages: [
+      "/Wanderlust.png",
+      "/magazine.png"
+    ],
+    carouselImages: [
+      "/Wanderlust.png",
+      "/magazine.png",
+      "/Wanderlust.png"
+    ],
+    testimonial: {
+      quote: "Beautiful UI design integrated with a fully robust backend application. An exceptional project.",
+      author: "Review Board, GU Lab"
+    },
+    showcaseImg: "/Wanderlust.png",
+    brandIcons: [
+      "fa-solid fa-umbrella-beach", "fa-solid fa-hotel", "fa-solid fa-map-pin",
+      "fa-solid fa-star", "fa-solid fa-sliders", "fa-solid fa-earth-americas"
+    ],
+    fullBannerImg: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=1600"
+  },
+  {
+    id: "business-card-generator",
+    title: "Business Card Generator",
+    category: "Web Application",
+    subtitle: "React Interactive App",
+    description: "React application allowing users to input professional details and generate and download custom styled business cards in real-time.",
+    thumbnail: "/busi-card.png",
+    heroImage: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=1600",
+    aboutBrandText: "A utility application built for modern freelancers. Real-time preview card rendering, layout templates selections, and canvas file downloading capabilities.",
+    aboutBrandImg: "/busi-card.png",
+    designsText: "Coded with interactive state controls, drag-and-drop file uploaders, and PDF/PNG export methods. CSS Flexbox controls align standard sizes correctly.",
+    designsImages: [
+      "/busi-card.png",
+      "/team.png"
+    ],
+    carouselImages: [
+      "/busi-card.png",
+      "/team.png",
+      "/busi-card.png"
+    ],
+    testimonial: {
+      quote: "Incredibly useful application. The PDF export works flawlessly with custom colors.",
+      author: "Freelance Designer"
+    },
+    showcaseImg: "/busi-card.png",
+    brandIcons: [
+      "fa-solid fa-id-card", "fa-solid fa-download", "fa-solid fa-rotate",
+      "fa-solid fa-sliders", "fa-solid fa-image", "fa-solid fa-font"
+    ],
+    fullBannerImg: "https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&q=80&w=1600"
+  }
+];

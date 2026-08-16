@@ -83,27 +83,27 @@ function Home() {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen flex flex-col justify-center items-center bg-gradient-navy px-6 sm:px-12 md:px-20 lg:px-32 py-24 overflow-hidden border-b border-white/5"
+      className="relative min-h-screen flex flex-col justify-center items-center bg-gradient-navy px-6 sm:px-12 md:px-20 lg:px-32 py-24 overflow-hidden border-b border-navy-200/50"
     >
       {/* Ambient background glows */}
       <div
         ref={glowRef}
-        className="absolute top-1/4 right-1/4 w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-cyan-500/10 blur-[130px] rounded-full pointer-events-none z-0"
+        className="absolute top-1/4 right-1/4 w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-cyan-400/20 blur-[130px] rounded-full pointer-events-none z-0"
       ></div>
-      <div className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-brand-indigo/10 blur-[110px] rounded-full pointer-events-none z-0"></div>
+      <div className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-navy-300/15 blur-[110px] rounded-full pointer-events-none z-0"></div>
 
       {/* Decorative Grid Patterns & Designer Canvas indicators */}
       <div className="absolute inset-0 bg-grid-dark pointer-events-none opacity-40 z-0"></div>
       <div className="absolute inset-0 bg-dots-dark pointer-events-none opacity-20 z-0"></div>
 
       {/* Figma/Designer style canvas guides */}
-      <div className="absolute top-24 left-10 text-[10px] font-mono text-cyan-500/40 select-none hidden lg:block uppercase tracking-wider">
+      <div className="absolute top-24 left-10 text-[10px] font-mono text-navy-400/55 select-none hidden lg:block uppercase tracking-wider">
         [w: 100% / h: auto]
       </div>
-      <div className="absolute bottom-10 right-10 text-[10px] font-mono text-slate-500/40 select-none hidden lg:block uppercase tracking-wider">
+      <div className="absolute bottom-10 right-10 text-[10px] font-mono text-navy-400/55 select-none hidden lg:block uppercase tracking-wider">
         Grid: 60px / Dots: 24px
       </div>
-      <div className="absolute top-24 right-10 text-[10px] font-mono text-slate-500/40 select-none hidden lg:block uppercase tracking-wider">
+      <div className="absolute top-24 right-10 text-[10px] font-mono text-navy-400/55 select-none hidden lg:block uppercase tracking-wider">
         Canvas: Active
       </div>
 
@@ -113,19 +113,19 @@ function Home() {
           ref={infoRef}
           className="w-full mt-15 md:w-3/5 text-center md:text-left flex flex-col space-y-4 md:space-y-6"
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold font-[Playwrite_US_Modern] tracking-tight text-navy-900 leading-tight">
             Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-600 via-cyan-500 to-navy-400 bg-clip-text text-transparent">
               Dhruti
             </span>
           </h1>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-300 leading-snug">
-            Graphic Designer <span className="text-cyan-400">&</span> Web
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy-800 leading-snug">
+            Graphic Designer <span className="text-cyan-650">&</span> Web
             Developer
           </h2>
 
-          <p className="text-slate-400 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl text-justify md:text-left">
+          <p className="text-navy-700 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl text-justify md:text-left font-[Ibm-plex-serif]">
             I turn creative thoughts into responsive, clean code and visually
             stunning interactive web designs. Blending technical accuracy with
             strong layout aesthetics to craft unforgettable digital journeys.
@@ -143,7 +143,7 @@ function Home() {
               offset={-50}
               className="w-full sm:w-auto"
             >
-              <button className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-8 py-3.5 rounded-full shadow-[0_0_20px_rgba(6,182,212,0.25)] hover:shadow-[0_0_30px_rgba(6,182,212,0.45)] hover:scale-[1.03] transition-all duration-300 cursor-pointer text-sm">
+              <button className="w-full sm:w-auto bg-navy-600 hover:bg-navy-700 text-white font-bold px-8 py-3.5 rounded-full shadow-[0_4px_12px_rgba(93,118,139,0.25)] hover:shadow-[0_6px_20px_rgba(93,118,139,0.45)] hover:scale-[1.03] transition-all duration-300 cursor-pointer text-sm">
                 Get In Touch
               </button>
             </Link>
@@ -154,7 +154,7 @@ function Home() {
               offset={-50}
               className="w-full sm:w-auto"
             >
-              <button className="w-full sm:w-auto border border-white/20 hover:border-cyan-400 hover:bg-white/5 text-slate-200 hover:text-white font-bold px-8 py-3.5 rounded-full hover:scale-[1.03] transition-all duration-300 cursor-pointer text-sm">
+              <button className="w-full sm:w-auto border border-navy-300 hover:border-navy-600 hover:bg-navy-100 text-navy-800 hover:text-navy-900 font-bold px-8 py-3.5 rounded-full hover:scale-[1.03] transition-all duration-300 cursor-pointer text-sm">
                 Browse Projects
               </button>
             </Link>
@@ -163,13 +163,13 @@ function Home() {
           {/* Styled Social Icons */}
           <div
             ref={iconsRef}
-            className="flex items-center justify-center md:justify-start gap-6 pt-4 text-2xl text-slate-400"
+            className="flex items-center justify-center md:justify-start gap-6 pt-4 text-2xl text-navy-500"
           >
             <a
               href="https://github.com/KanthariaDhruti"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] p-2 rounded-lg hover:bg-white/5 transition-all duration-300"
+              className="hover:text-navy-900 hover:shadow-[0_0_10px_rgba(93,118,139,0.15)] p-2 rounded-lg hover:bg-navy-100 transition-all duration-300"
               title="GitHub"
             >
               <i className="fa-brands fa-github"></i>
@@ -178,7 +178,7 @@ function Home() {
               href="https://www.linkedin.com/in/dhruti-kantharia-759700255/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-cyan-400 hover:shadow-[0_0_15px_rgba(34,211,238,0.2)] p-2 rounded-lg hover:bg-white/5 transition-all duration-300"
+              className="hover:text-cyan-600 hover:shadow-[0_0_10px_rgba(227,201,164,0.3)] p-2 rounded-lg hover:bg-navy-100 transition-all duration-300"
               title="LinkedIn"
             >
               <i className="fa-brands fa-linkedin"></i>
@@ -187,7 +187,7 @@ function Home() {
               href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRtswJrTJzwNcnglvVgPnCJXTMXRWxDhrqHCmNWfhBfXzCxQsHxvZtphhGRkztBHNTgjZxl"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-red-400 hover:shadow-[0_0_15px_rgba(248,113,113,0.2)] p-2 rounded-lg hover:bg-white/5 transition-all duration-300"
+              className="hover:text-cyan-600 hover:shadow-[0_0_10px_rgba(242,217,199,0.3)] p-2 rounded-lg hover:bg-navy-100 transition-all duration-300"
               title="Email"
             >
               <i className="fa-solid fa-envelope"></i>
@@ -199,16 +199,16 @@ function Home() {
         <div className="w-full md:w-2/5 flex justify-center items-center z-10">
           <div
             ref={imgRef}
-            className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-[350px] lg:h-[350px] p-2 bg-gradient-to-tr from-cyan-400 to-indigo-500 rounded-full shadow-[0_0_40px_rgba(34,211,238,0.25)] flex items-center justify-center hover:scale-[1.02] transition-transform duration-500 ease-out"
+            className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-[350px] lg:h-[350px] p-2 bg-gradient-to-tr from-cyan-400 via-cyan-500 to-navy-300 rounded-full shadow-[0_8px_30px_rgba(93,118,139,0.12)] flex items-center justify-center hover:scale-[1.02] transition-transform duration-500 ease-out"
           >
             {/* Soft backdrop overlay */}
-            <div className="absolute inset-0 bg-navy-950 rounded-full scale-[0.985]"></div>
+            <div className="absolute inset-0 bg-white rounded-full scale-[0.985]"></div>
 
             {/* Real profile image */}
             <img
               src="/dhrutiImg.jpg"
               alt="Dhruti Kantharia"
-              className="w-full h-full object-cover rounded-full z-10 border-4 border-navy-950 scale-[0.97]"
+              className="w-full h-full object-cover rounded-full z-10 border-4 border-white scale-[0.97]"
             />
           </div>
         </div>

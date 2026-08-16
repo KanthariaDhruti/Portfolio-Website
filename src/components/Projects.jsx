@@ -91,31 +91,31 @@ function Projects() {
     <section
       id="projects"
       ref={containerRef}
-      className="relative bg-gradient-to-b from-[#e8eff9] via-[#f5f8fc] to-[#e8eff9] py-24 px-6 md:px-16 lg:px-32 text-center border-b border-navy-100"
+      className="relative bg-[#FAF7F2] py-24 px-6 md:px-16 lg:px-32 text-center border-b border-navy-200"
     >
       {/* Decorative Grid Patterns & Canvas indicators */}
       <div className="absolute inset-0 bg-grid-light pointer-events-none opacity-40 z-0"></div>
       <div className="absolute inset-0 bg-dots-light pointer-events-none opacity-20 z-0"></div>
-      <div className="absolute top-24 left-10 text-[10px] font-mono text-navy-950/40 select-none hidden lg:block uppercase tracking-wider">
+      <div className="absolute top-24 left-10 text-[10px] font-mono text-navy-500/50 select-none hidden lg:block uppercase tracking-wider">
         [Section: 05 / Projects]
       </div>
 
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <div className="relative inline-block border-2 border-blue-500  backdrop-blur-sm px-6 py-2.5  shadow-sm mb-4">
+          <div className="relative inline-block border-2 border-navy-650 backdrop-blur-sm px-6 py-2.5 shadow-sm mb-4">
             {/* Figma resize handles/nodes */}
-            <div className="absolute w-1.5 h-1.5 bg-white border-2 border-blue-500 -top-[4px] -left-[4px] z-30"></div>
-            <div className="absolute w-1.5 h-1.5 bg-white border-2 border-blue-500 -top-[4px] -right-[4px] z-30"></div>
-            <div className="absolute w-1.5 h-1.5 bg-white border-2 border-blue-500 -bottom-[4px] -left-[4px] z-30"></div>
-            <div className="absolute w-1.5 h-1.5 bg-white border-2 border-blue-500 -bottom-[4px] -right-[4px] z-30"></div>
+            <div className="absolute w-1.5 h-1.5 bg-white border-2 border-navy-650 -top-[4px] -left-[4px] z-30"></div>
+            <div className="absolute w-1.5 h-1.5 bg-white border-2 border-navy-650 -top-[4px] -right-[4px] z-30"></div>
+            <div className="absolute w-1.5 h-1.5 bg-white border-2 border-navy-650 -bottom-[4px] -left-[4px] z-30"></div>
+            <div className="absolute w-1.5 h-1.5 bg-white border-2 border-navy-650 -bottom-[4px] -right-[4px] z-30"></div>
 
-            <h2 className="text-3xl md:text-4xl font-extrabold text-navy-950 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-navy-900 tracking-tight">
               Featured Projects
             </h2>
           </div>
-          <div className="w-16 h-1 bg-cyan-500 mx-auto mt-2 rounded-full"></div>
-          <p className="text-navy-500 max-w-2xl mx-auto text-base md:text-lg mt-4 leading-relaxed font-normal">
+          <div className="w-16 h-1 bg-cyan-650 mx-auto mt-2 rounded-full"></div>
+          <p className="text-navy-700 max-w-2xl mx-auto font-[Ibm-plex-serif] md:text-xl mt-4 leading-relaxed ">
             A handpicked selection of my design interfaces, graphics projects,
             and web development layouts
           </p>
@@ -130,14 +130,14 @@ function Projects() {
             <div
               key={index}
               onClick={(e) => handleCardClick(e, index)}
-              className={`project-card-anim group relative overflow-hidden rounded-3xl bg-navy-900 border transition-all duration-500 flex flex-col h-[400px] cursor-pointer ${
+              className={`project-card-anim group relative overflow-hidden rounded-3xl bg-[#FFFDFC] border transition-all duration-500 flex flex-col h-[400px] cursor-pointer ${
                 activeCardIndex === index
-                  ? "shadow-2xl -translate-y-2 border-cyan-400"
-                  : "border-navy-800 shadow-md hover:shadow-2xl hover:-translate-y-2"
+                  ? "shadow-2xl -translate-y-2 border-cyan-650"
+                  : "border-navy-300 shadow-md hover:shadow-2xl hover:-translate-y-2"
               }`}
             >
               {/* Image Side */}
-              <div className="relative w-full h-[220px] overflow-hidden bg-blue-100 flex items-center justify-center p-4 border-b border-white/5">
+              <div className="relative w-full h-[220px] overflow-hidden bg-[#FAF6F0] flex items-center justify-center p-4 border-b border-navy-200">
                 <img
                   src={project.img}
                   alt={project.head}
@@ -147,7 +147,7 @@ function Projects() {
                       : "group-hover:scale-104"
                   }`}
                 />
-                <div className="absolute top-4 right-4 bg-navy-900/80 backdrop-blur-md border border-white/10 text-slate-300 text-xs px-3 py-1 rounded-full font-bold">
+                <div className="absolute top-4 right-4 bg-white/85 backdrop-blur-md border border-navy-200 text-navy-900 text-xs px-3 py-1 rounded-full font-bold">
                   Project {String(index + 1).padStart(2, "0")}
                 </div>
               </div>
@@ -158,13 +158,13 @@ function Projects() {
                   <h3
                     className={`text-lg font-bold transition-colors line-clamp-1 mb-2 ${
                       activeCardIndex === index
-                        ? "text-cyan-400"
-                        : "text-white group-hover:text-cyan-400"
+                        ? "text-cyan-650"
+                        : "text-navy-900 group-hover:text-cyan-650"
                     }`}
                   >
                     {project.head}
                   </h3>
-                  <p className="text-slate-300 text-xs line-clamp-2 leading-relaxed">
+                  <p className="text-navy-700 font-[Ibm-plex-serif] line-clamp-2 leading-relaxed">
                     {project.desc}
                   </p>
                 </div>
@@ -172,7 +172,7 @@ function Projects() {
                   {project.techSpan.slice(0, 3).map((item, i) => (
                     <span
                       key={i}
-                      className="bg-cyan-950/40 border border-cyan-500/10 text-cyan-400 text-[10px] px-2.5 py-1 rounded-full font-semibold"
+                      className="bg-cyan-400 border  border-cyan-500/15 text-cyan-650 text-[10px] px-2.5 py-1 rounded-full font-semibold"
                     >
                       {item}
                     </span>
@@ -182,17 +182,17 @@ function Projects() {
 
               {/* Overlay Curtain Slide (Reveals on Hover / Active touch) */}
               <div
-                className={`absolute inset-0 bg-gradient-to-b from-blue-50 to-gray-300 flex flex-col justify-between p-8 transition-all duration-500 z-20 text-left ${
+                className={`absolute inset-0 bg-gradient-to-b from-[#F8efe5] to-[#E3C9A4] flex flex-col justify-between p-8 transition-all duration-500 z-20 text-left ${
                   activeCardIndex === index
                     ? "translate-y-0"
                     : "translate-y-full group-hover:translate-y-0"
                 }`}
               >
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-navy-950">
+                  <h3 className="text-xl font-bold text-navy-900">
                     {project.head}
                   </h3>
-                  <p className="text-navy-400 text-md leading-relaxed">
+                  <p className="text-navy-850 font-[Ibm-plex-serif] leading-relaxed">
                     {project.desc}
                   </p>
                 </div>
@@ -202,7 +202,7 @@ function Projects() {
                     {project.techSpan.map((item, i) => (
                       <span
                         key={i}
-                        className="bg-navy-900 border border-white/10 text-slate-300 text-[10px] px-2.5 py-1 rounded-full font-medium"
+                        className="bg-[#FFFDFC] border border-navy-200 text-navy-800 text-[10px] px-2.5 py-1 rounded-full font-medium"
                       >
                         {item}
                       </span>
@@ -215,13 +215,13 @@ function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-2 px-6 rounded-full text-xs transition-all duration-300 shadow-md cursor-pointer text-center"
+                      className="inline-flex items-center justify-center gap-2 bg-cyan-650 hover:bg-navy-750 font-bold py-2 px-6 rounded-full text-xs transition-all duration-300 shadow-md cursor-pointer text-center"
                     >
                       <span>{project.urlDesc}</span>
                       <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                     </a>
                   ) : (
-                    <span className="text-xs font-semibold text-slate-500 italic block">
+                    <span className="text-xs font-semibold text-navy-750 italic block">
                       Internal Design Layout
                     </span>
                   )}
@@ -231,14 +231,14 @@ function Projects() {
           ))}
 
           {/* And More Showcase Card */}
-          <div className="project-card-anim group flex flex-col items-center justify-center rounded-3xl bg-navy-900 border border-navy-800 hover:border-cyan-400/40 shadow-lg transition-all duration-500 p-6 h-[400px] cursor-pointer">
-            <div className="w-16 h-16 rounded-2xl bg-navy-950/60 flex items-center justify-center mb-4 text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-navy-950 transition-all duration-300 border border-white/5">
+          <div className="project-card-anim group flex flex-col items-center justify-center rounded-3xl bg-[#FFFDFC] border border-navy-300 hover:border-cyan-650/40 shadow-lg transition-all duration-500 p-6 h-[400px] cursor-pointer">
+            <div className="w-16 h-16 rounded-2xl bg-cyan-400 flex items-center justify-center mb-4 text-cyan-650 group-hover:scale-110 group-hover:bg-cyan-650 group-hover:text-white transition-all duration-300 border border-cyan-500/10">
               <i className="fa-solid fa-layer-group text-2xl"></i>
             </div>
-            <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 mb-2 transition-colors">
+            <h3 className="text-xl font-bold text-navy-900 group-hover:text-cyan-650 mb-2 transition-colors">
               And more...
             </h3>
-            <p className="text-slate-400 text-xs max-w-[200px] text-center leading-relaxed">
+            <p className="text-navy-700 font-[Ibm-plex-serif] max-w-[200px] text-center leading-relaxed">
               Explore extra concepts, coding sandboxes, and graphics templates
             </p>
           </div>
@@ -250,15 +250,15 @@ function Projects() {
             href="https://github.com/KanthariaDhruti"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold px-8 py-3.5 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(6,182,212,0.25)] hover:scale-[1.02] cursor-pointer no-underline text-sm"
+            className="w-full sm:w-auto bg-navy-600 hover:bg-navy-700 text-white font-bold px-8 py-3.5 rounded-full shadow-[0_4px_12px_rgba(93,118,139,0.25)] hover:shadow-[0_6px_20px_rgba(93,118,139,0.45)] hover:scale-[1.03] transition-all duration-300 cursor-pointer text-sm"
           >
-            <i className="fa-brands fa-github text-lg"></i>
+            <i className="fa-brands fa-github text-lg mr-2"></i>
             <span>View More on GitHub</span>
           </a>
 
           <Link
             to="/portfolio"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 border-2 border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white font-bold px-8 py-3.5 rounded-full transition-all duration-300 hover:scale-[1.02] cursor-pointer no-underline text-sm"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 border-2 border-navy-600 text-navy-600 hover:bg-navy-650   font-bold px-8 py-3.5 rounded-full transition-all duration-300 hover:shadow-[0_6px_20px_rgba(93,118,139,0.45)] hover:scale-[1.03] cursor-pointer no-underline text-sm"
           >
             <i className="fa-regular fa-folder-open text-lg"></i>
             <span>View My Full Portfolio</span>
