@@ -5,7 +5,7 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#F2D9C7] border-t border-navy-300/40 py-12 px-6 text-center text-navy-800">
+    <footer className="bg-[#C49A6C] border-t border-navy-300/40 py-12 px-6 text-center text-pearl">
       <div className="max-w-7xl mx-auto flex flex-col items-center space-y-6">
         {/* Logo / Brand Name */}
         <div className="flex flex-col items-center">
@@ -15,13 +15,11 @@ function Footer() {
             duration={500}
             className="text-2xl font-extrabold tracking-tight text-navy-900 hover:text-cyan-650 transition-colors duration-300 select-none cursor-pointer no-underline flex items-center gap-2 mb-1"
           >
-            <span className="bg-gradient-to-r from-navy-900 to-navy-600 bg-clip-text text-transparent">
-              Dhruti
-            </span>
-            <span className="text-cyan-650 font-medium">Kantharia</span>
+            <img src="/monogram-white.png" alt="" className="h-35 mb-5" />
           </Link>
-          <p className="text-navy-700 font-[Ibm-plex-serif] font-medium">
-            Web Designer • UI/UX Designer • B.Tech IT • Freelance Graphic Designer 
+          <p className="mt-2 font-[Ibm-plex-serif] font-medium">
+            Web Designer • UI/UX Designer • B.Tech IT • Freelance Graphic
+            Designer
           </p>
         </div>
 

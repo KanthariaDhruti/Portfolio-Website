@@ -1,45 +1,34 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"); */
+/* @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Syloti+Nagri&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 @theme {
   --font-sans: "Playwrite US Modern", system-ui, -apple-system, sans-serif;
-  --font-syne: "Syne", sans-serif;
-  --font-serif-editorial: "IBM Plex Serif", serif;
+  --font-outfit: "Outfit", sans-serif;
+  /* --font-serif-editorial: "Rubik", serif; */
+  /* --font-rubik: "Rubik", sans-serif; */
+  /* --font-syloti: "Noto Sans Syloti Nagri", sans-serif; */
 
-  /* Custom Graphic Designer Palette */
-  --color-carbon-black: #2b3b48;
-  --color-studio-cream: #fffdfa;
-  --color-accent-lime: #5d768b;
-  --color-studio-gray: #f2d9c7;
-  --color-studio-dark-gray: #e3c9a4;
+  
 
   /* Custom Navy Blue Theme Palette (Mapped to Ivory Breeze / Ocean Deep Blue / Pink & Sandy Beige) */
-  --color-navy-50: #fffdfa; /* Ivory Breeze */
-  --color-navy-100: #f2d9c7; /* Soft Seashell Pink */
-  --color-navy-200: #e3c9a4; /* Golden Driftwood */
-  --color-navy-300: #c8b39b; /* Warm Sandy Beige */
-  --color-navy-400: #96a6b5; /* Muted blue-grey */
-  --color-navy-500: #7a8e9e; /* Medium blue-grey */
-  --color-navy-600: #5d768b; /* Ocean Deep Blue */
-  --color-navy-700: #4b5e70; /* Deep blue-grey */
-  --color-navy-800: #384857; /* Dark Ocean Blue */
-  --color-navy-900: #2b3b48; /* Darkest Ocean Blue (text default) */
-  --color-navy-950: #fffdfa; /* Ivory Breeze (background default) */
+  
+  --color-navy-900: #1B2051 ; /* Darkest Ocean Blue (text default) */
+  /* navy-900 */
+  --color-navy-950: #fdfdfd; /* Ivory Breeze (background default) */
+  /* navy-950 */
 
   /* Premium Bright Accents */
-  --color-cyan-400: #f2d9c7; /* Soft Seashell Pink */
-  --color-cyan-500: #e3c9a4; /* Golden Driftwood */
-  --color-cyan-600: #5d768b; /* Ocean Deep Blue */
+  --color-pearl: #fdfdfd; /* pearl white */
+  /* cyan-400 */
+  --color-brown: #C49A6C; /* brown */
+  /* cyan-500 */
+  --color-ocean: #1B2051; /*Ocean Deep Blue*/
+  /* cyan-600 */
 
-  --color-brand-blue: #5d768b;
-  --color-brand-indigo: #c8b39b;
-}
-
-/* Custom Base Styles */
-html {
-  scroll-behavior: smooth;
-  font-family: var(--font-sans);
 }
 
 body {
@@ -272,15 +261,6 @@ body {
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   z-index: 1;
-}
-
-/* Typography styles */
-.font-syne {
-  font-family: var(--font-syne), sans-serif;
-}
-
-.font-serif-editorial {
-  font-family: var(--font-serif-editorial), serif;
 }
 
 /* Glassmorphism custom card for graphic design page (light mode) */

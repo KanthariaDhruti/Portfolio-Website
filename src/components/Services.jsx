@@ -108,18 +108,14 @@ function Services() {
     <section
       id="services"
       ref={containerRef}
-      className="relative bg-[#FFFDFC] py-24 px-6 md:px-16 lg:px-32 text-center overflow-hidden border-b border-navy-200"
+      className="relative bg-pearl py-24 px-6 md:px-16 lg:px-32 text-center overflow-hidden border-b border-navy-200"
     >
       {/* Decorative Grid Patterns & Canvas indicators */}
       <div className="absolute inset-0 bg-grid-dark pointer-events-none opacity-40 z-0"></div>
       <div className="absolute inset-0 bg-dots-dark pointer-events-none opacity-20 z-0"></div>
-      <div className="absolute top-24 left-10 text-[10px] font-mono text-navy-500/50 select-none hidden lg:block uppercase tracking-wider">
+      <div className="absolute top-24 left-10 text-[10px] font-mono text-ocean/50 select-none hidden lg:block uppercase tracking-wider">
         [Section: 06 / Services]
       </div>
-
-      {/* Background glow highlights */}
-      <div className="absolute top-1/4 right-10 w-96 h-96 bg-cyan-400/10 blur-[120px] rounded-full pointer-events-none"></div>
-      <div className="absolute bottom-1/4 left-10 w-80 h-80 bg-navy-300/10 blur-[100px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Section Header */}
@@ -130,10 +126,10 @@ function Services() {
           >
             Services & Expertise
           </h2>
-          <div className="w-16 h-1 bg-cyan-650 mx-auto mt-4 rounded-full"></div>
+          <div className="w-16 h-1 mx-auto mt-4 rounded-full"></div>
           <p
             ref={subtitleRef}
-            className="text-navy-700 max-w-2xl font-[Ibm-plex-serif] mx-auto text-base md:text-xl mt-4 leading-relaxed font-normal"
+            className="max-w-2xl font-[Ibm-plex-serif] mx-auto text-base md:text-xl mt-4 font-normal"
           >
             Providing high-quality visual designs and responsive frontend
             developments
@@ -148,12 +144,12 @@ function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="serv-card bg-[#FFFDFC] border border-navy-300 rounded-3xl p-8 hover:border-cyan-650/40 shadow-md hover:-translate-y-2 transition-all duration-300 flex flex-col group cursor-pointer"
+              className="serv-card bg-pearl border border-brown/20 rounded-3xl p-8 hover:border-brown/40 shadow-md hover:-translate-y-2 transition-all duration-300 flex flex-col group "
             >
-              <div className="text-cyan-650 text-4xl mb-5 w-12 h-12 rounded-xl bg-cyan-400 flex items-center justify-center border border-cyan-500/15 group-hover:scale-110 transition-transform duration-300">
+              <div className=" text-4xl mb-5 w-12 h-12 rounded-xl bg-brown flex items-center justify-center text-pearl group-hover:scale-110 transition-transform duration-300">
                 <i className={`${service.icon} text-2xl`}></i>
               </div>
-              <h3 className="text-xl font-bold text-navy-900 mb-3 group-hover:text-cyan-650 transition-colors">
+              <h3 className="text-xl font-bold text-navy-900 mb-3  transition-colors">
                 {service.head}
               </h3>
               <p className="text-navy-700 font-[Ibm-plex-serif] leading-relaxed mb-6 flex-1">
@@ -174,13 +170,12 @@ function Services() {
         {/* Call-to-Action Section */}
         <div
           ref={ctaRef}
-          className="bg-[#FFFDFC] border border-navy-300 text-navy-900 rounded-3xl py-10 px-8 max-w-4xl mx-auto shadow-md relative overflow-hidden"
+          className="bg-brown/80 text-pearl rounded-3xl py-10 px-8 max-w-4xl mx-auto shadow-md relative overflow-hidden"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-navy-200/10 pointer-events-none"></div>
-          <h4 className="text-2xl md:text-3xl font-extrabold mb-3 text-navy-900">
+          <h4 className="text-2xl md:text-3xl font-extrabold mb-3">
             Ready to Start Your Project?
           </h4>
-          <p className="text-navy-700 font-[Ibm-plex-serif] md:text-base mb-8 max-w-xl mx-auto leading-relaxed">
+          <p className="font-[Ibm-plex-serif] md:text-base mb-8 max-w-xl mx-auto leading-relaxed">
             I am actively seeking internship opportunities and collaborative
             frontend development projects. Let's work together to bring your
             ideas to life!
@@ -188,14 +183,14 @@ function Services() {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 relative z-10">
             <a
               href="#contact"
-              className="w-full sm:w-auto bg-cyan-650 hover:bg-navy-750 font-bold px-8 py-3 rounded-full shadow-[0_4px_12px_rgba(93,118,139,0.25)] hover:scale-[1.03] transition-all text-sm no-underline text-center"
+              className="w-full sm:w-auto bg-pearl hover:bg-brown hover:text-pearl font-bold px-8 py-3 rounded-full shadow-[0_4px_12px_rgba(93,118,139,0.25)] hover:scale-[1.03] transition-all text-brown text-sm no-underline border border-pearl/10 text-center"
             >
               Get In Touch
             </a>
 
             <a
               href="#projects"
-              className="w-full sm:w-auto border border-navy-300 hover:border-navy-650 hover:bg-[#FAF6F0] text-navy-800 hover:text-navy-900 font-bold px-8 py-3 rounded-full hover:scale-[1.03] transition-all text-sm no-underline text-center"
+              className="w-full sm:w-auto border border-pearl/50 hover:bg-pearl hover:text-brown font-bold px-8 py-3 rounded-full hover:scale-[1.03] transition-all text-sm no-underline text-center"
             >
               View My Work
             </a>

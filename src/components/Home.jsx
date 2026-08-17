@@ -83,12 +83,12 @@ function Home() {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen flex flex-col justify-center items-center bg-gradient-navy px-6 sm:px-12 md:px-20 lg:px-32 py-24 overflow-hidden border-b border-navy-200/50"
+      className="relative min-h-screen flex flex-col justify-center items-center bg-pearl px-6 sm:px-12 md:px-20 lg:px-32 py-24 overflow-hidden border-b border-navy-200/50"
     >
       {/* Ambient background glows */}
       <div
         ref={glowRef}
-        className="absolute top-1/4 right-1/4 w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-cyan-400/20 blur-[130px] rounded-full pointer-events-none z-0"
+        className="absolute top-1/4 right-1/4 w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-ocean-/20 blur-[130px] rounded-full pointer-events-none z-0"
       ></div>
       <div className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-navy-300/15 blur-[110px] rounded-full pointer-events-none z-0"></div>
 
@@ -97,13 +97,13 @@ function Home() {
       <div className="absolute inset-0 bg-dots-dark pointer-events-none opacity-20 z-0"></div>
 
       {/* Figma/Designer style canvas guides */}
-      <div className="absolute top-24 left-10 text-[10px] font-mono text-navy-400/55 select-none hidden lg:block uppercase tracking-wider">
+      <div className="absolute top-24 left-10 text-[10px] font-mono text-ocean/50 select-none hidden lg:block uppercase tracking-wider">
         [w: 100% / h: auto]
       </div>
-      <div className="absolute bottom-10 right-10 text-[10px] font-mono text-navy-400/55 select-none hidden lg:block uppercase tracking-wider">
+      <div className="absolute bottom-10 right-10 text-[10px] font-mono text-ocean/50 select-none hidden lg:block uppercase tracking-wider">
         Grid: 60px / Dots: 24px
       </div>
-      <div className="absolute top-24 right-10 text-[10px] font-mono text-navy-400/55 select-none hidden lg:block uppercase tracking-wider">
+      <div className="absolute top-24 right-10 text-[10px] font-mono text-ocean/50 select-none hidden lg:block uppercase tracking-wider">
         Canvas: Active
       </div>
 
@@ -113,9 +113,9 @@ function Home() {
           ref={infoRef}
           className="w-full mt-15 md:w-3/5 text-center md:text-left flex flex-col space-y-4 md:space-y-6"
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold font-[Playwrite_US_Modern] tracking-tight text-navy-900 leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold font-[Playwrite_US_Modern] text-navy-900 leading-tight">
             Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-cyan-600 via-cyan-500 to-navy-400 bg-clip-text text-transparent">
+            <span className="text-brown">
               Dhruti
             </span>
           </h1>
@@ -143,7 +143,7 @@ function Home() {
               offset={-50}
               className="w-full sm:w-auto"
             >
-              <button className="w-full sm:w-auto bg-navy-600 hover:bg-navy-700 text-white font-bold px-8 py-3.5 rounded-full shadow-[0_4px_12px_rgba(93,118,139,0.25)] hover:shadow-[0_6px_20px_rgba(93,118,139,0.45)] hover:scale-[1.03] transition-all duration-300 cursor-pointer text-sm">
+              <button className="w-full sm:w-auto bg-navy-600 hover:bg-navy-700 text-brown font-bold px-8 py-3.5 rounded-full shadow-[0_4px_12px_rgba(93,118,139,0.25)] hover:shadow-[0_6px_20px_rgba(93,118,139,0.45)] hover:scale-[1.03] transition-all duration-300 cursor-pointer text-sm">
                 Get In Touch
               </button>
             </Link>
@@ -199,16 +199,16 @@ function Home() {
         <div className="w-full md:w-2/5 flex justify-center items-center z-10">
           <div
             ref={imgRef}
-            className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-[350px] lg:h-[350px] p-2 bg-gradient-to-tr from-cyan-400 via-cyan-500 to-navy-300 rounded-full shadow-[0_8px_30px_rgba(93,118,139,0.12)] flex items-center justify-center hover:scale-[1.02] transition-transform duration-500 ease-out"
+            className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-[350px] lg:h-[350px] p-2 rounded-full shadow-[0_8px_30px_rgba(93,118,139,0.12)] flex items-center justify-center hover:scale-[1.02] transition-transform duration-500 ease-out"
           >
             {/* Soft backdrop overlay */}
-            <div className="absolute inset-0 bg-white rounded-full scale-[0.985]"></div>
+            <div className="absolute inset-0 rounded-full scale-[0.985]"></div>
 
             {/* Real profile image */}
             <img
               src="/dhrutiImg.jpg"
               alt="Dhruti Kantharia"
-              className="w-full h-full object-cover rounded-full z-10 border-4 border-white scale-[0.97]"
+              className="w-full h-full object-cover rounded-full z-10  scale-[0.97]"
             />
           </div>
         </div>

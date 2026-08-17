@@ -127,25 +127,21 @@ function Skills() {
     <section
       ref={skillsRef}
       id="skills"
-      className="relative bg-[#F8EFE5] py-24 px-6 md:px-16 lg:px-32 text-center overflow-hidden border-b border-navy-200"
+      className="relative bg-[#fdfdfd] py-24 px-6 md:px-16 lg:px-32 text-center overflow-hidden border-b border-navy-200"
     >
       {/* Decorative ambient background glows */}
-      <div className="absolute top-1/3 left-10 w-96 h-96 bg-cyan-400/10 blur-[120px] rounded-full pointer-events-none"></div>
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-navy-300/10 blur-[100px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-1/3 left-10 w-96 h-96 bg-ocean/10 blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-ocean/10 blur-[100px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Section Header */}
         <div className="mb-16">
-          <h2
-            ref={headingRef}
-            className="text-4xl md:text-5xl font-extrabold text-navy-900 tracking-tight"
-          >
+          <h2 ref={headingRef} className="text-4xl md:text-5xl font-extrabold">
             Skills & Expertise
           </h2>
-          <div className="w-16 h-1 bg-cyan-650 mx-auto mt-4 rounded-full"></div>
           <p
             ref={subtitleRef}
-            className="text-navy-700 max-w-2xl mx-auto text-base md:text-xl mt-4 leading-relaxed font-[Ibm-plex-serif]"
+            className="max-w-2xl mx-auto text-base md:text-xl mt-10  font-normal font-[Ibm-plex-serif]"
           >
             My current technical skills, software expertise, and engineering
             disciplines
@@ -160,19 +156,17 @@ function Skills() {
           {skillsData.map((skill, index) => (
             <div
               key={index}
-              className="skill-card bg-[#FFFDFC] border border-navy-300 rounded-2xl p-6.5 shadow-sm hover:shadow-md hover:border-cyan-600/35 transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col items-center text-center cursor-pointer group"
+              className="skill-card bg-[#FDFDFD] border border-brown/20 rounded-2xl p-6.5 shadow-sm hover:shadow-md  transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col items-center text-center group"
             >
-              <div className="w-12 h-12 rounded-xl bg-cyan-400 text-cyan-600 text-2xl flex items-center justify-center mb-5 border border-cyan-500/10 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-xl bg-brown text-pearl text-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                 <i className={skill.icon}></i>
               </div>
-              <h3 className="text-lg font-bold text-navy-900 mb-4 group-hover:text-cyan-650 transition-colors">
-                {skill.head}
-              </h3>
+              <h3 className="text-lg font-bold  mb-4">{skill.head}</h3>
               <div className="flex flex-wrap justify-center font-[Ibm-plex-serif] gap-2 mt-auto">
                 {skill.skillSpan.map((item, i) => (
                   <span
                     key={i}
-                    className="skill-tag bg-[#FAF6F0] text-navy-800 border border-navy-200 hover:border-cyan-600/40 hover:text-cyan-600 text-sm font-semibold px-3 py-1 rounded-full transition-all duration-300 cursor-default"
+                    className="skill-tag bg-brown/10 text-sm font-semibold px-3 py-1 rounded-full transition-all duration-300"
                   >
                     {item}
                   </span>
@@ -185,27 +179,27 @@ function Skills() {
         {/* Achievements Timeline */}
         <div
           ref={achievementRef}
-          className="recent text-left bg-[#FFFDFC] border border-navy-300 p-8 md:p-12 rounded-3xl max-w-4xl mx-auto shadow-md relative overflow-hidden backdrop-blur-md"
+          className="recent text-left bg-ocean/70 p-8 md:p-12 rounded-3xl max-w-4xl mx-auto shadow-md text-pearl relative overflow-hidden backdrop-blur-md"
         >
           {/* Subtle overlay glow */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-400/15 blur-[80px] pointer-events-none rounded-full"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-pearl/15 blur-[80px] pointer-events-none rounded-full"></div>
 
-          <h3 className="text-2xl font-bold text-navy-900 mb-8 flex items-center gap-3 relative z-10">
-            <i className="fa-solid fa-graduation-cap text-cyan-650"></i>
+          <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 relative z-10">
+            <i className="fa-solid fa-graduation-cap"></i>
             <span>Certifications</span>
           </h3>
 
-          <ol className="relative border-l border-navy-200 pl-6 sm:pl-8 space-y-8 ml-2 relative z-10">
+          <ol className="relative border-l border-pearl pl-6 sm:pl-8 space-y-8 ml-2 relative z-10">
             <li className="relative group">
-              <span className="absolute -left-[30px] sm:-left-[39px] top-1.5 w-3 h-3 bg-cyan-650 rounded-full shadow-[0_0_10px_rgba(93,118,139,0.3)] group-hover:scale-125 transition-transform duration-300"></span>
+              <span className="absolute -left-[30px] sm:-left-[39px] top-1.5 w-3 h-3 bg-pearl rounded-full shadow-[0_0_10px_rgba(93,118,139,0.3)] group-hover:scale-125 transition-transform duration-300"></span>
               <div className="flex flex-col space-y-1">
-                <p className="font-semibold text-lg text-navy-900 group-hover:text-cyan-650 transition-colors">
+                <p className="font-semibold text-lg transition-colors">
                   Complete Web Design: Figma to Webflow
                 </p>
-                <p className="text-xs font-medium text-cyan-650 uppercase tracking-wider">
+                <p className="text-xs font-medium uppercase tracking-wider">
                   January 2025
                 </p>
-                <p className="text-navy-700 font-[Ibm-plex-serif] max-w-2xl leading-relaxed mt-1">
+                <p className="font-[Ibm-plex-serif] max-w-2xl leading-relaxed mt-1">
                   Earned competency in end-to-end user experience design,
                   building interface structures, and setting up high-performance
                   layouts on Webflow.
@@ -214,15 +208,15 @@ function Skills() {
             </li>
 
             <li className="relative group">
-              <span className="absolute -left-[30px] sm:-left-[39px] top-1.5 w-3 h-3 bg-cyan-650 rounded-full shadow-[0_0_10px_rgba(93,118,139,0.3)] group-hover:scale-125 transition-transform duration-300"></span>
+              <span className="absolute -left-[30px] sm:-left-[39px] top-1.5 w-3 h-3 bg-pearl rounded-full shadow-[0_0_10px_rgba(93,118,139,0.3)] group-hover:scale-125 transition-transform duration-300"></span>
               <div className="flex flex-col space-y-1">
-                <p className="font-semibold text-lg text-navy-900 group-hover:text-cyan-650 transition-colors">
+                <p className="font-semibold text-lg transition-colors">
                   Full Stack Development (MERN Stack)
                 </p>
-                <p className="text-xs font-medium text-cyan-650 uppercase tracking-wider">
+                <p className="text-xs font-medium uppercase tracking-wider">
                   November 2025
                 </p>
-                <p className="text-navy-700 font-[Ibm-plex-serif] max-w-2xl leading-relaxed mt-1">
+                <p className="font-[Ibm-plex-serif] max-w-2xl leading-relaxed mt-1">
                   Completed advanced training at Apna College, covering MongoDB
                   databases, Express frameworks, React interfaces, and Node.js
                   server architectures.

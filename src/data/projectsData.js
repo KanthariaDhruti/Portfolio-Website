@@ -1,35 +1,5 @@
 export const projectsData = [
-  {
-    id: "no-limit-routes",
-    title: "No Limit Routes",
-    category: "Branding",
-    subtitle: "Brand Identity & Strategy",
-    description: "A premium outdoors brand and custom cycling routes layout, combining raw nature vibes with functional design systems.",
-    thumbnail: "/magazine.png",
-    heroImage: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1600",
-    aboutBrandText: "No Limit Routes is a premium cycling tour and apparel brand tailored for adventure-seeking cyclists. Designed for high performance under extreme conditions, the brand elements require a sleek, modern visual hierarchy. The brief was to craft a bold identity that stands out in print and digital mediums.",
-    aboutBrandImg: "/LIMS.jpg",
-    designsText: "The design system adapts a high-contrast dark green and sandy beige color palette. Bold condensed typography commands attention, while thin geometric lines mirror elevation grids and mapping coordinates. The brand icon symbolizes movement and limitless boundaries.",
-    designsImages: [
-      "https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&q=80&w=800"
-    ],
-    carouselImages: [
-      "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1444491741275-3747c53c99b4?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?auto=format&fit=crop&q=80&w=600"
-    ],
-    testimonial: {
-      quote: "Outstanding branding. The identity translates seamlessly across our products and online platforms, conveying both adventure and high premium quality.",
-      author: "Founder, No Limit Routes"
-    },
-    showcaseImg: "/magazine.png",
-    brandIcons: [
-      "fa-solid fa-route", "fa-solid fa-compass", "fa-solid fa-mountain",
-      "fa-solid fa-bicycle", "fa-solid fa-map-location-dot", "fa-solid fa-wind"
-    ],
-    fullBannerImg: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1600"
-  },
+
   {
     id: "fashion-magazine",
     title: "Fashion Magazine Layout",
@@ -51,13 +21,13 @@ export const projectsData = [
       "/magazine.png"
     ],
     testimonial: {
-      quote: "The layout captures our design philosophy perfectly. Clean, daring, and absolutely beautiful to flip through.",
-      author: "Creative Director, La Mode"
+      // quote: "The layout captures our design philosophy perfectly. Clean, daring, and absolutely beautiful to flip through.",
+      // author: "Creative Director, La Mode"
     },
     showcaseImg: "/brochure1.png",
     brandIcons: [
-      "fa-solid fa-signature", "fa-solid fa-feather-pointed", "fa-solid fa-glasses",
-      "fa-solid fa-newspaper", "fa-solid fa-bookmark", "fa-solid fa-palette"
+      // "fa-solid fa-signature", "fa-solid fa-feather-pointed", "fa-solid fa-glasses",
+      // "fa-solid fa-newspaper", "fa-solid fa-bookmark", "fa-solid fa-palette"
     ],
     fullBannerImg: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1600"
   },

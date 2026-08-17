@@ -95,7 +95,7 @@ function Navbar() {
           ref={logoRef}
           className="text-xl md:text-2xl font-extrabold tracking-tight text-navy-900 hover:text-cyan-600 transition-colors duration-300 select-none no-underline flex items-center gap-2"
         >
-          <img src="/designedbydhruti-logo.png" alt="logo" className="w-12 h-12" />
+          <img src="/logo-color.png" alt="logo" className=" h-10" />
         </Link>
 
         {/* Hamburger (Mobile) */}
