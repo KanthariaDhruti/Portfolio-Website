@@ -93,7 +93,7 @@ function Portfolio() {
         <h1 className="text-4xl md:text-6xl font-playwrite text-brown lg:text-7xl leading-tight max-w-4xl mx-auto">
           Some of the projects I've brought to life...
         </h1>
-        <p className=" mt-10 text-xs md:text-sm max-w-3xl font-outfit mx-auto leading-relaxed">
+        <p className=" mt-10 max-w-3xl text-xl font-outfit mx-auto leading-relaxed">
           Every project in my portfolio is built to reflect the unique
           personality of the brand. Focus lies on visual narratives, editorial
           document hierarchies, and responsive layouts.
@@ -151,7 +151,7 @@ function Portfolio() {
           <h2 className=" text-4xl md:text-5xl text-brown font-playwrite leading-tight">
             Logofolio.
           </h2>
-          <p className="text-ocean/70 leading-relaxed text-justify">
+          <p className="text-ocean/70 text-lg leading-relaxed text-justify">
             A curated portfolio of conceptual marks, visual patterns, and
             identity designs. Built for purpose-driven businesses looking to
             stand out in a busy, crowded market.
