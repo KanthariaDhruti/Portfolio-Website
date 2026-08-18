@@ -45,7 +45,7 @@ function Portfolio() {
         scrollTrigger: {
           trigger: ".projects-grid",
           start: "top 80%",
-          toggleActions: "play none none reverse",
+          once: true,
         },
       });
 
@@ -59,7 +59,7 @@ function Portfolio() {
           scrollTrigger: {
             trigger: sec,
             start: "top 85%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
         });
       });
@@ -70,19 +70,16 @@ function Portfolio() {
   return (
     <div
       ref={pageRef}
-      className="min-h-screen bg-pearl text-brown studio-noise-bg font-sans relative overflow-x-hidden pt-12"
+      className="min-h-screen bg-pearl text-ocean studio-noise-bg font-outfit relative overflow-x-hidden pt-12"
     >
       {/* Studio Header */}
-      <header className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center py-6 border-b border-[#1c1c1c]/10 relative z-20">
-        <Link
-          to="/"
-          className="font-syne font-extrabold tracking-tight text-[#1c1c1c] hover:text-[#5D768B] transition-all duration-300 no-underline text-lg md:text-xl flex items-center gap-1.5"
-        >
+      <header className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center py-6 border-b border-ocean/10 relative z-20">
+        <Link to="/">
           <img src="/logo-color.png" className=" h-10" />
         </Link>
         <Link
           to="/"
-          className="text-[10px] font-mono tracking-wider uppercase border border-[#1c1c1c]/25 px-4 py-2 rounded-full hover:bg-[#5D768B] hover:text-white hover:border-[#5D768B] transition-all duration-300 no-underline text-[#1c1c1c]"
+          className="text-[10px] font-mono tracking-wider uppercase border border-ocean/25 px-4 py-2 rounded-full hover:bg-ocean hover:text-pearl hover:border-pearl transition-all duration-300 no-underline "
         >
           ← Back to Studio
         </Link>
@@ -90,13 +87,13 @@ function Portfolio() {
 
       {/* Main Title Banner */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-16 text-center space-y-4">
-        <span className="inline-block text-xs font-mono text-[#5D768B] font-bold uppercase tracking-widest">
+        <span className="inline-block text-xs font-mono text-ocean/50 font-bold uppercase tracking-widest">
           PORTFOLIO
         </span>
-        <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight max-w-4xl mx-auto">
+        <h1 className="text-4xl md:text-6xl font-playwrite text-brown lg:text-7xl leading-tight max-w-4xl mx-auto">
           Some of the projects I've brought to life...
         </h1>
-        <p className="text-ocean mt-10 text-xs md:text-sm max-w-3xl font-outfit mx-auto leading-relaxed">
+        <p className=" mt-10 text-xs md:text-sm max-w-3xl font-outfit mx-auto leading-relaxed">
           Every project in my portfolio is built to reflect the unique
           personality of the brand. Focus lies on visual narratives, editorial
           document hierarchies, and responsive layouts.
@@ -110,10 +107,10 @@ function Portfolio() {
             <Link
               key={project.id}
               to={`/portfolio/${project.id}`}
-              className="project-card group flex flex-col space-y-4 no-underline text-[#1c1c1c] block"
+              className="project-card group flex flex-col space-y-4 no-underline  block"
             >
               {/* Image Frame */}
-              <div className="w-full aspect-[16/10] overflow-hidden rounded-3xl border border-[#1c1c1c]/10 bg-[#e8e4dc] shadow-sm transition-shadow duration-300 group-hover:shadow-md">
+              <div className="w-full aspect-[16/10] overflow-hidden rounded-3xl bg-pearl shadow-sm transition-shadow duration-300 group-hover:shadow-md">
                 <img
                   src={project.thumbnail}
                   alt={project.title}
@@ -122,13 +119,10 @@ function Portfolio() {
               </div>
               {/* Meta Info */}
               <div className="px-2">
-                <h3 className="font-syne font-bold text-lg md:text-xl uppercase tracking-tight flex items-center gap-1.5 group-hover:text-[#5D768B] transition-colors">
+                <h3 className="font-syne font-bold text-lg md:text-xl uppercase tracking-tight flex items-center gap-1.5 group-hover:text-brown transition-colors">
                   <span>{project.title}</span>
-                  <span className="text-xs transition-transform duration-300 group-hover:translate-x-1">
-                    +
-                  </span>
                 </h3>
-                <p className="text-xs text-[#1c1c1c]/50 font-mono mt-1 font-medium">
+                <p className="text-xs text-ocean/50 font-mono mt-1 font-medium">
                   {project.category}
                 </p>
               </div>
@@ -138,37 +132,33 @@ function Portfolio() {
       </section>
 
       {/* Testimonial Quote slider strip (Dark brown background banner in Image 1) */}
-      
 
       {/* Logofolio Section (Image 1 layout) */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center border-b border-[#1c1c1c]/10 anim-section">
+      <section className="max-w-7xl mx-auto px-6 md:px-12 py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center border-b border-ocean/10 anim-section">
         {/* Logos Grid on Left */}
         <div className="lg:col-span-6 grid grid-cols-3 gap-6">
-          {[
-            "/icon-frame.png",
-            "/whisk-and-crumb-logo.png"
-          ].map((icon, idx) => (
+          {["/icon-frame.png", "/whisk-and-crumb-logo.png"].map((icon, idx) => (
             <div
               key={idx}
-              className="aspect-square bg-white border border-[#1c1c1c]/5 rounded-2xl flex items-center justify-center text-2xl text-[#4a3b32] hover:text-[#5D768B] transition-colors duration-300 shadow-sm"
+              className="aspect-square bg-white border border-ocean/5 rounded-2xl flex items-center justify-center text-2xl text-[#4a3b32] hover:text-[#5D768B] transition-colors duration-300 shadow-sm"
             >
-              <img src={icon} alt="" className="h-30"/>
+              <img src={icon} alt="" className="h-30" />
             </div>
           ))}
         </div>
         {/* Info on Right */}
         <div className="lg:col-span-6 space-y-6">
-          <h2 className="font-serif-editorial italic text-4xl md:text-5xl text-[#4a3b32] leading-tight">
+          <h2 className=" text-4xl md:text-5xl text-brown font-playwrite leading-tight">
             Logofolio.
           </h2>
-          <p className="text-[#1c1c1c]/70 text-xs md:text-sm leading-relaxed font-sans text-justify">
+          <p className="text-ocean/70 leading-relaxed text-justify">
             A curated portfolio of conceptual marks, visual patterns, and
             identity designs. Built for purpose-driven businesses looking to
             stand out in a busy, crowded market.
           </p>
           <Link
             to="/portfolio"
-            className="inline-flex items-center justify-center border border-[#1c1c1c] text-[#1c1c1c] font-bold px-6 py-2.5 rounded-full hover:bg-[#1c1c1c] hover:text-white transition-all duration-300 no-underline text-[10px] tracking-wider uppercase font-mono"
+            className="inline-flex items-center justify-center border border-ocean text-ocean font-bold px-6 py-2.5 rounded-full hover:bg-ocean hover:text-white transition-all duration-300 no-underline text-xs uppercase font-"
           >
             Go to Logofolio
           </Link>
@@ -176,21 +166,21 @@ function Portfolio() {
       </section>
 
       {/* Ready to build your brand? Banner (Blue-grey banner in Image 1) */}
-      <section className="w-full bg-[#8B9BB4] text-white py-20 px-6 text-center select-none anim-section">
+      <section className="w-full bg-[url(/background.png)] text-pearl py-20 px-6 text-center select-none anim-section">
         <div className="max-w-3xl mx-auto space-y-6">
-          <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center mx-auto text-sm">
+          <div className="w-10 h-10 rounded-full border border-pearl flex items-center justify-center mx-auto text-sm">
             <i className="fa-solid fa-lightbulb"></i>
           </div>
-          <h2 className="font-syne text-3xl md:text-5xl font-black uppercase tracking-tight leading-none">
+          <h2 className=" text-3xl md:text-5xl font-playwrite font-black uppercase tracking-tight leading-none">
             Ready to collaborate?
           </h2>
-          <p className="text-white/80 text-xs md:text-sm max-w-md mx-auto leading-relaxed">
+          <p className="text-pearl/80 max-w-lg mx-auto leading-relaxed">
             Whether you need a full visual identity system or a high-converting
             web presence, let's create something premium together.
           </p>
           <Link
             to="/#contact"
-            className="inline-flex items-center justify-center gap-2 border border-white bg-white text-[#8B9BB4] font-bold px-8 py-3.5 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-102 cursor-pointer no-underline text-xs"
+            className="inline-flex items-center justify-center gap-2 border border-white bg-white text-ocean/80  font-bold px-8 py-3.5 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-102 cursor-pointer no-underline text-sm"
           >
             LET'S WORK TOGETHER
           </Link>
@@ -198,13 +188,13 @@ function Portfolio() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full bg-[#4a3b32] text-white py-12 px-6">
+      <footer className="w-full bg-brown text-pearl py-12 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 border-b border-white/10 pb-8">
           <Link
             to="/"
             className="font-syne font-extrabold tracking-tight text-white hover:text-[#e3c9a4] transition-all duration-300 no-underline text-lg md:text-xl flex items-center gap-1.5"
           >
-            <img src="/icon-white.png" className=' h-15'/>
+            <img src="/icon-white.png" className=" h-15" />
           </Link>
           <div className="flex gap-6 text-xs text-white/60">
             <a

@@ -151,7 +151,7 @@ function Experience() {
     <section
       id="experience"
       ref={sectionRef}
-      className="relative bg-pearl py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
+      className="relative bg-pearl text-ocean font-outfit py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
     >
       {/* Decorative Grid Patterns & Canvas indicators */}
       <div className="absolute inset-0 bg-grid-dark pointer-events-none opacity-40 z-0"></div>
@@ -175,13 +175,13 @@ function Experience() {
         <div className="mb-20 text-center">
           <h2
             ref={headingRef}
-            className="text-4xl md:text-5xl font-extrabold"
+            className="text-4xl md:text-5xl font-playwrite font-extrabold"
           >
             My Experience
           </h2>
           <p
             ref={subtitleRef}
-            className=" max-w-2xl mx-auto md:text-xl mt-10 font-normal font-[Ibm-plex-serif]"
+            className=" max-w-2xl mx-auto md:text-xl mt-10 font-normal"
           >
             My educational traineeships, graphic internships, and freelance
             development timeline
@@ -207,7 +207,7 @@ function Experience() {
                 >
                   {/* Left content container (Year) */}
                   <div className="w-full md:w-1/2 pl-12 pr-4 md:pr-12 md:pl-12 flex justify-start md:justify-end text-left md:text-right">
-                    <span className="timeline-year font-extrabold text-xl py-1 block">
+                    <span className="timeline-year font-playwrite font-extrabold text-xl py-1 block">
                       {item.year}
                     </span>
                   </div>
@@ -222,10 +222,10 @@ function Experience() {
                     <h3 className="text-xl font-bold text-navy-900 mb-1">
                       {item.role}
                     </h3>
-                    <h4 className=" font-[Ibm-plex-serif] font-semibold text-navy-500 mb-4">
+                    <h4 className="  font-semibold text-navy-500 mb-4">
                       {item.company}
                     </h4>
-                    <ul className="space-y-2 text-navy-800 font-[Ibm-plex-serif] ">
+                    <ul className="space-y-2 text-navy-800  ">
                       {item.desc.map((bullet, i) => (
                         <li
                           key={i}

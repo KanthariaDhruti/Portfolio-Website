@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import Portfolio from "./components/Portfolio";
 import ProjectDetail from "./components/ProjectDetail";
+import Footer from "./components/Footer";
 
 function App() {
   useEffect(() => {

@@ -83,14 +83,14 @@ function Home() {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen flex flex-col justify-center items-center bg-pearl px-6 sm:px-12 md:px-20 lg:px-32 py-24 overflow-hidden border-b border-navy-200/50"
+      className="relative min-h-screen flex flex-col justify-center items-center bg-pearl px-6 sm:px-12 md:px-20 lg:px-32 py-24 overflow-hidden border-b border-ocean/50"
     >
       {/* Ambient background glows */}
       <div
         ref={glowRef}
-        className="absolute top-1/4 right-1/4 w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-ocean-/20 blur-[130px] rounded-full pointer-events-none z-0"
+        className="absolute top-1/4 right-1/4 w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-ocean/10 blur-[130px] rounded-full pointer-events-none z-0"
       ></div>
-      <div className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-navy-300/15 blur-[110px] rounded-full pointer-events-none z-0"></div>
+      <div className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-ocean/10 blur-[110px] rounded-full pointer-events-none z-0"></div>
 
       {/* Decorative Grid Patterns & Designer Canvas indicators */}
       <div className="absolute inset-0 bg-grid-dark pointer-events-none opacity-40 z-0"></div>
@@ -113,19 +113,15 @@ function Home() {
           ref={infoRef}
           className="w-full mt-15 md:w-3/5 text-center md:text-left flex flex-col space-y-4 md:space-y-6"
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold font-[Playwrite_US_Modern] text-navy-900 leading-tight">
-            Hi, I'm{" "}
-            <span className="text-brown">
-              Dhruti
-            </span>
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold font-playwrite text-ocean leading-tight">
+            Hi, I'm <span className="text-brown">Dhruti</span>
           </h1>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy-800 leading-snug">
-            Graphic Designer <span className="text-cyan-650">&</span> Web
-            Developer
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-ocean font-playwrite leading-snug">
+            Graphic Designer <span className="text-brown">&</span> Web Developer
           </h2>
 
-          <p className="text-navy-700 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl text-justify md:text-left font-[Ibm-plex-serif]">
+          <p className="text-ocean font-outfit text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl text-justify md:text-left">
             I turn creative thoughts into responsive, clean code and visually
             stunning interactive web designs. Blending technical accuracy with
             strong layout aesthetics to craft unforgettable digital journeys.
@@ -143,7 +139,7 @@ function Home() {
               offset={-50}
               className="w-full sm:w-auto"
             >
-              <button className="w-full sm:w-auto bg-navy-600 hover:bg-navy-700 text-brown font-bold px-8 py-3.5 rounded-full shadow-[0_4px_12px_rgba(93,118,139,0.25)] hover:shadow-[0_6px_20px_rgba(93,118,139,0.45)] hover:scale-[1.03] transition-all duration-300 cursor-pointer text-sm">
+              <button className="w-full sm:w-auto bg-pearl text-brown font-bold px-8 py-3.5 rounded-full shadow-[0_4px_12px_rgba(93,118,139,0.25)] hover:shadow-[0_6px_20px_rgba(93,118,139,0.45)] hover:scale-[1.03] transition-all duration-300 cursor-pointer font-playwrite text-sm">
                 Get In Touch
               </button>
             </Link>
@@ -154,7 +150,7 @@ function Home() {
               offset={-50}
               className="w-full sm:w-auto"
             >
-              <button className="w-full sm:w-auto border border-navy-300 hover:border-navy-600 hover:bg-navy-100 text-navy-800 hover:text-navy-900 font-bold px-8 py-3.5 rounded-full hover:scale-[1.03] transition-all duration-300 cursor-pointer text-sm">
+              <button className="w-full sm:w-auto border border-ocean text-ocean font-playwrite font-bold px-8 py-3.5 rounded-full hover:scale-[1.03] transition-all duration-300 cursor-pointer text-sm">
                 Browse Projects
               </button>
             </Link>
@@ -163,13 +159,13 @@ function Home() {
           {/* Styled Social Icons */}
           <div
             ref={iconsRef}
-            className="flex items-center justify-center md:justify-start gap-6 pt-4 text-2xl text-navy-500"
+            className="flex items-center justify-center md:justify-start gap-6 pt-4 text-2xl text-ocean"
           >
             <a
               href="https://github.com/KanthariaDhruti"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-navy-900 hover:shadow-[0_0_10px_rgba(93,118,139,0.15)] p-2 rounded-lg hover:bg-navy-100 transition-all duration-300"
+              className="hover:shadow-[0_0_10px_rgba(93,118,139,0.15)] p-2 rounded-lg hover:bg-pearl transition-all duration-300"
               title="GitHub"
             >
               <i className="fa-brands fa-github"></i>
@@ -178,7 +174,7 @@ function Home() {
               href="https://www.linkedin.com/in/dhruti-kantharia-759700255/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-cyan-600 hover:shadow-[0_0_10px_rgba(227,201,164,0.3)] p-2 rounded-lg hover:bg-navy-100 transition-all duration-300"
+              className="hover:shadow-[0_0_10px_rgba(227,201,164,0.3)] p-2 rounded-lg hover:bg-pearl transition-all duration-300"
               title="LinkedIn"
             >
               <i className="fa-brands fa-linkedin"></i>
@@ -187,7 +183,7 @@ function Home() {
               href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRtswJrTJzwNcnglvVgPnCJXTMXRWxDhrqHCmNWfhBfXzCxQsHxvZtphhGRkztBHNTgjZxl"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-cyan-600 hover:shadow-[0_0_10px_rgba(242,217,199,0.3)] p-2 rounded-lg hover:bg-navy-100 transition-all duration-300"
+              className="hover:shadow-[0_0_10px_rgba(242,217,199,0.3)] p-2 rounded-lg hover:bg-pearl transition-all duration-300"
               title="Email"
             >
               <i className="fa-solid fa-envelope"></i>

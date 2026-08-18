@@ -127,7 +127,7 @@ function Skills() {
     <section
       ref={skillsRef}
       id="skills"
-      className="relative bg-[#fdfdfd] py-24 px-6 md:px-16 lg:px-32 text-center overflow-hidden border-b border-navy-200"
+      className="relative bg-pearl font-outfit text-ocean py-24 px-6 md:px-16 lg:px-32 text-center overflow-hidden border-b border-navy-200"
     >
       {/* Decorative ambient background glows */}
       <div className="absolute top-1/3 left-10 w-96 h-96 bg-ocean/10 blur-[120px] rounded-full pointer-events-none"></div>
@@ -136,12 +136,12 @@ function Skills() {
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Section Header */}
         <div className="mb-16">
-          <h2 ref={headingRef} className="text-4xl md:text-5xl font-extrabold">
+          <h2 ref={headingRef} className="text-4xl font-playwrite md:text-5xl font-extrabold">
             Skills & Expertise
           </h2>
           <p
             ref={subtitleRef}
-            className="max-w-2xl mx-auto text-base md:text-xl mt-10  font-normal font-[Ibm-plex-serif]"
+            className="max-w-2xl mx-auto text-base md:text-xl mt-10  font-normal "
           >
             My current technical skills, software expertise, and engineering
             disciplines
@@ -161,8 +161,8 @@ function Skills() {
               <div className="w-12 h-12 rounded-xl bg-brown text-pearl text-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                 <i className={skill.icon}></i>
               </div>
-              <h3 className="text-lg font-bold  mb-4">{skill.head}</h3>
-              <div className="flex flex-wrap justify-center font-[Ibm-plex-serif] gap-2 mt-auto">
+              <h3 className="text-lg font-bold font-playwrite mb-4">{skill.head}</h3>
+              <div className="flex flex-wrap justify-center  gap-2 mt-auto">
                 {skill.skillSpan.map((item, i) => (
                   <span
                     key={i}
@@ -184,7 +184,7 @@ function Skills() {
           {/* Subtle overlay glow */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-pearl/15 blur-[80px] pointer-events-none rounded-full"></div>
 
-          <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 relative z-10">
+          <h3 className="text-2xl font-playwrite font-bold mb-8 flex items-center gap-3 relative z-10">
             <i className="fa-solid fa-graduation-cap"></i>
             <span>Certifications</span>
           </h3>
@@ -193,13 +193,13 @@ function Skills() {
             <li className="relative group">
               <span className="absolute -left-[30px] sm:-left-[39px] top-1.5 w-3 h-3 bg-pearl rounded-full shadow-[0_0_10px_rgba(93,118,139,0.3)] group-hover:scale-125 transition-transform duration-300"></span>
               <div className="flex flex-col space-y-1">
-                <p className="font-semibold text-lg transition-colors">
+                <p className="font-semibold  font-playwrite text-lg transition-colors">
                   Complete Web Design: Figma to Webflow
                 </p>
                 <p className="text-xs font-medium uppercase tracking-wider">
                   January 2025
                 </p>
-                <p className="font-[Ibm-plex-serif] max-w-2xl leading-relaxed mt-1">
+                <p className=" max-w-2xl leading-relaxed mt-1">
                   Earned competency in end-to-end user experience design,
                   building interface structures, and setting up high-performance
                   layouts on Webflow.
@@ -210,13 +210,13 @@ function Skills() {
             <li className="relative group">
               <span className="absolute -left-[30px] sm:-left-[39px] top-1.5 w-3 h-3 bg-pearl rounded-full shadow-[0_0_10px_rgba(93,118,139,0.3)] group-hover:scale-125 transition-transform duration-300"></span>
               <div className="flex flex-col space-y-1">
-                <p className="font-semibold text-lg transition-colors">
+                <p className="font-semibold font-playwrite text-lg transition-colors">
                   Full Stack Development (MERN Stack)
                 </p>
                 <p className="text-xs font-medium uppercase tracking-wider">
                   November 2025
                 </p>
-                <p className="font-[Ibm-plex-serif] max-w-2xl leading-relaxed mt-1">
+                <p className=" max-w-2xl leading-relaxed mt-1">
                   Completed advanced training at Apna College, covering MongoDB
                   databases, Express frameworks, React interfaces, and Node.js
                   server architectures.

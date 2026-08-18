@@ -92,14 +92,14 @@ function Contact() {
     <section
       id="contact"
       ref={containerRef}
-      className="relative bg-pearl py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
+      className="relative bg-pearl text-ocean py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
     >
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Section Header */}
         <div className="mb-16 text-center">
           <h2
             ref={headingRef}
-            className="text-4xl md:text-5xl font-extrabold text-navy-900"
+            className="text-4xl md:text-5xl font-playwrite font-extrabold text-navy-900"
           >
             Let’s Connect
           </h2>
@@ -121,10 +121,10 @@ function Contact() {
             className="bg-[#FFFDFC] border border-dashed border-brown shadow-sm rounded-2xl p-8 flex-1 flex flex-col justify-between relative mt-6 lg:mt-0"
           >
             <div>
-              <h4 className="text-2xl font-bold text-navy-900 mb-4">
+              <h4 className="text-2xl font-bold font-playwrite text-navy-900 mb-4">
                 Get In Touch
               </h4>
-              <p className="text-navy-800 mb-8 font-[Ibm-plex-serif] md:text-lg">
+              <p className="text-navy-800 mb-8 md:text-lg">
                 Whether you have a project proposal, collaboration idea, or just
                 want to connect, I'm always excited to meet new people and
                 explore new opportunities.
@@ -144,8 +144,8 @@ function Contact() {
                   <i className="fa-solid fa-envelope"></i>
                 </div>
                 <div>
-                  <p className="font-semibold text-xs uppercase mb-2">Email</p>
-                  <p className="text-navy-800 hover:text-cyan-650 hover:text-brown transition-all duration-200 font-[Ibm-plex-serif] font-semibold no-underline text-sm break-all">
+                  <p className="font-semibold text-xs font-playwrite uppercase mb-2">Email</p>
+                  <p className="text-navy-800 hover:text-cyan-650 hover:text-brown transition-all duration-200 font-semibold no-underline text-sm break-all">
                     Email me here
                   </p>
                 </div>
@@ -162,10 +162,10 @@ function Contact() {
                   <i className="fa-brands fa-linkedin"></i>
                 </div>
                 <div>
-                  <p className="font-semibold text-xs uppercase tracking-wider text-navy-500">
+                  <p className="font-semibold font-playwrite text-xs uppercase tracking-wider text-navy-500">
                     LinkedIn
                   </p>
-                  <p className="font-[Ibm-plex-serif] hover:text-brown transition-all duration-200 font-semibold no-underline text-sm">
+                  <p className=" hover:text-brown transition-all duration-200 font-semibold no-underline text-sm">
                     Connect with me
                   </p>
                 </div>
@@ -182,10 +182,10 @@ function Contact() {
                   <i className="fa-brands fa-github"></i>
                 </div>
                 <div>
-                  <p className="font-semibold text-xs uppercase tracking-wider text-navy-500">
+                  <p className="font-semibold font-playwrite text-xs uppercase tracking-wider text-navy-500">
                     GitHub
                   </p>
-                  <p className="text-navy-800 font-[Ibm-plex-serif] hover:text-brown transition-all duration-200 font-semibold no-underline text-sm">
+                  <p className="text-navy-800  hover:text-brown transition-all duration-200 font-semibold no-underline text-sm">
                     View my Repositories
                   </p>
                 </div>
@@ -202,10 +202,10 @@ function Contact() {
                   <i className="fa-brands fa-instagram"></i>
                 </div>
                 <div>
-                  <p className="font-semibold text-xs uppercase tracking-wider text-navy-500">
+                  <p className="font-semibold font-playwrite text-xs uppercase tracking-wider text-navy-500">
                     Social
                   </p>
-                  <p className="text-navy-800 font-[Ibm-plex-serif] font-semibold hover:text-brown transition-all duration-200 no-underline text-sm">
+                  <p className="text-navy-800  font-semibold hover:text-brown transition-all duration-200 no-underline text-sm">
                     Checkout for updates
                   </p>
                 </div>
@@ -233,17 +233,17 @@ function Contact() {
               className="space-y-5 flex flex-col h-full justify-between"
             >
               <div>
-                <h4 className="text-2xl font-bold text-navy-900 mb-2">
+                <h4 className="text-2xl font-playwrite font-bold text-navy-900 mb-2">
                   Send a Message
                 </h4>
-                <p className="text-navy-700 font-[Ibm-plex-serif] mb-6">
+                <p className="text-navy-700  mb-6">
                   Fill out the form below and I'll get back to you as soon as
                   possible.
                 </p>
               </div>
 
               <div className="space-y-4">
-                <div className="flex flex-col font-[Ibm-plex-serif] sm:flex-row gap-4">
+                <div className="flex flex-col  sm:flex-row gap-4">
                   <input
                     id="contact-form-name"
                     name="from_name"
@@ -270,7 +270,7 @@ function Contact() {
                   name="subject"
                   placeholder="Subject"
                   aria-label="Subject"
-                  className="w-full border font-[Ibm-plex-serif] border-brown/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brown bg-brown/2 text-navy-900 placeholder-ocean/50 transition-all duration-300"
+                  className="w-full border  border-brown/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brown bg-brown/2 text-navy-900 placeholder-ocean/50 transition-all duration-300"
                   required
                 />
 
@@ -280,7 +280,7 @@ function Contact() {
                   placeholder="Your Message"
                   aria-label="Your Message"
                   rows="5"
-                  className="w-full border font-[Ibm-plex-serif] border-brown/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brown bg-brown/2 text-navy-900 placeholder-ocean/50 transition-all duration-300 resize-none"
+                  className="w-full border  border-brown/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brown bg-brown/2 text-navy-900 placeholder-ocean/50 transition-all duration-300 resize-none"
                   required
                 ></textarea>
               </div>
@@ -288,7 +288,7 @@ function Contact() {
               <button
                 id="contact-form-submit"
                 type="submit"
-                className="w-full bg-brown hover:bg-navy-750 text-pearl py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-[1.01] cursor-pointer mt-4"
+                className="w-full bg-brown hover:bg-navy-750 text-pearl py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-[1.01] font-playwrite cursor-pointer mt-4"
               >
                 Send Message
               </button>

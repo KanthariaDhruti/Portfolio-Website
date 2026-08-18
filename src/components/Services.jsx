@@ -108,7 +108,7 @@ function Services() {
     <section
       id="services"
       ref={containerRef}
-      className="relative bg-pearl py-24 px-6 md:px-16 lg:px-32 text-center overflow-hidden border-b border-navy-200"
+      className="relative bg-pearl font-outfit text-ocean py-24 px-6 md:px-16 lg:px-32 text-center overflow-hidden border-b border-navy-200"
     >
       {/* Decorative Grid Patterns & Canvas indicators */}
       <div className="absolute inset-0 bg-grid-dark pointer-events-none opacity-40 z-0"></div>
@@ -122,14 +122,14 @@ function Services() {
         <div className="mb-16">
           <h2
             ref={headingRef}
-            className="text-4xl md:text-5xl font-extrabold text-navy-900 tracking-tight"
+            className="text-4xl md:text-5xl font-playwrite font-extrabold text-navy-900 tracking-tight"
           >
             Services & Expertise
           </h2>
           <div className="w-16 h-1 mx-auto mt-4 rounded-full"></div>
           <p
             ref={subtitleRef}
-            className="max-w-2xl font-[Ibm-plex-serif] mx-auto text-base md:text-xl mt-4 font-normal"
+            className="max-w-2xl  mx-auto text-base md:text-xl mt-4 font-normal"
           >
             Providing high-quality visual designs and responsive frontend
             developments
@@ -149,17 +149,17 @@ function Services() {
               <div className=" text-4xl mb-5 w-12 h-12 rounded-xl bg-brown flex items-center justify-center text-pearl group-hover:scale-110 transition-transform duration-300">
                 <i className={`${service.icon} text-2xl`}></i>
               </div>
-              <h3 className="text-xl font-bold text-navy-900 mb-3  transition-colors">
+              <h3 className="text-xl font-playwrite font-bold text-navy-900 mb-3  transition-colors">
                 {service.head}
               </h3>
-              <p className="text-navy-700 font-[Ibm-plex-serif] leading-relaxed mb-6 flex-1">
+              <p className="text-navy-700  leading-relaxed mb-6 flex-1">
                 {service.desc}
               </p>
               <ul className="space-y-2 text-navy-800  border-t border-navy-200/50 pt-4">
                 {service.list.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2">
+                  <li key={i}>
                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-650"></span>
-                    <span className="font-[Ibm-plex-serif]">{item}</span>
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -172,15 +172,15 @@ function Services() {
           ref={ctaRef}
           className="bg-brown/80 text-pearl rounded-3xl py-10 px-8 max-w-4xl mx-auto shadow-md relative overflow-hidden"
         >
-          <h4 className="text-2xl md:text-3xl font-extrabold mb-3">
+          <h4 className="text-2xl md:text-3xl font-playwrite font-extrabold mb-3">
             Ready to Start Your Project?
           </h4>
-          <p className="font-[Ibm-plex-serif] md:text-base mb-8 max-w-xl mx-auto leading-relaxed">
+          <p className=" md:text-base mb-8 max-w-xl mx-auto leading-relaxed">
             I am actively seeking internship opportunities and collaborative
             frontend development projects. Let's work together to bring your
             ideas to life!
           </p>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 relative z-10">
+          <div className="flex flex-col font-playwrite sm:flex-row justify-center items-center gap-4 relative z-10">
             <a
               href="#contact"
               className="w-full sm:w-auto bg-pearl hover:bg-brown hover:text-pearl font-bold px-8 py-3 rounded-full shadow-[0_4px_12px_rgba(93,118,139,0.25)] hover:scale-[1.03] transition-all text-brown text-sm no-underline border border-pearl/10 text-center"

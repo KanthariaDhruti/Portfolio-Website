@@ -30,7 +30,7 @@ function Landing() {
       <Projects />
       <Services />
       <Contact />
-      <Footer />
+      <Footer/>
     </>
   );
 }

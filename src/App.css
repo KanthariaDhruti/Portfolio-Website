@@ -1,40 +1,14 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap");
-/* @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"); */
-/* @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Syloti+Nagri&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+/* @import url("https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"); */
 
 @theme {
-  --font-sans: "Playwrite US Modern", system-ui, -apple-system, sans-serif;
+  --font-playwrite: "Playwrite US Modern", cursive;
   --font-outfit: "Outfit", sans-serif;
-  /* --font-serif-editorial: "Rubik", serif; */
-  /* --font-rubik: "Rubik", sans-serif; */
-  /* --font-syloti: "Noto Sans Syloti Nagri", sans-serif; */
 
-  
-
-  /* Custom Navy Blue Theme Palette (Mapped to Ivory Breeze / Ocean Deep Blue / Pink & Sandy Beige) */
-  
-  --color-navy-900: #1B2051 ; /* Darkest Ocean Blue (text default) */
-  /* navy-900 */
-  --color-navy-950: #fdfdfd; /* Ivory Breeze (background default) */
-  /* navy-950 */
-
-  /* Premium Bright Accents */
-  --color-pearl: #fdfdfd; /* pearl white */
-  /* cyan-400 */
-  --color-brown: #C49A6C; /* brown */
-  /* cyan-500 */
-  --color-ocean: #1B2051; /*Ocean Deep Blue*/
-  /* cyan-600 */
-
-}
-
-body {
-  background-color: var(--color-navy-950);
-  color: var(--color-navy-900);
-  overflow-x: hidden;
+  --color-pearl: #fdfdfd;
+  --color-brown: #c49a6c;
+  --color-ocean: #1b2051;
 }
 
 /* Selection Color styling */

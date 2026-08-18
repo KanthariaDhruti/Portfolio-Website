@@ -5,7 +5,7 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#C49A6C] border-t border-navy-300/40 py-12 px-6 text-center text-pearl">
+    <footer className="bg-[#C49A6C] font-outfit border-t border-navy-300/40 py-12 px-6 text-center text-pearl">
       <div className="max-w-7xl mx-auto flex flex-col items-center space-y-6">
         {/* Logo / Brand Name */}
         <div className="flex flex-col items-center">
@@ -17,14 +17,14 @@ function Footer() {
           >
             <img src="/monogram-white.png" alt="" className="h-35 mb-5" />
           </Link>
-          <p className="mt-2 font-[Ibm-plex-serif] font-medium">
+          <p className="mt-2  font-medium">
             Web Designer • UI/UX Designer • B.Tech IT • Freelance Graphic
             Designer
           </p>
         </div>
 
         {/* Mini quick-links menu */}
-        <div className="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-widest font-semibold text-navy-700 pt-2 pb-2">
+        <div className="flex flex-wrap font-playwrite justify-center gap-6 text-xs uppercase tracking-widest font-semibold text-navy-700 pt-2 pb-2">
           <Link
             to="home"
             smooth={true}
@@ -121,7 +121,7 @@ function Footer() {
         </div>
 
         {/* Copyright notice */}
-        <div className="pt-4 font-[Ibm-plex-serif] text-navy-850 font-medium">
+        <div className="pt-4  text-navy-850 font-medium">
           <p>© {currentYear} Dhruti Kantharia. All rights reserved.</p>
           <p className=" mt-1">Designed & built with Tailwind CSS & GSAP</p>
         </div>

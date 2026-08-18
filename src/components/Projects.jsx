@@ -91,7 +91,7 @@ function Projects() {
     <section
       id="projects"
       ref={containerRef}
-      className="relative bg-[#fdfdfd] py-24 px-6 md:px-16 lg:px-32 text-center border-b border-navy-200"
+      className="relative bg-pearl text-ocean font-outfit py-24 px-6 md:px-16 lg:px-32 text-center border-b border-navy-200"
     >
       {/* Decorative Grid Patterns & Canvas indicators */}
       <div className="absolute inset-0 bg-grid-light pointer-events-none opacity-40 z-0"></div>
@@ -110,11 +110,11 @@ function Projects() {
             <div className="absolute w-1.5 h-1.5 bg-white border-2 border-ocean -bottom-[4px] -left-[4px] z-30"></div>
             <div className="absolute w-1.5 h-1.5 bg-white border-2 border-ocean -bottom-[4px] -right-[4px] z-30"></div>
 
-            <h2 className="text-4xl md:text-5xl font-extrabold">
+            <h2 className="text-4xl md:text-5xl font-playwrite font-extrabold">
               Featured Projects
             </h2>
           </div>
-          <p className="max-w-2xl mx-auto font-[Ibm-plex-serif] md:text-xl mt-10">
+          <p className="max-w-2xl mx-auto  md:text-xl mt-10">
             A handpicked selection of my design interfaces, graphics projects,
             and web development layouts
           </p>
@@ -154,10 +154,10 @@ function Projects() {
               {/* Lower Info Area (Visible before hover) */}
               <div className="p-6 flex flex-col justify-between flex-1 text-left">
                 <div>
-                  <h3 className="text-lg font-bold transition-colors line-clamp-1 mb-2">
+                  <h3 className="text-lg font-playwrite font-bold transition-colors line-clamp-1 mb-2">
                     {project.head}
                   </h3>
-                  <p className="text-navy-700 font-[Ibm-plex-serif] line-clamp-2 leading-relaxed">
+                  <p className="text-navy-700 line-clamp-2 leading-relaxed">
                     {project.desc}
                   </p>
                 </div>
@@ -182,10 +182,10 @@ function Projects() {
                 }`}
               >
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold">
+                  <h3 className="text-xl font-playwrite font-bold">
                     {project.head}
                   </h3>
-                  <p className="text-navy-850 font-[Ibm-plex-serif] leading-relaxed">
+                  <p className="text-navy-850 leading-relaxed">
                     {project.desc}
                   </p>
                 </div>
@@ -214,7 +214,7 @@ function Projects() {
                       <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                     </a>
                   ) : (
-                    <span className="text-xs font-semibold text-navy-750 italic block">
+                    <span className="text-xs font-semibold text-navy-750 block">
                       Design Layout
                     </span>
                   )}
@@ -228,17 +228,17 @@ function Projects() {
             <div className="w-16 h-16 rounded-2xl bg-ocean flex items-center justify-center mb-4 text-pearl group-hover:scale-110 group-hover:bg-pearl group-hover:text-ocean transition-all duration-300 border border-ocean/10">
               <i className="fa-solid fa-layer-group text-2xl"></i>
             </div>
-            <h3 className="text-xl font-bold text-navy-900 group-hover:text-cyan-650 mb-2 transition-colors">
+            <h3 className="text-xl font-bold text-navy-900 group-hover:text-cyan-650 mb-2 font-playwrite transition-colors">
               And more...
             </h3>
-            <p className="text-navy-700 font-[Ibm-plex-serif] max-w-[200px] text-center leading-relaxed">
+            <p className="text-navy-700  max-w-[200px] text-center leading-relaxed">
               Explore extra concepts, coding sandboxes, and graphics templates
             </p>
           </div>
         </div>
 
         {/* Buttons / Navigation Links */}
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-8">
+        <div className="flex flex-col font-playwrite sm:flex-row justify-center items-center gap-6 mt-8">
           <a
             href="https://github.com/KanthariaDhruti"
             target="_blank"

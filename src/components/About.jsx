@@ -94,7 +94,7 @@ function About() {
     <section
       ref={aboutRef}
       id="about"
-      className="relative bg-pearl py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
+      className="relative bg-pearl text-ocean font-outfit py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
     >
       
 
@@ -103,13 +103,13 @@ function About() {
         <div className="mb-16">
           <h2
             ref={headingRef}
-            className="text-4xl md:text-5xl font-extrabold"
+            className="text-4xl md:text-5xl font-playwrite font-extrabold"
           >
             About Me
           </h2>
           <p
             ref={subtitleRef}
-            className="text-navy-700 max-w-2xl mx-auto md:text-xl mt-10 font-normal font-[Ibm-plex-serif]"
+            className="max-w-2xl mx-auto md:text-xl mt-10 font-normal"
           >
             Get to know more about my journey, academic credentials, and design passion
           </p>
@@ -122,11 +122,11 @@ function About() {
             ref={textSectionRef}
             className="w-full lg:w-1/2 flex flex-col justify-center space-y-6"
           >
-            <h3 className="text-2xl font-bold text-navy-900">
+            <h3 className="text-2xl font-bold font-playwrite text-navy-900">
               Hi, I'm <span className="text-brown">Dhruti Kantharia</span>
             </h3>
             
-            <div className="space-y-4 text-navy-800 text-lg leading-relaxed text-justify font-[Ibm-plex-serif]">
+            <div className="space-y-4 text-navy-800 text-lg leading-relaxed text-justify .">
               <p>
                 I am currently pursuing my B.Tech in IT Engineering at Gandhinagar University. 
                 I genuinely enjoy blending structural code with design to create clean interfaces, 
@@ -160,11 +160,11 @@ function About() {
                     <div className="w-12 h-12 rounded-xl bg-brown text-pearl text-2xl flex items-center justify-center mb-4">
                       <i className={card.icon}></i>
                     </div>
-                    <h4 className="text-lg font-bold text-navy-900 mb-2">
+                    <h4 className="text-lg font-playwrite font-bold mb-2">
                       {card.head}
                     </h4>
                   </div>
-                  <p className="text-navy-700 font-[Ibm-plex-serif] leading-relaxed mt-2">{card.desc}</p>
+                  <p className="leading-relaxed mt-2">{card.desc}</p>
                 </div>
               ))}
             </div>
