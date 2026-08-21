@@ -29,20 +29,34 @@ function Projects() {
 
   const projectsData = [
     {
-      img: "/busi-card.png",
-      head: "Business Card Generator",
-      desc: "React application allowing users to input professional details and generate and download custom styled business cards in real-time.",
-      techSpan: ["React", "JavaScript", "HTML/CSS"],
-      link: "https://github.com/KanthariaDhruti/Business-card-generator",
-      urlDesc: "View Code",
+      img: "/dhruti-b/dhruti-branding.png",
+      head: "Personal Brand Identity",
+      desc: "A distinctive personal brand identity designed to create a professional and cohesive visual presence across digital and print.",
+      techSpan: ["Figma", "Illustrator", "InDesign"],
+      // link: "https:// dhrutis-team-app.webflow.io/",
+      // urlDesc: "Live Site",
+      type: "branding",
+    },
+    // {
+    //   img: "/whisk-branding.png",
+    //   head: "Whisk & Crumb Brand Identity",
+    //   desc: "A warm and playful bakery brand identity designed to create a cohesive visual presence across packaging, print, and digital touchpoints.",
+    //   techSpan: ["Figma", "Illustrator", "InDesign"],
+    //   type: "branding",
+    // },
+    {
+      img: "/adrta-c/care1.png",
+      head: "Market Complaint Reporting Software",
+      desc: "Managing market complaints requires more than efficient reporting. This solution streamlines complaint handling with clear workflows, structured documentation, and compliance-focused processes for faster resolution.",
+      techSpan: ["Figma"],
+      type: "Brochure",
     },
     {
-      img: "/team.png",
-      head: "Team App UI/UX Layout",
-      desc: "Collaborative and responsive workspace concept crafted to simplify project collaboration. Designed in Figma and built in Webflow.",
-      techSpan: ["Figma", "Webflow", "UI Design"],
-      link: "https://dhrutis-team-app.webflow.io/",
-      urlDesc: "Live Site",
+      img: "/carousel-projects.png",
+      head: "Social Media Carousel Design",
+      desc: "A visually engaging carousel designed to communicate ideas clearly through thoughtful layouts, typography, and creative visual storytelling.",
+      techSpan: ["Figma"],
+      type: "Social Media Carousel",
     },
     {
       img: "/Wanderlust.png",
@@ -53,12 +67,11 @@ function Projects() {
       urlDesc: "View Code",
     },
     {
-      img: "/magazine.png",
+      img: "/fashion-m/mag1.png",
       head: "Fashion Editorial Concept",
       desc: "A creative editorial layout designed for digital and print magazine pages, focusing on modern trends and bold storytelling layouts.",
-      techSpan: ["Adobe InDesign", "Graphic Design"],
-      link: "#",
-      urlDesc: "Design Project",
+      techSpan: ["Adobe InDesign"],
+      type: "Magazine Design",
     },
   ];
 
@@ -136,11 +149,11 @@ function Projects() {
               }`}
             >
               {/* Image Side */}
-              <div className="relative w-full h-[220px] overflow-hidden bg-pearl flex items-center justify-center p-4 border-b border-ocean/10">
+              <div className="relative w-full h-[220px] overflow-hidden bg-pearl flex items-center justify-center  border-b border-ocean/10">
                 <img
                   src={project.img}
                   alt={project.head}
-                  className={`h-full max-h-48 object-contain transition-transform duration-700 ${
+                  className={`w-full h-full object-cover transition-transform duration-700 ${
                     activeCardIndex === index
                       ? "scale-104"
                       : "group-hover:scale-104"
@@ -215,7 +228,7 @@ function Projects() {
                     </a>
                   ) : (
                     <span className="text-xs font-semibold text-navy-750 block">
-                      Design Layout
+                      {project.type}
                     </span>
                   )}
                 </div>

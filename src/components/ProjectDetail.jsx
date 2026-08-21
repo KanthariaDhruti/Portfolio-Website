@@ -114,7 +114,7 @@ function ProjectDetail() {
           <span className="hero-subtitle-anim inline-block text-xs font-mono text-pearl bg-ocean/80 px-3.5 py-1.5 rounded-full border border-white/20 uppercase tracking-widest mb-4">
             {project.category}
           </span>
-          <h1 className="hero-title-anim text-4xl md:text-7xl font-black uppercase text-white font-playwrite tracking-tighter drop-shadow-md">
+          <h1 className="hero-title-anim text-4xl md:text-7xl font-black uppercase text-white font-playwrite leading-relaxed drop-shadow-md">
             {project.title}
           </h1>
         </div>

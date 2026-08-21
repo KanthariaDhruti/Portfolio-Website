@@ -202,7 +202,7 @@ function Home() {
 
             {/* Real profile image */}
             <img
-              src="/dhrutiImg.jpg"
+              src="/dhrutiImg1.jpg"
               alt="Dhruti Kantharia"
               className="w-full h-full object-cover rounded-full z-10  scale-[0.97]"
             />

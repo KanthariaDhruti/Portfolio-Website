@@ -16,12 +16,12 @@ function About() {
     {
       icon: "fa-solid fa-book-open",
       head: "Education",
-      desc: "B.Tech IT Engineering, 8th semester",
+      desc: "B.Tech IT",
     },
     {
       icon: "fa-solid fa-award",
       head: "Academic Performance",
-      desc: "SGPA of 7.67 in latest semester",
+      desc: "8.14 CGPA in engineering",
     },
     {
       icon: "fa-solid fa-user-group",
@@ -48,7 +48,7 @@ function About() {
       tl.fromTo(
         [headingRef.current, subtitleRef.current],
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, stagger: 0.15, duration: 0.8, ease: "power3.out" }
+        { opacity: 1, y: 0, stagger: 0.15, duration: 0.8, ease: "power3.out" },
       );
 
       gsap.fromTo(
@@ -64,7 +64,7 @@ function About() {
           x: 0,
           duration: 1,
           ease: "power3.out",
-        }
+        },
       );
 
       const cards = cardsRef.current?.querySelectorAll(".abt-card");
@@ -83,11 +83,11 @@ function About() {
             stagger: 0.12,
             duration: 0.8,
             ease: "power2.out",
-          }
+          },
         );
       }
     },
-    { scope: aboutRef }
+    { scope: aboutRef },
   );
 
   return (
@@ -96,8 +96,6 @@ function About() {
       id="about"
       className="relative bg-pearl text-ocean font-outfit py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
     >
-      
-
       <div className="max-w-7xl mx-auto text-center z-10 relative">
         {/* Section Header */}
         <div className="mb-16">
@@ -111,7 +109,8 @@ function About() {
             ref={subtitleRef}
             className="max-w-2xl mx-auto md:text-xl mt-10 font-normal"
           >
-            Get to know more about my journey, academic credentials, and design passion
+            Get to know more about my journey, academic details, and design
+            passion
           </p>
         </div>
 
@@ -125,21 +124,26 @@ function About() {
             <h3 className="text-2xl font-bold font-playwrite text-navy-900">
               Hi, I'm <span className="text-brown">Dhruti Kantharia</span>
             </h3>
-            
+
             <div className="space-y-4 text-navy-800 text-lg leading-relaxed text-justify .">
               <p>
-                I am currently pursuing my B.Tech in IT Engineering at Gandhinagar University. 
-                I genuinely enjoy blending structural code with design to create clean interfaces, 
-                functional websites, and immersive user experiences. I'm always eager to learn and create.
+                I am a passionate Graphic Designer helping small businesses,
+                startups, and individuals look their best. I have completed my
+                graduation in B.Tech IT from Gandhinagar University and
+                genuinely enjoy blending structural code with design to create
+                clean interfaces, functional websites, and immersive user
+                experiences. I'm always eager to learn and create.
               </p>
               <p>
-                As a Graphic Design Intern at Adrta Technologies, I develop practical experience in 
-                brand messaging, layouts, and digital styling. This graphic background gives me a unique 
-                advantage in styling pixel-perfect frontends.
+                As a Graphic Design Intern at Adrta Technologies, I developed
+                practical experience in brand messaging, layouts, and digital
+                styling. This graphic background gives me a unique advantage in
+                styling pixel-perfect designs.
               </p>
               <p>
-                Outside of design and development, I find balance through singing, dancing, and fine arts. 
-                My background as an ex-NCC Cadet has also instilled in me strong values of discipline, 
+                Outside of design and development, I find balance through
+                singing, dancing, and fine arts. My background as an ex-NCC
+                Cadet has also instilled in me strong values of discipline,
                 collaborative teamwork, and leadership under pressure.
               </p>
             </div>
