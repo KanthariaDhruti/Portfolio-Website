@@ -28,7 +28,7 @@ export const projectsData = [
         "Reduced our drop-off rates by 40% immediately. Visual cues make booking super straightforward.",
       author: "Product Designer, PayFlow",
     },
-    showcaseImg: "/fintch.png",
+    showcaseImg: "/fintech.png",
     brandIcons: [
       "fa-solid fa-wallet",
       "fa-solid fa-credit-card",
@@ -132,7 +132,7 @@ export const projectsData = [
         "Our clients love the brochure format. It makes complex laboratory workflows clear and visually compelling.",
       author: "Product Head, Adrta Technologies",
     },
-    showcaseImg: "/LIMS.jpg",
+    showcaseImg: "/adrta-lims/LIMS.jpg",
     brandIcons: [
       "fa-solid fa-flask",
       "fa-solid fa-vial",

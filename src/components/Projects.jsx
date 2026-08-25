@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import SmartImage from "./SmartImage";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -150,8 +151,9 @@ function Projects() {
             >
               {/* Image Side */}
               <div className="relative w-full h-[220px] overflow-hidden bg-pearl flex items-center justify-center  border-b border-ocean/10">
-                <img
+                <SmartImage
                   src={project.img}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   alt={project.head}
                   width="400"
                   height="220"

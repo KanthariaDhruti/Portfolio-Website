@@ -18,7 +18,7 @@ function Footer() {
             className="cursor-pointer no-underline flex items-center"
           >
             <img
-              src="/monogram-white.png"
+              src="/monogram-white.webp"
               alt="Dhruti Kantharia monogram logo"
               width="140"
               height="140"
