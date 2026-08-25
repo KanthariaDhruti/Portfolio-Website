@@ -4,6 +4,7 @@ import { projectsData } from "../data/projectsData";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import SEO from "./SEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -89,6 +90,12 @@ function ProjectDetail() {
       ref={pageRef}
       className="min-h-screen bg-pearl font-outfit text-ocean studio-noise-bg  relative overflow-x-hidden pt-12 pb-24 selection:bg-pearl selection:text-ocean"
     >
+      <SEO
+        title={project.title}
+        description={project.description || project.aboutBrandText}
+        image={project.thumbnail}
+        url={`/portfolio/${project.id}`}
+      />
       {/* Studio Header Nav */}
       <header className="max-w-7xl mx-auto px-6 md:px-12 flex justify-end items-center py-6 border-b border-ocean/5 relative z-20">
         <Link
@@ -104,7 +111,9 @@ function ProjectDetail() {
         <div className="absolute inset-0 z-0">
           <img 
             src={project.heroImage}
-            alt={project.title}
+            alt={`${project.title} Hero Showcase`}
+            fetchpriority="high"
+            decoding="async"
             className="w-full h-full object-cover brightness-[0.5]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-pearl/50 via-transparent to-ocean/30"></div>
@@ -127,7 +136,11 @@ function ProjectDetail() {
           <div className="w-full max-w-md bg-white p-4 rounded-3xl border border-ocean/10 shadow-[0_12px_40px_rgba(0,0,0,0.06)] overflow-hidden">
             <img
               src={project.aboutBrandImg}
-              alt="About the Brand"
+              alt={`About ${project.title}`}
+              width="400"
+              height="300"
+              loading="lazy"
+              decoding="async"
               className="w-full aspect-[4/3] object-cover rounded-2xl shadow-sm transition-transform duration-500 hover:scale-103"
             />
           </div>
@@ -159,7 +172,11 @@ function ProjectDetail() {
             >
               <img
                 src={img}
-                alt={`Design details ${idx + 1}`}
+                alt={`${project.title} design showcase ${idx + 1}`}
+                width="600"
+                height="375"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>
@@ -201,7 +218,11 @@ function ProjectDetail() {
             >
               <img
                 src={img}
-                alt={`Carousel ${idx + 1}`}
+                alt={`${project.title} gallery artifact ${idx + 1}`}
+                width="480"
+                height="360"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
@@ -275,7 +296,9 @@ function ProjectDetail() {
       <section className="reveal-section w-full h-[300px] md:h-[450px] overflow-hidden relative">
         <img
           src={project.fullBannerImg}
-          alt="Brand Banner"
+          alt={`${project.title} Full Banner`}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/10"></div>

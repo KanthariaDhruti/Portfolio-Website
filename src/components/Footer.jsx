@@ -20,6 +20,10 @@ function Footer() {
             <img
               src="/monogram-white.png"
               alt="Dhruti Kantharia monogram logo"
+              width="140"
+              height="140"
+              loading="lazy"
+              decoding="async"
               className="h-24 sm:h-28 md:h-32 lg:h-35 mb-3 sm:mb-4 object-contain"
             />
           </Link>

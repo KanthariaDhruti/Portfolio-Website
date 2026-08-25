@@ -1,25 +1,15 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { projectsData } from "../data/projectsData";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import SEO from "./SEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Portfolio() {
   const pageRef = useRef(null);
-
-  useEffect(() => {
-    document.title = "Visual Design & UI Portfolio | Dhruti Kantharia";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute(
-        "content",
-        "Step into the creative studio of Dhruti Kantharia. Explore interactive editorial brochure spreads, graphic design LinkedIn carousels, and responsive UI/UX webpages.",
-      );
-    }
-  }, []);
 
   useGSAP(
     () => {
@@ -72,10 +62,22 @@ function Portfolio() {
       ref={pageRef}
       className="min-h-screen bg-pearl text-ocean studio-noise-bg font-outfit relative overflow-x-hidden pt-12"
     >
+      <SEO
+        title="Visual Design & UI Portfolio"
+        description="Step into the creative studio of Dhruti Kantharia. Explore interactive editorial brochure spreads, graphic design LinkedIn carousels, and responsive UI/UX webpages."
+        url="/portfolio"
+      />
       {/* Studio Header */}
       <header className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center py-6 border-b border-ocean/10 relative z-20">
         <Link to="/">
-          <img src="/logo-color.png" className=" h-10" />
+          <img
+            src="/logo-color.png"
+            alt="Dhruti Kantharia Studio Logo"
+            width="160"
+            height="40"
+            decoding="async"
+            className="h-10"
+          />
         </Link>
         <Link
           to="/"
@@ -114,6 +116,10 @@ function Portfolio() {
                 <img
                   src={project.thumbnail}
                   alt={project.title}
+                  width="600"
+                  height="375"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 />
               </div>
@@ -142,7 +148,15 @@ function Portfolio() {
               key={idx}
               className="aspect-square bg-white border border-ocean/5 rounded-2xl flex items-center justify-center text-2xl text-[#4a3b32] hover:text-[#5D768B] transition-colors duration-300 shadow-sm"
             >
-              <img src={icon} alt="" className="h-30" />
+              <img
+                src={icon}
+                alt="Brand logo icon mark"
+                width="120"
+                height="120"
+                loading="lazy"
+                decoding="async"
+                className="h-30"
+              />
             </div>
           ))}
         </div>
@@ -194,7 +208,15 @@ function Portfolio() {
             to="/"
             className="font-syne font-extrabold tracking-tight text-white hover:text-[#e3c9a4] transition-all duration-300 no-underline text-lg md:text-xl flex items-center gap-1.5"
           >
-            <img src="/icon-white.png" className=" h-15" />
+            <img
+              src="/icon-white.png"
+              alt="Dhruti Kantharia Monogram Icon"
+              width="60"
+              height="60"
+              loading="lazy"
+              decoding="async"
+              className="h-15"
+            />
           </Link>
           <div className="flex gap-6 text-xs text-white/60">
             <a

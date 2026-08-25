@@ -95,7 +95,14 @@ function Navbar() {
           ref={logoRef}
           className="text-xl md:text-2xl font-extrabold text-ocean hover:text-ocean/80 transition-colors duration-300 select-none no-underline flex items-center gap-2"
         >
-          <img src="/logo-color.png" alt="logo" className=" h-10" />
+          <img
+            src="/logo-color.png"
+            alt="Dhruti Kantharia Logo"
+            width="160"
+            height="40"
+            decoding="async"
+            className="h-10"
+          />
         </Link>
 
         {/* Hamburger (Mobile) */}

@@ -203,7 +203,11 @@ function Home() {
             {/* Real profile image */}
             <img
               src="/dhrutiImg1.jpg"
-              alt="Dhruti Kantharia"
+              alt="Dhruti Kantharia - Graphic Designer & Web Developer"
+              width="350"
+              height="350"
+              fetchpriority="high"
+              decoding="async"
               className="w-full h-full object-cover rounded-full z-10  scale-[0.97]"
             />
           </div>

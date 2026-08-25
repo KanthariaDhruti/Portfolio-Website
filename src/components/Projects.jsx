@@ -153,6 +153,10 @@ function Projects() {
                 <img
                   src={project.img}
                   alt={project.head}
+                  width="400"
+                  height="220"
+                  loading="lazy"
+                  decoding="async"
                   className={`w-full h-full object-cover transition-transform duration-700 ${
                     activeCardIndex === index
                       ? "scale-104"
