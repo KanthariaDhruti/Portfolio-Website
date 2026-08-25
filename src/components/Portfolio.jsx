@@ -73,7 +73,6 @@ function Portfolio() {
           <img
             src="/logo-color.png"
             alt="Dhruti Kantharia Studio Logo"
-            width="160"
             height="40"
             decoding="async"
             className="h-10"
@@ -211,7 +210,6 @@ function Portfolio() {
             <img
               src="/icon-white.png"
               alt="Dhruti Kantharia Monogram Icon"
-              width="60"
               height="60"
               loading="lazy"
               decoding="async"

@@ -170,7 +170,7 @@ export const projectsData = [
         "Simplifies key clinical points in a clean document architecture. Excellent representation of our software.",
       author: "Manager, Vista Clinical Research",
     },
-    showcaseImg: "/Vista.jpg",
+    showcaseImg: "/Vista.pg",
     brandIcons: [
       "fa-solid fa-notes-medical",
       "fa-solid fa-stethoscope",
@@ -181,6 +181,44 @@ export const projectsData = [
     ],
     fullBannerImg:
       "https://i.pinimg.com/1200x/c1/09/9b/c1099b79fdb2efec529450f003a9a166.jpg",
+  },
+  {
+    id: "social-media",
+    title: "Social Media Posts",
+    category: "Social Media Posts",
+    subtitle: "Social Media Posts ",
+    description:
+      "A collection of engaging social media designs created to communicate ideas clearly, strengthen brand presence, and connect with audiences through thoughtful visual storytelling",
+    thumbnail: "/carousel/car7.png",
+    heroImage:
+      "https://i.pinimg.com/736x/d8/36/29/d83629916d2b1293d322bcf1f8f5a40b.jpg",
+    aboutBrandText:
+      "Social media creatives designed to build brand awareness, communicate key messages, and maintain a consistent visual presence across digital platforms.",
+    aboutBrandImg: "/carousel/car2.png",
+    designsText:
+      "These carousel posts use clear hierarchies, bold typography, and subtle gradients to capture attention quickly. Each design balances brand colors with negative space, ensuring the core message stands out while maintaining a professional look suitable for technology and healthcare audiences.",
+    designsImages: ["/carousel/car3.png", "/carousel/car4.png"],
+    carouselImages: [
+      "/carousel/car1.png",
+      "/carousel/car5.png",
+      "/carousel/car6.png",
+    ],
+    testimonial: {
+      quote:
+        "Simplifies key clinical points in a clean document architecture. Excellent representation of our software.",
+      author: "Manager, Vista Clinical Research",
+    },
+    showcaseImg: "/Vsta.jpg",
+    brandIcons: [
+      "fa-solid fa-notes-medical",
+      "fa-solid fa-stethoscope",
+      "fa-solid fa-heart-pulse",
+      "fa-solid fa-file-medical",
+      "fa-solid fa-user-doctor",
+      "fa-solid fa-laptop-medical",
+    ],
+    fullBannerImg:
+      "https://i.pinimg.com/1200x/b7/d6/2d/b7d62dc6548fb10efa1fdef835f1bd33.jpg",
   },
   // {
   //   id: "social-media",

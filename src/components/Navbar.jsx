@@ -98,7 +98,6 @@ function Navbar() {
           <img
             src="/logo-color.png"
             alt="Dhruti Kantharia Logo"
-            width="160"
             height="40"
             decoding="async"
             className="h-10"

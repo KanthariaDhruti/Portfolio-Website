@@ -134,8 +134,8 @@ function Contact() {
             {/* Contact Details Grid */}
             <div className="space-y-4">
               {/* Email */}
-              <a
-                href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRtswJrTJzwNcnglvVgPnCJXTMXRWxDhrqHCmNWfhBfXzCxQsHxvZtphhGRkztBHNTgjZxl"
+              <p
+                href=""
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-3 hover:border-brown hover:shadow-sm rounded-xl bg-brown/5 border-brown/40 border transition-all duration-300"
@@ -146,10 +146,10 @@ function Contact() {
                 <div>
                   <p className="font-semibold text-xs font-playwrite uppercase mb-2">Email</p>
                   <p className="text-navy-800 hover:text-cyan-650 hover:text-brown transition-all duration-200 font-semibold no-underline text-sm break-all">
-                    Email me here
+                    hello@designedbydhruti.com
                   </p>
                 </div>
-              </a>
+              </p>
 
               {/* LinkedIn */}
               <a
