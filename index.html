@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/icon-color.png" />
+    <link rel="icon" type="image/png" href="/icon-color.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <title>Dhruti Kantharia | Graphic Designer & Web Developer</title>
@@ -10,7 +10,7 @@
     <meta name="keywords" content="Dhruti Kantharia, Graphic Designer, Web Developer, UI/UX Designer, Portfolio, Editorial Design, MERN Stack, Figma, Webflow, Gandhinagar University" />
     <meta name="author" content="Dhruti Kantharia" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#4a3b32" />
+    <meta name="theme-color" content="#fbfaf8" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://kanthariadhruti.github.io/" />
@@ -29,20 +29,29 @@
     <meta name="twitter:description" content="Explore visual design grids, editorial layouts, UI/UX prototypes, and web applications by Dhruti Kantharia." />
     <meta name="twitter:image" content="https://kanthariadhruti.github.io/logo-color.png" />
 
-    <!-- Fonts & Icons Preconnect & Optimization -->
+    <!-- Fonts: one request, two families. Icons are inline SVG, no icon CDN. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@200..600&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+
+    <!--
+      Motion guard. Reveal styles hide their elements before GSAP runs, so they
+      are only armed once we know scripting is available and the reader has not
+      asked for reduced motion. If either is false the page renders fully
+      visible with no animation at all.
+    -->
+    <script>
+      (function () {
+        try {
+          if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            document.documentElement.classList.add("motion");
+          }
+        } catch (e) {}
+      })();
+    </script>
 
     <!-- Structured Data (JSON-LD) for Search Engines -->
     <script type="application/ld+json">

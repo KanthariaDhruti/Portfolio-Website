@@ -1,281 +1,171 @@
-import React, { useRef, useState, useEffect } from "react";
-import SmartImage from "./SmartImage";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
+import SmartImage from "./SmartImage";
+import { ArrowUpRight } from "./Icon";
+import { projectsData } from "../data/projectsData";
+import {
+  gsap,
+  EASE,
+  reveal,
+  drawRule,
+  drift,
+  prefersReducedMotion,
+} from "../lib/motion";
 
 function Projects() {
-  const containerRef = useRef(null);
-  const cardsRef = useRef(null);
-  const [activeCardIndex, setActiveCardIndex] = useState(null);
-
-  useEffect(() => {
-    if (activeCardIndex === null) return;
-    const handleOutsideClick = () => {
-      setActiveCardIndex(null);
-    };
-    document.addEventListener("click", handleOutsideClick);
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, [activeCardIndex]);
-
-  const handleCardClick = (e, index) => {
-    e.stopPropagation();
-    setActiveCardIndex((prev) => (prev === index ? null : index));
-  };
-
-  const projectsData = [
-    {
-      img: "/dhruti-b/dhruti-branding.png",
-      head: "Personal Brand Identity",
-      desc: "A distinctive personal brand identity designed to create a professional and cohesive visual presence across digital and print.",
-      techSpan: ["Figma", "Illustrator", "InDesign"],
-      // link: "https:// dhrutis-team-app.webflow.io/",
-      // urlDesc: "Live Site",
-      type: "branding",
-    },
-    // {
-    //   img: "/whisk-branding.png",
-    //   head: "Whisk & Crumb Brand Identity",
-    //   desc: "A warm and playful bakery brand identity designed to create a cohesive visual presence across packaging, print, and digital touchpoints.",
-    //   techSpan: ["Figma", "Illustrator", "InDesign"],
-    //   type: "branding",
-    // },
-    {
-      img: "/adrta-c/care1.png",
-      head: "Market Complaint Reporting Software",
-      desc: "Managing market complaints requires more than efficient reporting. This solution streamlines complaint handling with clear workflows, structured documentation, and compliance-focused processes for faster resolution.",
-      techSpan: ["Figma"],
-      type: "Brochure",
-    },
-    {
-      img: "/carousel-projects.png",
-      head: "Social Media Carousel Design",
-      desc: "A visually engaging carousel designed to communicate ideas clearly through thoughtful layouts, typography, and creative visual storytelling.",
-      techSpan: ["Figma"],
-      type: "Social Media Carousel",
-    },
-    {
-      img: "/Wanderlust.png",
-      head: "Wanderlust – Explore Stays",
-      desc: "A travel platform prototype offering responsive listings and a sleek user interface for discoverability and hotel bookings.",
-      techSpan: ["MERN Stack", "Tailwind CSS", "Express"],
-      link: "https://github.com/KanthariaDhruti/WanderLust",
-      urlDesc: "View Code",
-    },
-    {
-      img: "/fashion-m/mag1.png",
-      head: "Fashion Editorial Concept",
-      desc: "A creative editorial layout designed for digital and print magazine pages, focusing on modern trends and bold storytelling layouts.",
-      techSpan: ["Adobe InDesign"],
-      type: "Magazine Design",
-    },
-  ];
+  const sectionRef = useRef(null);
 
   useGSAP(
     () => {
-      const cards = cardsRef.current?.querySelectorAll(".project-card-anim");
-      if (cards && cards.length > 0) {
+      if (prefersReducedMotion()) return;
+
+      reveal("[data-section-head] > *", { trigger: sectionRef.current, scope: sectionRef.current });
+      drawRule("[data-rule]", { scope: sectionRef.current });
+
+      /* The image leads and the caption lags, so a row opens up a little in
+         depth as it passes rather than sliding by as one plate. */
+      gsap.utils.toArray("[data-project]", sectionRef.current).forEach((row) => {
+        drift(row.querySelector("[data-drift-image]"), {
+          distance: 64,
+          trigger: row,
+        });
+        drift(row.querySelector("[data-drift-caption]"), {
+          distance: -28,
+          trigger: row,
+        });
+      });
+
+      /* Each entry reveals on its own trigger: the mask lifts off the image
+         while the caption rises. Both use the same curve, so a row reads as
+         one gesture rather than three animations. */
+      gsap.utils.toArray("[data-project]").forEach((item) => {
+        const trigger = { trigger: item, start: "top 82%", once: true };
+
         gsap.fromTo(
-          cards,
-          { opacity: 0, y: 40 },
+          item.querySelector("[data-mask]"),
+          { yPercent: 0 },
+          { yPercent: -101, duration: 1.4, ease: EASE, scrollTrigger: trigger },
+        );
+
+        gsap.fromTo(
+          item.querySelector("[data-project-image]"),
+          { scale: 1.14 },
+          { scale: 1, duration: 1.7, ease: EASE, scrollTrigger: trigger },
+        );
+
+        gsap.fromTo(
+          item.querySelectorAll("[data-project-caption] > *"),
+          { opacity: 0, y: 14 },
           {
-            scrollTrigger: {
-              trigger: cardsRef.current,
-              start: "top 80%",
-              toggleActions: "play none none reverse",
-            },
             opacity: 1,
             y: 0,
-            stagger: 0.12,
-            duration: 0.8,
-            ease: "power2.out",
+            duration: 1,
+            stagger: 0.08,
+            delay: 0.2,
+            ease: EASE,
+            scrollTrigger: trigger,
           },
         );
-      }
+      });
     },
-    { scope: containerRef },
+    { scope: sectionRef },
   );
 
   return (
     <section
-      id="projects"
-      ref={containerRef}
-      className="relative bg-pearl text-ocean font-outfit py-24 px-6 md:px-16 lg:px-32 text-center border-b border-navy-200"
+      id="work"
+      ref={sectionRef}
+      className="px-6 py-28 md:px-10 md:py-36 lg:px-16"
     >
-      {/* Decorative Grid Patterns & Canvas indicators */}
-      <div className="absolute inset-0 bg-grid-light pointer-events-none opacity-40 z-0"></div>
-      <div className="absolute inset-0 bg-dots-light pointer-events-none opacity-20 z-0"></div>
-      <div className="absolute top-24 left-10 text-[10px] font-mono text-ocean/50 select-none hidden lg:block uppercase tracking-wider">
-        [Section: 05 / Projects]
-      </div>
-
-      <div className="max-w-7xl mx-auto z-10 relative">
-        {/* Section Header */}
-        <div className="mb-16 text-center">
-          <div className="relative inline-block border-2 border-ocean backdrop-blur-sm px-6 py-2.5 shadow-sm mb-4">
-            {/* Figma resize handles/nodes */}
-            <div className="absolute w-1.5 h-1.5 bg-white border-2 border-ocean -top-[4px] -left-[4px] z-30"></div>
-            <div className="absolute w-1.5 h-1.5 bg-white border-2 border-ocean -top-[4px] -right-[4px] z-30"></div>
-            <div className="absolute w-1.5 h-1.5 bg-white border-2 border-ocean -bottom-[4px] -left-[4px] z-30"></div>
-            <div className="absolute w-1.5 h-1.5 bg-white border-2 border-ocean -bottom-[4px] -right-[4px] z-30"></div>
-
-            <h2 className="text-4xl md:text-5xl font-playwrite font-extrabold">
-              Featured Projects
+      <div className="mx-auto max-w-[1400px]">
+        <div data-section-head className="flex items-end justify-between gap-8">
+          <div>
+            <span className="eyebrow">01 — Selected work</span>
+            <h2 className="display mt-4 text-[10vw] sm:text-[7vw] lg:text-[4vw]">
+              Recent projects
             </h2>
           </div>
-          <p className="max-w-2xl mx-auto  md:text-xl mt-10">
-            A handpicked selection of my design interfaces, graphics projects,
-            and web development layouts
-          </p>
-        </div>
-
-        {/* Project Cards Grid */}
-        <div
-          ref={cardsRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 items-stretch"
-        >
-          {projectsData.map((project, index) => (
-            <div
-              key={index}
-              onClick={(e) => handleCardClick(e, index)}
-              className={`project-card-anim group relative overflow-hidden rounded-3xl bg-pearl border transition-all duration-500 flex flex-col h-[400px] cursor-pointer ${
-                activeCardIndex === index
-                  ? "shadow-2xl -translate-y-2 border-ocean/50"
-                  : "border-ocean/20 shadow-md hover:shadow-2xl hover:-translate-y-2"
-              }`}
-            >
-              {/* Image Side */}
-              <div className="relative w-full h-[220px] overflow-hidden bg-pearl flex items-center justify-center  border-b border-ocean/10">
-                <SmartImage
-                  src={project.img}
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  alt={project.head}
-                  width="400"
-                  height="220"
-                  loading="lazy"
-                  decoding="async"
-                  className={`w-full h-full object-cover transition-transform duration-700 ${
-                    activeCardIndex === index
-                      ? "scale-104"
-                      : "group-hover:scale-104"
-                  }`}
-                />
-                <div className="absolute top-4 right-4 backdrop-blur-md border border-ocean/20 text-brown text-xs px-3 py-1 rounded-full font-bold">
-                  Project {String(index + 1).padStart(2, "0")}
-                </div>
-              </div>
-
-              {/* Lower Info Area (Visible before hover) */}
-              <div className="p-6 flex flex-col justify-between flex-1 text-left">
-                <div>
-                  <h3 className="text-lg font-playwrite font-bold transition-colors line-clamp-1 mb-2">
-                    {project.head}
-                  </h3>
-                  <p className="text-navy-700 line-clamp-2 leading-relaxed">
-                    {project.desc}
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-1.5 mt-4">
-                  {project.techSpan.slice(0, 3).map((item, i) => (
-                    <span
-                      key={i}
-                      className="bg-ocean text-pearl text-[10px] px-2.5 py-1 rounded-full"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Overlay Curtain Slide (Reveals on Hover / Active touch) */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-b from-[#fdfdfd] to-[#e0e0e5] flex flex-col justify-between p-8 transition-all duration-500 z-20 text-left ${
-                  activeCardIndex === index
-                    ? "translate-y-0"
-                    : "translate-y-full group-hover:translate-y-0"
-                }`}
-              >
-                <div className="space-y-4">
-                  <h3 className="text-xl font-playwrite font-bold">
-                    {project.head}
-                  </h3>
-                  <p className="text-navy-850 leading-relaxed">
-                    {project.desc}
-                  </p>
-                </div>
-
-                <div className="mt-6 flex flex-col gap-4">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.techSpan.map((item, i) => (
-                      <span
-                        key={i}
-                        className="bg-pearl/50 border border-ocean/20 text-navy-800 text-[10px] px-2.5 py-1 rounded-full font-medium"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-
-                  {project.link && project.link !== "#" ? (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center justify-center gap-2 bg-cyan-650 border border-ocean/20 hover:bg-navy-750 font-bold py-2 px-6 rounded-full text-xs transition-all duration-300 shadow-md cursor-pointer text-center"
-                    >
-                      <span>{project.urlDesc}</span>
-                      <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </a>
-                  ) : (
-                    <span className="text-xs font-semibold text-navy-750 block">
-                      {project.type}
-                    </span>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-
-          {/* And More Showcase Card */}
-          <div className="project-card-anim group flex flex-col items-center justify-center rounded-3xl bg-pearl border border-ocean/20 hover:border-ocean/40 shadow-lg transition-all duration-500 p-6 h-[400px] cursor-pointer">
-            <div className="w-16 h-16 rounded-2xl bg-ocean flex items-center justify-center mb-4 text-pearl group-hover:scale-110 group-hover:bg-pearl group-hover:text-ocean transition-all duration-300 border border-ocean/10">
-              <i className="fa-solid fa-layer-group text-2xl"></i>
-            </div>
-            <h3 className="text-xl font-bold text-navy-900 group-hover:text-cyan-650 mb-2 font-playwrite transition-colors">
-              And more...
-            </h3>
-            <p className="text-navy-700  max-w-[200px] text-center leading-relaxed">
-              Explore extra concepts, coding sandboxes, and graphics templates
-            </p>
-          </div>
-        </div>
-
-        {/* Buttons / Navigation Links */}
-        <div className="flex flex-col font-playwrite sm:flex-row justify-center items-center gap-6 mt-8">
-          <a
-            href="https://github.com/KanthariaDhruti"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto bg-pearl hover:bg-ocean hover:text-pearl hover:font-normal text-ocean font-semibold px-8 py-3.5 rounded-full shadow-[0_4px_12px_rgba(93,118,139,0.25)] hover:shadow-[0_6px_20px_rgba(93,118,139,0.45)] hover:scale-[1.03] transition-all duration-300 cursor-pointer text-sm border border-ocean/20"
-          >
-            <i className="fa-brands fa-github text-lg mr-2"></i>
-            <span>View More on GitHub</span>
-          </a>
-
           <Link
             to="/portfolio"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 border-2 border-navy-600 text-navy-600 hover:bg-navy-650   font-bold px-8 py-3.5 rounded-full transition-all duration-300 hover:shadow-[0_6px_20px_rgba(93,118,139,0.45)] hover:scale-[1.03] cursor-pointer no-underline text-sm"
+            className="group hidden items-center gap-2 whitespace-nowrap pb-3 text-[0.9375rem] text-ink no-underline md:flex"
           >
-            <i className="fa-regular fa-folder-open text-lg"></i>
-            <span>View My Full Portfolio</span>
+            <span className="link-wipe link-retract">All work</span>
+            <ArrowUpRight size={16} className="arrow" />
           </Link>
         </div>
+
+        <div data-rule className="rule mt-10" />
+
+        <div className="mt-16 flex flex-col gap-24 md:mt-20 md:gap-32">
+          {projectsData.map((project, index) => {
+            const flipped = index % 2 === 1;
+
+            return (
+              <article key={project.id} data-project>
+                <Link
+                  to={`/portfolio/${project.id}`}
+                  className="group grid grid-cols-1 items-center gap-8 no-underline lg:grid-cols-12 lg:gap-16"
+                >
+                  <div
+                    data-drift-image
+                    className={`lg:col-span-7 ${
+                      flipped ? "lg:order-2" : "lg:order-1"
+                    }`}
+                  >
+                    <div className="frame relative aspect-[16/11] w-full">
+                      <SmartImage
+                        data-project-image
+                        src={project.thumbnail}
+                        sizes="(min-width: 1024px) 58vw, 100vw"
+                        alt={project.title}
+                        width="1200"
+                        height="825"
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover"
+                      />
+                      <span
+                        data-mask
+                        className="absolute inset-0 z-10 block bg-paper"
+                      />
+                    </div>
+                  </div>
+
+                  <div
+                    data-project-caption
+                    data-drift-caption
+                    className={`lg:col-span-5 ${
+                      flipped ? "lg:order-1" : "lg:order-2"
+                    }`}
+                  >
+                    <span className="eyebrow">
+                      {String(index + 1).padStart(2, "0")} / {project.category}
+                    </span>
+                    <h3 className="display mt-4 text-[8vw] leading-[1.02] text-ink sm:text-[5vw] lg:text-[2.6vw]">
+                      {project.title}
+                    </h3>
+                    <p className="mt-5 max-w-md text-[0.9375rem] leading-[1.75] text-muted">
+                      {project.description}
+                    </p>
+                    <span className="mt-7 inline-flex items-center gap-2 text-[0.9375rem] text-ink">
+                      <span className="link-wipe">View case study</span>
+                      <ArrowUpRight size={16} className="arrow" />
+                    </span>
+                  </div>
+                </Link>
+              </article>
+            );
+          })}
+        </div>
+
+        <Link
+          to="/portfolio"
+          className="group mt-16 flex items-center gap-2 text-[0.9375rem] text-ink no-underline md:hidden"
+        >
+          <span className="link-wipe link-retract">All work</span>
+          <ArrowUpRight size={16} className="arrow" />
+        </Link>
       </div>
     </section>
   );

@@ -1,180 +1,162 @@
-import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { gsap, EASE, prefersReducedMotion } from "../lib/motion";
+import { useScrollTo } from "../lib/scroll";
+
+const sections = [
+  { label: "Work", id: "work" },
+  { label: "About", id: "about" },
+  { label: "Experience", id: "experience" },
+  { label: "Services", id: "services" },
+  { label: "Contact", id: "contact" },
+];
 
 function Navbar() {
-  const navRef = useRef(null);
-  const logoRef = useRef(null);
-  const linksContainerRef = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const scrollTo = useScrollTo();
+  const [open, setOpen] = useState(false);
+  const [lifted, setLifted] = useState(false);
+  const panelRef = useRef(null);
 
-  const links = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/#about" },
-    { name: "Experience", href: "/#experience" },
-    { name: "Skills", href: "/#skills" },
-    { name: "Projects", href: "/#projects" },
-    { name: "Services", href: "/#services" },
-    { name: "Contact", href: "/#contact" },
-  ];
+  const onLanding = pathname === "/";
 
-  // Track scroll position to alter navbar height & opacity
+  /* The bar earns its background only once the page has moved beneath it. */
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setLifted(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // GSAP Entrance Animations
-  useGSAP(
-    () => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+  useEffect(() => setOpen(false), [pathname]);
 
-      tl.fromTo(
-        logoRef.current,
-        { x: -30, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.8 },
-      );
+  /* The menu is a full sheet on mobile; lock the page under it. */
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
-      const navLinks =
-        linksContainerRef.current?.querySelectorAll(".nav-link-anim");
-      if (navLinks && navLinks.length > 0) {
-        tl.fromTo(
-          navLinks,
-          { y: -20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, stagger: 0.08 },
-          "-=0.5",
-        );
-      }
-    },
-    { scope: navRef },
-  );
+  useEffect(() => {
+    if (!open || !panelRef.current || prefersReducedMotion()) return;
+    const items = panelRef.current.querySelectorAll("[data-menu-item]");
+    gsap.fromTo(
+      items,
+      { opacity: 0, y: 18 },
+      { opacity: 1, y: 0, duration: 0.8, stagger: 0.05, ease: EASE, delay: 0.1 },
+    );
+  }, [open]);
 
-  // Smooth scroll helper for hash links
-  const handleLinkClick = (e, href) => {
-    setIsOpen(false);
-    if (href.startsWith("/#")) {
-      const targetId = href.replace("/#", "");
-      if (location.pathname === "/") {
-        e.preventDefault();
-        const element = document.getElementById(targetId);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-          window.history.pushState(null, "", href);
-        }
-      }
+  const goToSection = (id) => {
+    setOpen(false);
+    if (onLanding) {
+      scrollTo(`#${id}`, { offset: -80 });
+    } else {
+      navigate("/", { state: { section: id } });
     }
   };
 
-  if (location.pathname === "/portfolio") {
-    return null;
-  }
-
   return (
-    <nav
-      ref={navRef}
-      className={`w-full fixed font-playwrite top-0 left-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "py-3 backdrop-blur-lg border-b border-ocean/50 shadow-[0_8px_20px_-8px_rgba(93,118,139,0.15)]"
-          : "py-5 bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-12">
-        {/* Logo */}
-        <Link
-          to="/"
-          ref={logoRef}
-          className="text-xl md:text-2xl font-extrabold text-ocean hover:text-ocean/80 transition-colors duration-300 select-none no-underline flex items-center gap-2"
-        >
-          <img
-            src="/logo-color.webp"
-            alt="Dhruti Kantharia Logo"
-            width="160"
-            height="40"
-            decoding="async"
-            className="h-10"
-          />
-        </Link>
-
-        {/* Hamburger (Mobile) */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-ocean focus:outline-none p-2 rounded-lg border border-ocean hover:bg-ocean transition"
-          aria-label="Toggle menu"
-        >
-          <svg
-            className="w-6 h-6 transition-transform duration-300"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            {isOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
-
-        {/* Desktop Links */}
-        <div
-          ref={linksContainerRef}
-          className="hidden md:flex items-center space-x-8"
-        >
-          {links.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => handleLinkClick(e, link.href)}
-              className="nav-link-anim relative text-ocean hover:text-ocean font-medium text-sm tracking-wide transition-colors duration-300 py-1 group no-underline"
-            >
-              {link.name}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-ocean/80 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          ))}
-        </div>
-      </div>
-
-      {/* Mobile Sidebar Dropdown */}
-      <div
-        className={`md:hidden absolute top-full left-0 w-full glass-panel transition-all duration-500 ease-in-out origin-top ${
-          isOpen
-            ? "opacity-100 translate-y-0 scale-y-100"
-            : "opacity-0 -translate-y-4 scale-y-0 pointer-events-none"
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
+          lifted || open
+            ? "bg-paper/85 backdrop-blur-md border-b border-line"
+            : "border-b border-transparent"
         }`}
+        style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
       >
-        <div className="flex flex-col items-center py-6 space-y-4 bg-ocean/95 border-b border-ocean">
-          {links.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => handleLinkClick(e, link.href)}
-              className="w-full text-center py-2 text-ocean hover:text-ocean font-semibold transition-colors duration-300 no-underline"
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-10 lg:px-16">
+          <Link
+            to="/"
+            className="font-display text-xl tracking-tight text-ink no-underline"
+            onClick={() => onLanding && scrollTo(0)}
+          >
+            Dhruti Kantharia
+          </Link>
+
+          <nav className="hidden items-center gap-9 md:flex">
+            {sections.map((section) => (
+              <button
+                key={section.id}
+                type="button"
+                onClick={() => goToSection(section.id)}
+                className="link-wipe cursor-pointer bg-transparent p-0 text-[0.9rem] font-light text-ink-soft transition-colors duration-300 hover:text-ink"
+              >
+                {section.label}
+              </button>
+            ))}
+            <Link
+              to="/portfolio"
+              className="link-wipe text-[0.9rem] font-light text-ink no-underline"
             >
-              {link.name}
-            </a>
-          ))}
+              Selected Work
+            </Link>
+          </nav>
+
+          {/* Two rules that cross into an X — the state change is the animation. */}
+          <button
+            type="button"
+            onClick={() => setOpen((value) => !value)}
+            aria-expanded={open}
+            aria-label={open ? "Close menu" : "Open menu"}
+            className="relative h-6 w-7 cursor-pointer bg-transparent md:hidden"
+          >
+            <span
+              className="absolute left-0 block h-px w-7 bg-ink transition-transform duration-500"
+              style={{
+                top: open ? "50%" : "35%",
+                transform: open ? "rotate(45deg)" : "none",
+                transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
+              }}
+            />
+            <span
+              className="absolute left-0 block h-px w-7 bg-ink transition-all duration-500"
+              style={{
+                top: open ? "50%" : "60%",
+                opacity: open ? 1 : 1,
+                transform: open ? "rotate(-45deg)" : "none",
+                transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
+              }}
+            />
+          </button>
         </div>
-      </div>
-    </nav>
+      </header>
+
+      {open && (
+        <div
+          ref={panelRef}
+          className="fixed inset-0 z-40 flex flex-col justify-center bg-paper px-6 md:hidden"
+        >
+          <nav className="flex flex-col gap-1">
+            {sections.map((section) => (
+              <button
+                key={section.id}
+                data-menu-item
+                type="button"
+                onClick={() => goToSection(section.id)}
+                className="display cursor-pointer bg-transparent py-2 text-left text-[2.75rem] text-ink"
+              >
+                {section.label}
+              </button>
+            ))}
+            <Link
+              data-menu-item
+              to="/portfolio"
+              className="display py-2 text-[2.75rem] text-ink no-underline"
+            >
+              Selected Work
+            </Link>
+          </nav>
+
+          <div data-menu-item className="mt-12 eyebrow">
+            Gandhinagar, India
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

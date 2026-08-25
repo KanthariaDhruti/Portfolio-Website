@@ -1,177 +1,121 @@
-import React, { useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
+import {
+  reveal,
+  drawRule,
+  drift,
+  revealLines,
+  fontsReady,
+  prefersReducedMotion,
+} from "../lib/motion";
 
-gsap.registerPlugin(ScrollTrigger);
+const facts = [
+  { label: "Education", value: "B.Tech Information Technology, Gandhinagar University" },
+  { label: "Academic record", value: "8.14 CGPA" },
+  { label: "Currently", value: "Graphic Design Intern, Adrta Technologies" },
+  { label: "Background", value: "Ex-NCC Cadet — discipline, teamwork, leadership" },
+  { label: "Off the clock", value: "Singing, dancing, fine arts, sport" },
+];
 
 function About() {
-  const aboutRef = useRef(null);
+  const sectionRef = useRef(null);
   const headingRef = useRef(null);
-  const subtitleRef = useRef(null);
-  const textSectionRef = useRef(null);
-  const cardsRef = useRef(null);
-
-  const abtCards = [
-    {
-      icon: "fa-solid fa-book-open",
-      head: "Education",
-      desc: "B.Tech IT",
-    },
-    {
-      icon: "fa-solid fa-award",
-      head: "Academic Performance",
-      desc: "8.14 CGPA in engineering",
-    },
-    {
-      icon: "fa-solid fa-user-group",
-      head: "Leadership",
-      desc: "Ex-NCC Cadet with discipline & teamwork",
-    },
-    {
-      icon: "fa-solid fa-heart",
-      head: "Interests",
-      desc: "Singing, Dancing, Arts and Sports",
-    },
-  ];
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 85%",
-          toggleActions: "play none none reverse",
-        },
+      if (prefersReducedMotion()) return;
+
+      let revert = () => {};
+      fontsReady().then(() => {
+        revert = revealLines(headingRef.current, { scroll: true, stagger: 0.08 });
       });
 
-      tl.fromTo(
-        [headingRef.current, subtitleRef.current],
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, stagger: 0.15, duration: 0.8, ease: "power3.out" },
-      );
+      reveal("[data-about-eyebrow]", { trigger: sectionRef.current, scope: sectionRef.current });
+      reveal("[data-about-copy] > p", { stagger: 0.12, trigger: "[data-about-copy]", scope: sectionRef.current });
+      drawRule("[data-rule]", { scope: sectionRef.current });
+      reveal("[data-fact]", { stagger: 0.08, y: 10, trigger: "[data-facts]", scope: sectionRef.current });
 
-      gsap.fromTo(
-        textSectionRef.current,
-        { opacity: 0, x: -50 },
-        {
-          scrollTrigger: {
-            trigger: textSectionRef.current,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-          opacity: 1,
-          x: 0,
-          duration: 1,
-          ease: "power3.out",
-        },
-      );
+      /* The prose and the facts table drift apart by a few pixels; the sticky
+         heading is left alone, since transforming it would break the stick. */
+      drift("[data-about-copy]", { distance: 34, scope: sectionRef.current });
+      drift("[data-facts]", { distance: -22, scope: sectionRef.current });
 
-      const cards = cardsRef.current?.querySelectorAll(".abt-card");
-      if (cards && cards.length > 0) {
-        gsap.fromTo(
-          cards,
-          { opacity: 0, y: 40 },
-          {
-            scrollTrigger: {
-              trigger: cardsRef.current,
-              start: "top 80%",
-              toggleActions: "play none none reverse",
-            },
-            opacity: 1,
-            y: 0,
-            stagger: 0.12,
-            duration: 0.8,
-            ease: "power2.out",
-          },
-        );
-      }
+      return () => revert();
     },
-    { scope: aboutRef },
+    { scope: sectionRef },
   );
 
   return (
     <section
-      ref={aboutRef}
       id="about"
-      className="relative bg-pearl text-ocean font-outfit py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
+      ref={sectionRef}
+      className="px-6 py-28 md:px-10 md:py-36 lg:px-16"
     >
-      <div className="max-w-7xl mx-auto text-center z-10 relative">
-        {/* Section Header */}
-        <div className="mb-16">
-          <h2
-            ref={headingRef}
-            className="text-4xl md:text-5xl font-playwrite font-extrabold"
-          >
-            About Me
-          </h2>
-          <p
-            ref={subtitleRef}
-            className="max-w-2xl mx-auto md:text-xl mt-10 font-normal"
-          >
-            Get to know more about my journey, academic details, and design
-            passion
-          </p>
-        </div>
+      <div className="mx-auto max-w-[1400px]">
+        <div data-rule className="rule" />
 
-        {/* Content Layout */}
-        <div className="flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-12 text-left">
-          {/* Left Text Block */}
-          <div
-            ref={textSectionRef}
-            className="w-full lg:w-1/2 flex flex-col justify-center space-y-6"
-          >
-            <h3 className="text-2xl font-bold font-playwrite text-navy-900">
-              Hi, I'm <span className="text-brown">Dhruti Kantharia</span>
-            </h3>
-
-            <div className="space-y-4 text-navy-800 text-lg leading-relaxed text-justify .">
-              <p>
-                I am a passionate Graphic Designer helping small businesses,
-                startups, and individuals look their best. I have completed my
-                graduation in B.Tech IT from Gandhinagar University and
-                genuinely enjoy blending structural code with design to create
-                clean interfaces, functional websites, and immersive user
-                experiences. I'm always eager to learn and create.
-              </p>
-              <p>
-                As a Graphic Design Intern at Adrta Technologies, I developed
-                practical experience in brand messaging, layouts, and digital
-                styling. This graphic background gives me a unique advantage in
-                styling pixel-perfect designs.
-              </p>
-              <p>
-                Outside of design and development, I find balance through
-                singing, dancing, and fine arts. My background as an ex-NCC
-                Cadet has also instilled in me strong values of discipline,
-                collaborative teamwork, and leadership under pressure.
-              </p>
+        <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-32">
+              <span data-about-eyebrow className="eyebrow">
+                02 — About
+              </span>
+              <h2
+                ref={headingRef}
+              data-split
+                className="display mt-4 text-[10vw] sm:text-[7vw] lg:text-[3.6vw]"
+              >
+                A designer who
+                <br />
+                writes the code
+                <br />
+                as well.
+              </h2>
             </div>
           </div>
 
-          {/* Right Cards Grid */}
-          <div className="w-full lg:w-1/2 flex items-center">
+          <div className="lg:col-span-7">
             <div
-              ref={cardsRef}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full"
+              data-about-copy
+              className="max-w-xl space-y-6 text-[1.0625rem] leading-[1.8] text-ink-soft"
             >
-              {abtCards.map((card, index) => (
+              <p>
+                I design for small businesses, startups and individuals who need
+                their work to look considered. I studied B.Tech IT at
+                Gandhinagar University, and I've spent that time learning both
+                halves of the same craft — how a layout should feel, and how it
+                actually gets built.
+              </p>
+              <p>
+                As a Graphic Design Intern at Adrta Technologies I work on brand
+                messaging, layout systems and digital styling, alongside the
+                front-end team. Sitting between those two rooms is the useful
+                part: I know what a grid promises, and I know what a browser
+                will do with it.
+              </p>
+              <p>
+                Away from the desk I sing, dance and draw. My time as an NCC
+                cadet is where the rest of it came from — showing up early,
+                working to a standard, and finishing what the team started.
+              </p>
+            </div>
+
+            <dl data-facts className="mt-16">
+              {facts.map((fact) => (
                 <div
-                  key={index}
-                  className="abt-card bg-pearl border border-transparent p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-brown/35 transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col justify-between cursor-pointer"
+                  key={fact.label}
+                  data-fact
+                  className="grid grid-cols-1 gap-1 border-t border-line py-5 sm:grid-cols-12 sm:gap-6"
                 >
-                  <div>
-                    <div className="w-12 h-12 rounded-xl bg-brown text-pearl text-2xl flex items-center justify-center mb-4">
-                      <i className={card.icon}></i>
-                    </div>
-                    <h4 className="text-lg font-playwrite font-bold mb-2">
-                      {card.head}
-                    </h4>
-                  </div>
-                  <p className="leading-relaxed mt-2">{card.desc}</p>
+                  <dt className="eyebrow sm:col-span-4 sm:pt-1">
+                    {fact.label}
+                  </dt>
+                  <dd className="text-[0.9375rem] leading-relaxed text-ink sm:col-span-8">
+                    {fact.value}
+                  </dd>
                 </div>
               ))}
-            </div>
+            </dl>
           </div>
         </div>
       </div>

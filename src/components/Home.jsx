@@ -1,217 +1,221 @@
-import React, { useRef } from "react";
-import SmartImage from "./SmartImage";
-import { gsap } from "gsap";
+import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
-import { Link } from "react-scroll";
+import SmartImage from "./SmartImage";
+import { ArrowDown } from "./Icon";
+import {
+  gsap,
+  EASE,
+  reveal,
+  revealLines,
+  drift,
+  parallax,
+  fontsReady,
+  prefersReducedMotion,
+} from "../lib/motion";
+import { useScrollTo } from "../lib/scroll";
+import { useIntro } from "../lib/intro";
+import { HERO_DELAY } from "../lib/intro";
+
+const disciplines = [
+  "Brand Identity",
+  "Editorial Layout",
+  "UI / UX Design",
+  "Front-end Development",
+];
 
 function Home() {
-  const heroRef = useRef(null);
-  const imgRef = useRef(null);
-  const glowRef = useRef(null);
-  const infoRef = useRef(null);
-  const buttonsRef = useRef(null);
-  const iconsRef = useRef(null);
+  const sectionRef = useRef(null);
+  const headlineRef = useRef(null);
+  const portraitRef = useRef(null);
+  const scrollTo = useScrollTo();
+  const { active: introActive, introStart } = useIntro();
+
+  /* Captured once, at first render: how long the hero should wait for the
+     curtain. Zero when there is no intro (repeat visit, reduced motion). */
+  const [introOffset] = useState(() =>
+    introActive
+      ? Math.max(0, HERO_DELAY - (performance.now() - introStart) / 1000)
+      : 0,
+  );
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
-        defaults: { ease: "power3.out", duration: 1 },
+      if (prefersReducedMotion()) return;
+
+      /* Splitting before the serif loads measures the fallback's line boxes. */
+      let revertLines = () => {};
+      fontsReady().then(() => {
+        revertLines = revealLines(headlineRef.current, { delay: introOffset + 0.15 });
       });
 
-      // Reset positions to prevent flash of unstyled layouts
-      gsap.set(imgRef.current, { opacity: 0 });
-      if (infoRef.current) gsap.set(infoRef.current.children, { opacity: 0 });
-      if (buttonsRef.current)
-        gsap.set(buttonsRef.current.children, { opacity: 0 });
-      if (iconsRef.current)
-        gsap.set(iconsRef.current.querySelectorAll("a"), { opacity: 0 });
+      /* Everything else follows the headline rather than competing with it. */
+      gsap.fromTo(
+        "[data-hero-meta]",
+        { opacity: 0 },
+        { opacity: 1, duration: 1.2, ease: EASE, delay: introOffset + 0.1 },
+      );
 
-      tl.fromTo(heroRef.current, { opacity: 0 }, { opacity: 1, duration: 0.6 })
-        .fromTo(
-          imgRef.current,
-          { scale: 0.8, y: 50, opacity: 0 },
-          { scale: 1, y: 0, opacity: 1, duration: 1.2, ease: "back.out(1.2)" },
-          "-=0.2",
-        )
-        .fromTo(
-          infoRef.current?.children || [],
-          { y: 40, opacity: 0 },
-          { y: 0, opacity: 1, stagger: 0.15, duration: 0.8 },
-          "-=0.6",
-        )
-        .fromTo(
-          buttonsRef.current?.children || [],
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, stagger: 0.12 },
-          "-=0.4",
-        )
-        .fromTo(
-          iconsRef.current?.querySelectorAll("a") || [],
-          { scale: 0, opacity: 0 },
-          {
-            scale: 1,
-            opacity: 1,
-            stagger: 0.08,
-            duration: 0.6,
-            ease: "back.out(1.7)",
-          },
-          "-=0.3",
-        );
+      reveal("[data-hero-lead]", { delay: introOffset + 0.55, y: 14, trigger: sectionRef.current, scope: sectionRef.current });
+      reveal("[data-hero-actions] > *", {
+        delay: introOffset + 0.75,
+        y: 10,
+        stagger: 0.09,
+        trigger: sectionRef.current, scope: sectionRef.current });
 
-      // Continuous float animation for profile image
-      gsap.to(imgRef.current, {
-        y: -15,
-        duration: 3,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
+      /* The portrait uncovers itself: the mask lifts, the image settles back
+         from a slight overscale. No fade, no bounce. */
+      gsap.fromTo(
+        "[data-mask]",
+        { yPercent: 0 },
+        { yPercent: -101, duration: 1.5, ease: EASE, delay: introOffset + 0.35 },
+      );
+      gsap.fromTo(
+        portraitRef.current,
+        { scale: 1.12 },
+        { scale: 1, duration: 1.8, ease: EASE, delay: introOffset + 0.35 },
+      );
+
+      gsap.fromTo(
+        "[data-hero-rule]",
+        { scaleX: 0 },
+        { scaleX: 1, duration: 1.6, ease: EASE, delay: introOffset + 0.9 },
+      );
+      reveal("[data-hero-disciplines] > *", {
+        delay: introOffset + 1.1,
+        y: 8,
+        stagger: 0.06,
+        trigger: sectionRef.current, scope: sectionRef.current });
+
+      parallax(portraitRef.current, { amount: 6 });
+
+      /* On the way out only: the copy is drawn upward slightly faster than the
+         page while the hero leaves, which hands the eye to the work below. */
+      drift("[data-hero-column]", {
+        distance: 70,
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        scope: sectionRef.current,
       });
 
-      // Continuous subtle pulse for background neon glow
-      gsap.to(glowRef.current, {
-        scale: 1.15,
-        opacity: 0.15,
-        duration: 5,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
+      return () => revertLines();
     },
-    { scope: heroRef },
+    { scope: sectionRef },
   );
 
   return (
     <section
       id="home"
-      ref={heroRef}
-      className="relative min-h-screen flex flex-col justify-center items-center bg-pearl px-6 sm:px-12 md:px-20 lg:px-32 py-24 overflow-hidden border-b border-ocean/50"
+      ref={sectionRef}
+      className="relative min-h-screen px-6 pt-32 pb-12 md:px-10 md:pt-40 lg:px-16"
     >
-      {/* Ambient background glows */}
-      <div
-        ref={glowRef}
-        className="absolute top-1/4 right-1/4 w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-ocean/10 blur-[130px] rounded-full pointer-events-none z-0"
-      ></div>
-      <div className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-ocean/10 blur-[110px] rounded-full pointer-events-none z-0"></div>
-
-      {/* Decorative Grid Patterns & Designer Canvas indicators */}
-      <div className="absolute inset-0 bg-grid-dark pointer-events-none opacity-40 z-0"></div>
-      <div className="absolute inset-0 bg-dots-dark pointer-events-none opacity-20 z-0"></div>
-
-      {/* Figma/Designer style canvas guides */}
-      <div className="absolute top-24 left-10 text-[10px] font-mono text-ocean/50 select-none hidden lg:block uppercase tracking-wider">
-        [w: 100% / h: auto]
-      </div>
-      <div className="absolute bottom-10 right-10 text-[10px] font-mono text-ocean/50 select-none hidden lg:block uppercase tracking-wider">
-        Grid: 60px / Dots: 24px
-      </div>
-      <div className="absolute top-24 right-10 text-[10px] font-mono text-ocean/50 select-none hidden lg:block uppercase tracking-wider">
-        Canvas: Active
-      </div>
-
-      <div className="w-full max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-8 z-10">
-        {/* Left Side Info Panel */}
+      <div className="mx-auto flex h-full max-w-[1400px] flex-col">
+        {/* Meta row */}
         <div
-          ref={infoRef}
-          className="w-full mt-15 md:w-3/5 text-center md:text-left flex flex-col space-y-4 md:space-y-6"
+          data-hero-meta
+          className="eyebrow flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between"
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold font-playwrite text-ocean leading-tight">
-            Hi, I'm <span className="text-brown">Dhruti</span>
-          </h1>
+          <span>Gandhinagar, India</span>
+          <span className="flex items-center gap-2">
+            <span className="inline-block h-1 w-1 rounded-full bg-accent" />
+            Available for freelance
+          </span>
+        </div>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-ocean font-playwrite leading-snug">
-            Graphic Designer <span className="text-brown">&</span> Web Developer
-          </h2>
-
-          <p className="text-ocean font-outfit text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl text-justify md:text-left">
-            I turn creative thoughts into responsive, clean code and visually
-            stunning interactive web designs. Blending technical accuracy with
-            strong layout aesthetics to craft unforgettable digital journeys.
-          </p>
-
-          {/* Interactive Buttons */}
-          <div
-            ref={buttonsRef}
-            className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4"
-          >
-            <Link
-              to="contact"
-              smooth={true}
-              duration={500}
-              offset={-50}
-              className="w-full sm:w-auto"
+        <div className="mt-16 grid flex-1 grid-cols-1 gap-12 md:mt-24 lg:grid-cols-12 lg:gap-10">
+          {/* Headline */}
+          <div data-hero-column className="flex flex-col lg:col-span-7">
+            <h1
+              ref={headlineRef}
+              data-split
+              className="display text-[11.5vw] leading-[1] sm:text-[9vw] lg:text-[5.6vw]"
             >
-              <button className="w-full sm:w-auto bg-pearl text-brown font-bold px-8 py-3.5 rounded-full shadow-[0_4px_12px_rgba(93,118,139,0.25)] hover:shadow-[0_6px_20px_rgba(93,118,139,0.45)] hover:scale-[1.03] transition-all duration-300 cursor-pointer font-playwrite text-sm">
-                Get In Touch
-              </button>
-            </Link>
-            <Link
-              to="projects"
-              smooth={true}
-              duration={500}
-              offset={-50}
-              className="w-full sm:w-auto"
-            >
-              <button className="w-full sm:w-auto border border-ocean text-ocean font-playwrite font-bold px-8 py-3.5 rounded-full hover:scale-[1.03] transition-all duration-300 cursor-pointer text-sm">
-                Browse Projects
-              </button>
-            </Link>
+              Graphic design,
+              <br />
+              identity systems
+              <br />
+              <span className="italic text-accent">&amp;</span> web development.
+            </h1>
+
+            <div className="mt-10 max-w-md lg:mt-14">
+              <p
+                data-hero-lead
+                className="text-[1.0625rem] leading-[1.7] text-ink-soft"
+              >
+                I'm Dhruti Kantharia. I design brand identities and editorial
+                layouts, then build the interfaces that carry them — so the
+                thinking survives the handoff from artboard to browser.
+              </p>
+
+              <div data-hero-actions className="mt-8 flex items-center gap-8">
+                <button
+                  type="button"
+                  onClick={() => scrollTo("#work", { offset: -60 })}
+                  className="link-wipe link-retract cursor-pointer bg-transparent p-0 text-[0.9375rem] text-ink"
+                >
+                  Selected work
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollTo("#contact", { offset: -60 })}
+                  className="link-wipe cursor-pointer bg-transparent p-0 text-[0.9375rem] text-muted transition-colors duration-300 hover:text-ink"
+                >
+                  Get in touch
+                </button>
+              </div>
+            </div>
           </div>
 
-          {/* Styled Social Icons */}
-          <div
-            ref={iconsRef}
-            className="flex items-center justify-center md:justify-start gap-6 pt-4 text-2xl text-ocean"
-          >
-            <a
-              href="https://github.com/KanthariaDhruti"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:shadow-[0_0_10px_rgba(93,118,139,0.15)] p-2 rounded-lg hover:bg-pearl transition-all duration-300"
-              title="GitHub"
-            >
-              <i className="fa-brands fa-github"></i>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/dhruti-kantharia-759700255/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:shadow-[0_0_10px_rgba(227,201,164,0.3)] p-2 rounded-lg hover:bg-pearl transition-all duration-300"
-              title="LinkedIn"
-            >
-              <i className="fa-brands fa-linkedin"></i>
-            </a>
-            <a
-              href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRtswJrTJzwNcnglvVgPnCJXTMXRWxDhrqHCmNWfhBfXzCxQsHxvZtphhGRkztBHNTgjZxl"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:shadow-[0_0_10px_rgba(242,217,199,0.3)] p-2 rounded-lg hover:bg-pearl transition-all duration-300"
-              title="Email"
-            >
-              <i className="fa-solid fa-envelope"></i>
-            </a>
+          {/* Portrait */}
+          <div className="lg:col-span-5">
+            <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[5/4] lg:aspect-[4/5]">
+              {/* Taller than its frame, so the parallax never exposes an edge. */}
+              <div
+                ref={portraitRef}
+                className="absolute inset-x-0 top-[-6%] h-[112%]"
+              >
+                <SmartImage
+                  src="/dhrutiImg1.jpg"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  alt="Dhruti Kantharia"
+                  width="800"
+                  height="1000"
+                  fetchPriority="high"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                  style={{ objectPosition: "50% 30%" }}
+                />
+              </div>
+              {/* The mask that lifts away on load. */}
+              <span
+                data-mask
+                className="absolute inset-0 z-10 block bg-paper"
+              />
+            </div>
           </div>
         </div>
 
-        {/* Right Side Frame Profile Image */}
-        <div className="w-full md:w-2/5 flex justify-center items-center z-10">
+        {/* Disciplines */}
+        <div className="mt-16 md:mt-20">
+          <div data-hero-rule className="rule" />
           <div
-            ref={imgRef}
-            className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-[350px] lg:h-[350px] p-2 rounded-full shadow-[0_8px_30px_rgba(93,118,139,0.12)] flex items-center justify-center hover:scale-[1.02] transition-transform duration-500 ease-out"
+            data-hero-disciplines
+            className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3 pt-5"
           >
-            {/* Soft backdrop overlay */}
-            <div className="absolute inset-0 rounded-full scale-[0.985]"></div>
-
-            {/* Real profile image */}
-            <SmartImage
-              src="/dhrutiImg1.jpg"
-              sizes="350px"
-              alt="Dhruti Kantharia - Graphic Designer & Web Developer"
-              width="350"
-              height="350"
-              fetchpriority="high"
-              decoding="async"
-              className="w-full h-full object-cover rounded-full z-10  scale-[0.97]"
-            />
+            {disciplines.map((item) => (
+              <span key={item} className="text-sm font-light text-muted">
+                {item}
+              </span>
+            ))}
+            <button
+              type="button"
+              onClick={() => scrollTo("#work", { offset: -60 })}
+              className="group flex cursor-pointer items-center gap-2 bg-transparent p-0 text-sm text-muted transition-colors duration-300 hover:text-ink"
+              aria-label="Scroll to selected work"
+            >
+              Scroll
+              <ArrowDown size={14} className="arrow" />
+            </button>
           </div>
         </div>
       </div>

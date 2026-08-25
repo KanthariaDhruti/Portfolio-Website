@@ -1,252 +1,246 @@
 @import "tailwindcss";
-/* @import url("https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"); */
 
+/* ==========================================================================
+   Design tokens
+   A warm paper ground, near-black ink, one accent. The accent is a guest:
+   it appears two or three times per page, never as a fill behind text.
+   ========================================================================== */
 @theme {
-  --font-playwrite: "Playwrite US Modern", cursive;
-  --font-outfit: "Outfit", sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
 
-  --color-pearl: #fdfdfd;
-  --color-brown: #c49a6c;
-  --color-ocean: #1b2051;
+  --color-paper: #fbfaf8;
+  --color-paper-tint: #f4f1ec;
+  --color-ink: #16181d;
+  --color-ink-soft: #3a3e46;
+  --color-muted: #6b6f76;
+  --color-line: #e7e2da;
+  --color-accent: #b08356;
+
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Selection Color styling */
+/* ==========================================================================
+   Base
+   ========================================================================== */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: auto; /* Lenis owns scrolling; native smooth would fight it */
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
 ::selection {
-  background-color: rgba(
-    242,
-    217,
-    199,
-    0.5
-  ); /* Soft Seashell Pink background */
-  color: var(--color-navy-900);
+  background-color: rgba(176, 131, 86, 0.18);
+  color: var(--color-ink);
 }
 
-/* Custom modern scrollbar */
+:focus-visible {
+  outline: 1px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-navy-950);
+  background: var(--color-paper);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-navy-300); /* Warm Sandy Beige scrollbar */
-  border-radius: 4px;
+  background: #ddd7cd;
+  border: 3px solid var(--color-paper);
+  border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-navy-400);
+  background: #cdc5b8;
 }
 
-/* Glassmorphism utility card styles */
-.glass-panel {
-  background: rgba(248, 239, 229, 0.7); /* Ivory Breeze transparent */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(93, 118, 139, 0.15); /* Soft Ocean Blue border */
+/* Display type: the serif is set tight and optically dark, never bold. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
 }
 
-.glass-panel-light {
-  background: rgba(255, 253, 252, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(200, 179, 155, 0.15); /* Soft Sandy Beige border */
+/* The intro greetings. Instrument Serif has no Cyrillic, Arabic, CJK or Indic
+   coverage, so the stack names a serif fallback for each script rather than
+   letting the browser drop to a default sans and change voice mid-sequence. */
+.intro-line {
+  position: relative;
+  /* Full width so the box only ever clips vertically: sizing it to the widest
+     word cropped the wider scripts (Japanese) at the right edge. */
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  font-family:
+    "Instrument Serif", "Songti SC", "Hiragino Mincho ProN", "Yu Mincho",
+    "Apple SD Gothic Neo", "Devanagari MT", "Gujarati MT", "Noto Serif",
+    ui-serif, Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.75rem, 9vw, 6rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--color-ink);
 }
 
-/* Custom interactive gradients */
-.gradient-text {
-  background: linear-gradient(
-    135deg,
-    var(--color-navy-900) 30%,
-    var(--color-navy-600) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* The words inherit the line's metrics, so the clip box is exactly one line
+   tall whichever script is showing. */
+.intro-word {
+  font: inherit;
+  color: inherit;
 }
 
-.gradient-accent-text {
-  background: linear-gradient(
-    135deg,
-    var(--color-navy-700) 0%,
-    var(--color-cyan-600) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Eyebrow labels: the only uppercase on the site. */
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
 }
 
-.bg-gradient-navy {
-  background: radial-gradient(
-    circle at top,
-    #fffbf7 0%,
-    #fffdfa 100%
-  ); /* soft Ivory Breeze radial */
+.rule {
+  height: 1px;
+  background-color: var(--color-line);
+  transform-origin: left center;
 }
 
-.bg-radial-glow {
-  background: radial-gradient(
-    800px circle at var(--x, 0px) var(--y, 0px),
-    rgba(242, 217, 199, 0.25),
-    /* Soft Seashell Pink glow */ transparent 80%
-  );
+/* ==========================================================================
+   Motion
+   Elements are hidden pre-animation only when JS has confirmed it will run
+   and the reader has not asked for reduced motion — see the guard in
+   index.html. Without that class every [data-reveal] stays visible.
+   ========================================================================== */
+.motion [data-reveal],
+.motion [data-reveal-child] > * {
+  opacity: 0;
+  will-change: transform, opacity;
 }
 
-/* Repeating canvas background grids */
-.bg-grid-dark {
-  background-size: 60px 60px;
-  background-image:
-    linear-gradient(to right, rgba(93, 118, 139, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(93, 118, 139, 0.04) 1px, transparent 1px);
+.motion [data-rule] {
+  transform: scaleX(0);
 }
 
-.bg-grid-light {
-  background-size: 60px 60px;
-  background-image:
-    linear-gradient(to right, rgba(200, 179, 155, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(200, 179, 155, 0.05) 1px, transparent 1px);
+/* Headlines that get split into masked lines stay dark until the split runs. */
+.motion [data-split] {
+  opacity: 0;
 }
 
-/* Repeating Dot Matrix Pattern */
-.bg-dots-dark {
-  background-size: 24px 24px;
-  background-image: radial-gradient(
-    rgba(93, 118, 139, 0.06) 1px,
-    transparent 1px
-  );
+/* Reveal masks only exist when motion is armed. Without the guard class the
+   plate that covers an image is never rendered at all, so a failed script or a
+   reduced-motion preference can never leave an image hidden behind it. */
+[data-mask] {
+  display: none;
 }
 
-.bg-dots-light {
-  background-size: 24px 24px;
-  background-image: radial-gradient(
-    rgba(200, 179, 155, 0.06) 1px,
-    transparent 1px
-  );
+.motion [data-mask] {
+  display: block;
 }
 
-/* Mobile active states for interactive touch feedback */
-@media (hover: none) {
-  /* Tappable buttons & link CTAs */
-  button:active,
-  a.inline-flex:active,
-  a.bg-gradient-to-r:active,
-  a.border:active,
-  .w-full.sm\:w-auto.inline-flex:active {
-    transform: scale(0.96) !important;
-    opacity: 0.9;
-  }
-
-  /* Social Icons and minor links */
-  a.hover\:text-white:active,
-  a.hover\:text-cyan-400:active,
-  a.hover\:text-red-400:active {
-    transform: scale(0.9) !important;
-    background-color: rgba(255, 255, 255, 0.1) !important;
-  }
-
-  /* Interactive cards feedback (Skills, About, Services, Projects) */
-  .skill-card:active,
-  .abt-card:active,
-  .serv-card:active,
-  .project-card-anim:active {
-    transform: translateY(-2px) scale(0.99) !important;
-    border-color: rgba(34, 211, 238, 0.35) !important;
-    box-shadow: 0 10px 25px -5px rgba(34, 211, 238, 0.15) !important;
-  }
-
-  /* Ensure nested elements styled with group hover variant trigger on group active */
-  .group:active .group-hover\:scale-110 {
-    transform: scale(1.1) !important;
-  }
-
-  .group:active .group-hover\:scale-125 {
-    transform: scale(1.25) !important;
-  }
-
-  .group:active .group-hover\:text-cyan-400 {
-    color: #22d3ee !important;
-  }
-
-  .group:active .group-hover\:bg-cyan-500 {
-    background-color: #06b6d4 !important;
-    color: #0a0f1d !important;
-  }
-}
-
-/* ==========================================
-   Graphic Designer Page Custom Utilities
-   ========================================== */
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 25s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-/* Scroll-on-hover effect for browser frames */
-.browser-scroll-container {
+/* Images settle out of a slight overscale inside their own frame. */
+.frame {
   overflow: hidden;
   position: relative;
-  height: 280px;
+  background-color: var(--color-paper-tint);
 }
 
-.browser-scroll-image {
-  transition: transform 4s cubic-bezier(0.43, 0.13, 0.23, 0.96);
-  transform: translateY(0);
-  width: 100%;
-}
-
-.browser-scroll-container:hover .browser-scroll-image {
-  transform: translateY(calc(-100% + 280px));
-}
-
-/* Glassmorphism custom card for graphic design page */
-.studio-glass-panel {
-  background: rgba(26, 26, 26, 0.35);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.studio-glass-panel:hover {
-  border-color: rgba(210, 255, 0, 0.25);
-  background: rgba(26, 26, 26, 0.55);
-}
-
-/* Custom noise/paper texture overlay */
-.studio-noise-bg::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+.frame img {
+  display: block;
   width: 100%;
   height: 100%;
-  opacity: 0.02;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  z-index: 1;
+  object-fit: cover;
+  transform: scale(1.04);
+  transition: transform 1.2s var(--ease-settle);
 }
 
-/* Glassmorphism custom card for graphic design page (light mode) */
-.studio-glass-panel-light {
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(28, 28, 28, 0.08);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+.frame:hover img {
+  transform: scale(1.005);
 }
 
-.studio-glass-panel-light:hover {
-  border-color: rgba(28, 28, 28, 0.25);
-  background: rgba(255, 255, 255, 0.65);
+/* A link whose underline wipes in from the left rather than fading. */
+.link-wipe {
+  position: relative;
+  display: inline-block;
+}
+
+.link-wipe::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.55s var(--ease-settle);
+}
+
+.link-wipe:hover::after,
+.link-wipe:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* A link that already carries a rule, which retracts on hover. */
+.link-retract::after {
+  transform: scaleX(1);
+  transform-origin: right center;
+}
+
+.link-retract:hover::after {
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+/* Arrow glyphs nudge on hover; the parent carries .group. */
+.arrow {
+  display: inline-block;
+  transition: transform 0.5s var(--ease-settle);
+}
+
+.group:hover .arrow {
+  transform: translate(3px, -3px);
+}
+
+.group:hover .arrow-right {
+  transform: translateX(4px);
+}
+
+/* SplitText line masks */
+.line-mask {
+  overflow: hidden;
+  display: block;
+  padding-bottom: 0.06em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion [data-reveal],
+  .motion [data-reveal-child] > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .motion [data-rule] {
+    transform: none !important;
+  }
+
+  .motion [data-split] {
+    opacity: 1 !important;
+  }
+
+  .frame img,
+  .link-wipe::after,
+  .arrow {
+    transition: none !important;
+  }
 }

@@ -1,341 +1,329 @@
-import React, { useEffect, useRef } from "react";
-import SmartImage from "./SmartImage";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { projectsData } from "../data/projectsData";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
+import { Link, useParams, Navigate } from "react-router-dom";
 import { useGSAP } from "@gsap/react";
+import SmartImage from "./SmartImage";
 import SEO from "./SEO";
+import Footer from "./Footer";
+import { ArrowLeft, ArrowUpRight } from "./Icon";
+import { projectsData } from "../data/projectsData";
+import {
+  gsap,
+  EASE,
+  reveal,
+  drawRule,
+  revealLines,
+  parallax,
+  fontsReady,
+  prefersReducedMotion,
+} from "../lib/motion";
 
-gsap.registerPlugin(ScrollTrigger);
+/* A masked plate that lifts off any image as it arrives. The single move the
+   whole site is built on, reused here so the case study feels like the
+   same hand as the index. */
+function Plate({ src, alt, sizes, ratio = "aspect-[16/10]", priority = false }) {
+  return (
+    <div data-plate className={`frame relative w-full ${ratio}`}>
+      <SmartImage
+        data-plate-image
+        src={src}
+        sizes={sizes}
+        alt={alt}
+        width="1400"
+        height="875"
+        loading={priority ? undefined : "lazy"}
+        fetchPriority={priority ? "high" : undefined}
+        decoding="async"
+        className="h-full w-full object-cover"
+      />
+      <span data-mask className="absolute inset-0 z-10 block bg-paper" />
+    </div>
+  );
+}
 
 function ProjectDetail() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const pageRef = useRef(null);
+  const titleRef = useRef(null);
+  const heroImageRef = useRef(null);
 
-  // Find current project
-  const projectIndex = projectsData.findIndex((p) => p.id === id);
-  const project = projectsData[projectIndex];
-
-  // Scroll to top on load/change
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id]);
+  const index = projectsData.findIndex((item) => item.id === id);
+  const project = projectsData[index];
+  const next = projectsData[(index + 1) % projectsData.length];
 
   useGSAP(
     () => {
-      if (!project) return;
+      if (!project || prefersReducedMotion()) return;
 
-      // Hero animations
-      gsap.fromTo(
-        ".hero-title-anim",
-        { opacity: 0, y: 60 },
-        { opacity: 1, y: 0, duration: 1, ease: "power4.out" },
-      );
-      gsap.fromTo(
-        ".hero-subtitle-anim",
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: "power4.out" },
-      );
-
-      // Section reveal animations
-      const sections = gsap.utils.toArray(".reveal-section");
-      sections.forEach((sec) => {
-        gsap.from(sec, {
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: sec,
-            start: "top 85%",
-            once: true,
-          },
-        });
+      let revert = () => {};
+      fontsReady().then(() => {
+        revert = revealLines(titleRef.current, { delay: 0.1, stagger: 0.08 });
       });
+
+      reveal("[data-detail-eyebrow]", { trigger: pageRef.current, delay: 0.05, scope: pageRef.current });
+      reveal("[data-detail-lead]", { delay: 0.45, trigger: pageRef.current, scope: pageRef.current });
+      reveal("[data-meta]", { delay: 0.55, stagger: 0.08, y: 10, trigger: pageRef.current, scope: pageRef.current });
+      drawRule("[data-rule]", { scope: pageRef.current });
+      reveal("[data-copy] > *", { stagger: 0.1, trigger: "[data-copy]", scope: pageRef.current });
+
+      /* Plates below the fold reveal on their own trigger; the hero plate
+         plays immediately on load instead of waiting to be scrolled into. */
+      gsap.utils.toArray("[data-plate]").forEach((plate, plateIndex) => {
+        const isHero = plateIndex === 0;
+        const trigger = isHero
+          ? null
+          : { trigger: plate, start: "top 88%", once: true };
+
+        gsap.fromTo(
+          plate.querySelector("[data-mask]"),
+          { yPercent: 0 },
+          {
+            yPercent: -101,
+            duration: 1.4,
+            ease: EASE,
+            delay: isHero ? 0.3 : 0,
+            ...(trigger ? { scrollTrigger: trigger } : {}),
+          },
+        );
+        gsap.fromTo(
+          plate.querySelector("[data-plate-image]"),
+          { scale: 1.12 },
+          {
+            scale: 1,
+            duration: 1.7,
+            ease: EASE,
+            delay: isHero ? 0.3 : 0,
+            ...(trigger ? { scrollTrigger: trigger } : {}),
+          },
+        );
+      });
+
+      parallax(heroImageRef.current, { amount: 6 });
+
+      return () => revert();
     },
     { scope: pageRef, dependencies: [id] },
   );
 
-  if (!project) {
-    return (
-      <div className="min-h-screen bg-pearl text-ocean flex flex-col items-center justify-center p-6 text-center">
-        <h2 className="font-syne text-4xl font-black mb-4">
-          CASE STUDY NOT FOUND
-        </h2>
-        <p className="text-ocean/60 max-w-sm mb-8">
-          The project you are looking for doesn't exist or has been moved.
-        </p>
-        <Link
-          to="/portfolio"
-          className="bg-ocean text-pearl font-bold px-8 py-3.5 rounded-full hover:shadow-lg transition-all duration-300 no-underline text-xs"
-        >
-          BACK TO PORTFOLIO
-        </Link>
-      </div>
-    );
-  }
+  if (!project) return <Navigate to="/portfolio" replace />;
 
-  // Get previous and next projects
-  const prevProject =
-    projectsData[
-      projectIndex === 0 ? projectsData.length - 1 : projectIndex - 1
-    ];
-  const nextProject =
-    projectsData[
-      projectIndex === projectsData.length - 1 ? 0 : projectIndex + 1
-    ];
+  const gallery = project.carouselImages || [];
+  const designs = project.designsImages || [];
 
   return (
-    <div
-      ref={pageRef}
-      className="min-h-screen bg-pearl font-outfit text-ocean studio-noise-bg  relative overflow-x-hidden pt-12 pb-24 selection:bg-pearl selection:text-ocean"
-    >
+    <div ref={pageRef} className="min-h-screen">
       <SEO
-        title={project.title}
-        description={project.description || project.aboutBrandText}
-        image={project.thumbnail}
+        title={`${project.title} — ${project.category}`}
+        description={project.description}
         url={`/portfolio/${project.id}`}
+        image={project.thumbnail}
       />
-      {/* Studio Header Nav */}
-      <header className="max-w-7xl mx-auto px-6 md:px-12 flex justify-end items-center py-6 border-b border-ocean/5 relative z-20">
-        <Link
-          to="/portfolio"
-          className="text-[10px] font-mono tracking-wider uppercase border border-ocean/25 px-4 py-2 rounded-full hover:bg-ocean hover:text-pearl hover:border-ocean transition-all duration-300 no-underline text-ocean"
-        >
-          ← Portfolio Index
-        </Link>
-      </header>
 
-      {/* Hero Exhibition Banner (Full height/width header banner overlay) */}
-      <section className="relative w-full h-[50vh] md:h-[65vh] overflow-hidden flex items-end justify-center py-16 px-6">
-        <div className="absolute inset-0 z-0">
-          <SmartImage
-            src={project.heroImage}
-            sizes="100vw"
-            alt={`${project.title} Hero Showcase`}
-            fetchpriority="high"
-            decoding="async"
-            className="w-full h-full object-cover brightness-[0.5]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-pearl/50 via-transparent to-ocean/30"></div>
-        </div>
+      {/* Title block */}
+      <header className="px-6 pt-32 md:px-10 md:pt-40 lg:px-16">
+        <div className="mx-auto max-w-[1400px]">
+          <Link
+            to="/portfolio"
+            className="group inline-flex items-center gap-2 text-sm text-muted no-underline transition-colors duration-300 hover:text-ink"
+          >
+            <ArrowLeft size={15} className="arrow" />
+            <span className="link-wipe">All work</span>
+          </Link>
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <span className="hero-subtitle-anim inline-block text-xs font-mono text-pearl bg-ocean/80 px-3.5 py-1.5 rounded-full border border-white/20 uppercase tracking-widest mb-4">
+          <span data-detail-eyebrow className="eyebrow mt-12 block">
             {project.category}
           </span>
-          <h1 className="hero-title-anim text-4xl md:text-7xl font-black uppercase text-white font-playwrite leading-relaxed drop-shadow-md">
+
+          <h1
+            ref={titleRef}
+              data-split
+            className="display mt-4 max-w-4xl text-[12vw] leading-[0.98] sm:text-[8vw] lg:text-[5.2vw]"
+          >
             {project.title}
           </h1>
+
+          <p
+            data-detail-lead
+            className="mt-8 max-w-xl text-[1.0625rem] leading-[1.8] text-ink-soft"
+          >
+            {project.description}
+          </p>
+
+          <dl className="mt-14 grid grid-cols-2 gap-8 border-t border-line pt-6 sm:grid-cols-4">
+            <div data-meta>
+              <dt className="eyebrow">Discipline</dt>
+              <dd className="mt-2 text-[0.9375rem]">{project.category}</dd>
+            </div>
+            <div data-meta>
+              <dt className="eyebrow">Scope</dt>
+              <dd className="mt-2 text-[0.9375rem]">
+                {project.subtitle || "Identity & layout"}
+              </dd>
+            </div>
+            <div data-meta>
+              <dt className="eyebrow">Role</dt>
+              <dd className="mt-2 text-[0.9375rem]">Design & art direction</dd>
+            </div>
+            <div data-meta>
+              <dt className="eyebrow">Year</dt>
+              <dd className="mt-2 text-[0.9375rem]">2026</dd>
+            </div>
+          </dl>
+        </div>
+      </header>
+
+      {/* Hero plate */}
+      <section className="mt-14 px-6 md:mt-20 md:px-10 lg:px-16">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="frame relative aspect-[16/9] w-full overflow-hidden">
+            <div
+              ref={heroImageRef}
+              data-plate
+              className="absolute inset-x-0 top-[-6%] h-[112%]"
+            >
+              <SmartImage
+                data-plate-image
+                src={project.heroImage}
+                sizes="100vw"
+                alt={`${project.title} — cover`}
+                width="1600"
+                height="900"
+                fetchPriority="high"
+                decoding="async"
+                className="h-full w-full object-cover"
+              />
+              <span
+                data-mask
+                className="absolute inset-0 z-10 block bg-paper"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Section 1: About the Brand */}
-      <section className="reveal-section max-w-7xl mx-auto px-6 md:px-12 py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Sketchbook / Illustration on Left */}
-        <div className="lg:col-span-5 flex justify-center">
-          <div className="w-full max-w-md bg-white p-4 rounded-3xl border border-ocean/10 shadow-[0_12px_40px_rgba(0,0,0,0.06)] overflow-hidden">
-            <SmartImage
-              src={project.aboutBrandImg}
-              sizes="(min-width: 1024px) 40vw, 100vw"
-              alt={`About ${project.title}`}
-              width="400"
-              height="300"
-              loading="lazy"
-              decoding="async"
-              className="w-full aspect-[4/3] object-cover rounded-2xl shadow-sm transition-transform duration-500 hover:scale-103"
+      {/* The brief */}
+      <section className="px-6 py-24 md:px-10 md:py-32 lg:px-16">
+        <div className="mx-auto max-w-[1400px]">
+          <div data-rule className="rule" />
+          <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <span className="eyebrow">The brief</span>
+            </div>
+            <div data-copy className="lg:col-span-7">
+              <p className="max-w-xl text-[1.25rem] leading-[1.7] text-ink">
+                {project.aboutBrandText}
+              </p>
+            </div>
+          </div>
+
+          {project.aboutBrandImg && (
+            <div className="mt-16 grid grid-cols-1 lg:grid-cols-12">
+              <div className="lg:col-span-10 lg:col-start-3">
+                <Plate
+                  src={project.aboutBrandImg}
+                  alt={`${project.title} — brand study`}
+                  sizes="(min-width: 1024px) 80vw, 100vw"
+                  ratio="aspect-[16/10]"
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* The work */}
+      <section className="px-6 pb-24 md:px-10 md:pb-32 lg:px-16">
+        <div className="mx-auto max-w-[1400px]">
+          <div data-rule className="rule" />
+          <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <span className="eyebrow">The work</span>
+            </div>
+            <div data-copy className="lg:col-span-7">
+              <p className="max-w-xl text-[1.0625rem] leading-[1.8] text-ink-soft">
+                {project.designsText}
+              </p>
+            </div>
+          </div>
+
+          {designs.length > 0 && (
+            <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-10">
+              {designs.map((image, i) => (
+                <Plate
+                  key={image + i}
+                  src={image}
+                  alt={`${project.title} — design ${i + 1}`}
+                  sizes="(min-width: 768px) 48vw, 100vw"
+                  ratio="aspect-[4/3]"
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Gallery */}
+      {gallery.length > 0 && (
+        <section className="px-6 pb-24 md:px-10 md:pb-32 lg:px-16">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-10">
+              {gallery.map((image, i) => (
+                <div
+                  key={image + i}
+                  className={
+                    i % 3 === 0
+                      ? "md:col-span-7"
+                      : i % 3 === 1
+                        ? "md:col-span-5 md:pt-16"
+                        : "md:col-span-12"
+                  }
+                >
+                  <Plate
+                    src={image}
+                    alt={`${project.title} — artefact ${i + 1}`}
+                    sizes="(min-width: 768px) 55vw, 100vw"
+                    ratio={i % 3 === 2 ? "aspect-[16/9]" : "aspect-[4/3]"}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Closing banner */}
+      {project.fullBannerImg && (
+        <section className="px-6 pb-24 md:px-10 md:pb-32 lg:px-16">
+          <div className="mx-auto max-w-[1400px]">
+            <Plate
+              src={project.fullBannerImg}
+              alt={`${project.title} — final application`}
+              sizes="100vw"
+              ratio="aspect-[21/9]"
             />
           </div>
-        </div>
-        {/* Brand Text on Right */}
-        <div className="lg:col-span-7 space-y-6">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-ocean"></span>
-            <span className="font-mono text-xs text-ocean font-bold uppercase tracking-widest">
-              [ THE BRIEF ]
-            </span>
-          </div>
-          <h2 className="font-syne text-3xl font-playwrite md:text-3xl font-semibold  uppercase leading-16 text-ocean">
-            About {project.title}
-          </h2>
-          <p className="text-ocean/80 leading-relaxed text-lg text-justify">
-            {project.aboutBrandText}
-          </p>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Section 2: Twin Mockup Images Side-by-Side */}
-      <section className="reveal-section max-w-7xl mx-auto px-6 md:px-12 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {project.designsImages.map((img, idx) => (
-            <div
-              key={idx}
-              className="overflow-hidden rounded-3xl border border-ocean/10 shadow-lg aspect-[16/10] bg-pearl"
-            >
-              <SmartImage
-                src={img}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                alt={`${project.title} design showcase ${idx + 1}`}
-                width="600"
-                height="375"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Section 3: About the Designs */}
-      <section className="reveal-section max-w-7xl mx-auto px-6 md:px-12 py-20 text-center space-y-6">
-        <div className="flex items-center justify-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-brown"></span>
-          <span className="font-mono text-xs text-brown font-bold uppercase tracking-widest">
-            [ DESIGN CONCEPT ]
-          </span>
-        </div>
-        <h2 className="font-syne text-2xl font-playwrite md:text-4xl font-semibold uppercase text-ocean leading-relaxed max-w-3xl mx-auto">
-          About the designs
-        </h2>
-        <p className="text-ocean/70 text-lg max-w-3xl mx-auto leading-relaxed text-justify md:text-center">
-          {project.designsText}
-        </p>
-      </section>
-
-      {/* Section 4: Scrollable Showcase Carousel */}
-      <section className="reveal-section w-full bg-pearl py-16 overflow-hidden border-y border-ocean/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8">
-          <span className="font-mono text-[10px] text-ocean/50 font-bold uppercase tracking-widest block mb-1">
-            [ SHOWCASE GALLERY ]
-          </span>
-          <h3 className="text-xl font-bold text-ocean">
-            Visual Artifacts
-          </h3>
-        </div>
-        <div className="flex gap-6 overflow-x-auto pb-8 px-6 md:px-12 max-w-7xl mx-auto scrollbar-thin">
-          {project.carouselImages.map((img, idx) => (
-            <div
-              key={idx}
-              className="flex-shrink-0 w-120  aspect-[4/3] bg-white rounded-2xl border border-ocean/10 overflow-hidden shadow-md group"
-            >
-              <SmartImage
-                src={img}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                alt={`${project.title} gallery artifact ${idx + 1}`}
-                width="480"
-                height="360"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Section 5: Kind Words Testimonial */}
-      {/* <section className="reveal-section max-w-5xl mx-auto px-6 py-24 text-center">
-        <div className="w-12 h-12 rounded-full bg-[#5D768B] text-white flex items-center justify-center mx-auto mb-6 text-xl">
-          <i className="fa-solid fa-quote-left"></i>
-        </div>
-        <h3 className="font-serif-editorial italic text-3xl md:text-5xl text-[#c2593f] leading-snug mb-6 max-w-3xl mx-auto">
-          "{project.testimonial.quote}"
-        </h3>
-        <span className="font-mono text-xs uppercase tracking-wider text-ocean/60">
-          — {project.testimonial.author}
-        </span>
-      </section> */}
-
-      {/* Section 6: Logo Grid and Icons */}
-      {/* <section className="reveal-section max-w-7xl mx-auto px-6 md:px-12 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border-t border-ocean/10">
-        <div className="lg:col-span-5 grid grid-cols-3 gap-6">
-          {project.brandIcons.map((iconClass, idx) => (
-            <div
-              key={idx}
-              className="aspect-square bg-white border border-ocean/10 rounded-2xl flex items-center justify-center text-3xl text-[#5D768B] hover:text-[#c2593f] hover:border-[#c2593f]/30 hover:scale-105 transition-all duration-300 shadow-sm"
-            >
-              <i className={iconClass}></i>
-            </div>
-          ))}
-        </div>
-        <div className="lg:col-span-7 space-y-6">
-          <h3 className="font-syne text-3xl font-black uppercase text-ocean">
-            Visual Tokens
-          </h3>
-          <p className="text-ocean/70 text-xs md:text-sm leading-relaxed font-sans">
-            Every icon, vector glyph, and graphic component represents a
-            deliberate brick in the cohesive brand architecture. The grid to the
-            left illustrates variations designed to remain clear and functional
-            at any scale, from favicon codes to billboard sizing.
-          </p>
-        </div>
-      </section> */}
-
-      {/* Section 7: Bottom Action CTA */}
-      <section className="reveal-section w-full py-20 px-6 text-center border-t border-ocean/10 bg-brown/60 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-light bg-dots-light opacity-20 pointer-events-none"></div>
-        <div className="max-w-2xl mx-auto space-y-6 relative z-10">
-          <span className="font-mono text-sm text-pearl/90 leading-10 font-bold uppercase tracking-widest">
-            COLLABORATE WITH DHRUTI
-          </span>
-          <h2 className="text-3xl md:text-5xl font-playwrite mt-5 font-black text-pearl uppercase leading-none">
-            Like what you see?
-          </h2>
-          <p className="text-pearl leading-relaxed">
-            Let's work together to bring your brand to life with premium visual
-            design grids and high-fidelity interfaces.
-          </p>
+      {/* Next */}
+      <section className="px-6 pb-24 md:px-10 md:pb-32 lg:px-16">
+        <div className="mx-auto max-w-[1400px]">
+          <div data-rule className="rule" />
           <Link
-            to="/#contact"
-            className="inline-flex items-center justify-center gap-2 bg-brown text-pearl font-bold px-8 py-3.5 rounded-full transition-all duration-300 hover:shadow-lg font-playwrite hover:scale-102 cursor-pointer no-underline text-xs"
+            to={`/portfolio/${next.id}`}
+            className="group flex flex-col gap-4 pt-10 no-underline sm:flex-row sm:items-end sm:justify-between"
           >
-            <span>LET'S WORK TOGETHER</span>
-            <i className="fa-solid fa-paper-plane text-[15px]"></i>
+            <div>
+              <span className="eyebrow">Next project</span>
+              <h2 className="display mt-3 text-[10vw] leading-tight text-ink sm:text-[6vw] lg:text-[3.6vw]">
+                {next.title}
+              </h2>
+            </div>
+            <ArrowUpRight size={28} className="arrow text-muted" />
           </Link>
         </div>
       </section>
 
-      {/* Section 8: Large Full Width Banner Image */}
-      <section className="reveal-section w-full h-[300px] md:h-[450px] overflow-hidden relative">
-        <SmartImage
-          src={project.fullBannerImg}
-          sizes="100vw"
-          alt={`${project.title} Full Banner`}
-          loading="lazy"
-          decoding="async"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/10"></div>
-      </section>
-
-      {/* Section 9: Case Study Prev/Next Navigation Controls */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 py-12 flex justify-between items-center border-t border-ocean/10 mt-12 select-none">
-        <Link
-          to={`/portfolio/${prevProject.id}`}
-          className="group flex flex-col text-left no-underline text-ocean"
-        >
-          <span className="text-[10px] font-mono tracking-wider uppercase text-ocean/50 group-hover:text-[#5D768B] transition-colors">
-            ← Previous Case Study
-          </span>
-          <span className="font-syne font-bold text-base md:text-lg group-hover:text-[#5D768B] transition-colors">
-            {prevProject.title}
-          </span>
-        </Link>
-
-        <Link
-          to={`/portfolio/${nextProject.id}`}
-          className="group flex flex-col text-right no-underline text-ocean"
-        >
-          <span className="text-[10px] font-mono tracking-wider uppercase text-ocean/50 group-hover:text-[#5D768B] transition-colors">
-            Next Case Study →
-          </span>
-          <span className="font-outfit font-bold text-base md:text-lg group-hover:text-[#5D768B] transition-colors">
-            {nextProject.title}
-          </span>
-        </Link>
-      </section>
+      <Footer />
     </div>
   );
 }

@@ -1,154 +1,118 @@
-import React from "react";
-import { Link } from "react-scroll";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { useGSAP } from "@gsap/react";
+import { Github, Linkedin, Instagram } from "./Icon";
+import { drawRule, reveal, prefersReducedMotion } from "../lib/motion";
+import { useScrollTo } from "../lib/scroll";
+
+const socials = [
+  { label: "GitHub", href: "https://github.com/KanthariaDhruti", Icon: Github },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/dhruti-kantharia-759700255/",
+    Icon: Linkedin,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/designed.by.dhruti/?hl=en",
+    Icon: Instagram,
+  },
+];
+
+const sections = [
+  { label: "Work", id: "work" },
+  { label: "About", id: "about" },
+  { label: "Experience", id: "experience" },
+  { label: "Services", id: "services" },
+  { label: "Contact", id: "contact" },
+];
 
 function Footer() {
-  const currentYear = new Date().getFullYear();
+  const footerRef = useRef(null);
+  const scrollTo = useScrollTo();
+
+  useGSAP(
+    () => {
+      if (prefersReducedMotion()) return;
+      drawRule("[data-rule]", { scope: footerRef.current });
+      reveal("[data-footer-item]", { stagger: 0.07, y: 10, trigger: footerRef.current, scope: footerRef.current });
+    },
+    { scope: footerRef },
+  );
 
   return (
-    <footer className="bg-[#C49A6C] font-outfit border-t border-navy-300/40 py-8 sm:py-10 px-5 sm:px-8 lg:px-12 text-pearl">
-      
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-8 md:gap-12">
-        
-        {/* Logo / Brand */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <Link
-            to="home"
-            smooth={true}
-            duration={500}
-            className="cursor-pointer no-underline flex items-center"
-          >
-            <img
-              src="/monogram-white.webp"
-              alt="Dhruti Kantharia monogram logo"
-              width="140"
-              height="140"
-              loading="lazy"
-              decoding="async"
-              className="h-24 sm:h-28 md:h-32 lg:h-35 mb-3 sm:mb-4 object-contain"
-            />
-          </Link>
+    <footer ref={footerRef} className="px-6 pb-10 md:px-10 lg:px-16">
+      <div className="mx-auto max-w-[1400px]">
+        <div data-rule className="rule" />
 
-          <p className="mt-1 text-sm sm:text-base leading-relaxed">
-            Dhruti Kantharia <br />
-            Designing with passion
-          </p>
-        </div>
+        <div className="grid grid-cols-1 gap-10 pt-12 sm:grid-cols-12">
+          <div data-footer-item className="sm:col-span-5">
+            <p className="display text-3xl">Dhruti Kantharia</p>
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
+              Graphic designer and web developer working with brands that would
+              rather be understood than noticed.
+            </p>
+          </div>
 
-        {/* Navigation + Socials */}
-        <div className="flex flex-col items-center md:items-end w-full md:w-auto">
-          
-          {/* Quick Links */}
-          <nav className="flex flex-wrap justify-center md:justify-end gap-x-4 gap-y-3 sm:gap-x-5 text-[10px] sm:text-xs uppercase tracking-widest font-semibold max-w-xl">
-            
-            <Link
-              to="home"
-              smooth={true}
-              duration={500}
-              className="hover:text-navy-900 transition duration-300 cursor-pointer"
-            >
-              Home
-            </Link>
-
-            <Link
-              to="about"
-              smooth={true}
-              duration={500}
-              offset={-50}
-              className="hover:text-navy-900 transition duration-300 cursor-pointer"
-            >
-              About
-            </Link>
-
-            <Link
-              to="experience"
-              smooth={true}
-              duration={500}
-              offset={-50}
-              className="hover:text-navy-900 transition duration-300 cursor-pointer"
-            >
-              Experience
-            </Link>
-
-            <Link
-              to="skills"
-              smooth={true}
-              duration={500}
-              offset={-50}
-              className="hover:text-navy-900 transition duration-300 cursor-pointer"
-            >
-              Skills
-            </Link>
-
-            <Link
-              to="projects"
-              smooth={true}
-              duration={500}
-              offset={-50}
-              className="hover:text-navy-900 transition duration-300 cursor-pointer"
-            >
-              Projects
-            </Link>
-
-            <Link
-              to="services"
-              smooth={true}
-              duration={500}
-              offset={-50}
-              className="hover:text-navy-900 transition duration-300 cursor-pointer"
-            >
-              Services
-            </Link>
-
-            <Link
-              to="contact"
-              smooth={true}
-              duration={500}
-              offset={-50}
-              className="hover:text-navy-900 transition duration-300 cursor-pointer"
-            >
-              Contact
-            </Link>
+          <nav data-footer-item className="sm:col-span-3">
+            <span className="eyebrow">Sections</span>
+            <ul className="mt-4 space-y-2">
+              {sections.map((section) => (
+                <li key={section.id}>
+                  <button
+                    type="button"
+                    onClick={() => scrollTo(`#${section.id}`, { offset: -80 })}
+                    className="link-wipe cursor-pointer bg-transparent p-0 text-sm text-ink-soft transition-colors duration-300 hover:text-ink"
+                  >
+                    {section.label}
+                  </button>
+                </li>
+              ))}
+              <li>
+                <Link
+                  to="/portfolio"
+                  className="link-wipe text-sm text-ink-soft no-underline transition-colors duration-300 hover:text-ink"
+                >
+                  All work
+                </Link>
+              </li>
+            </ul>
           </nav>
 
-          {/* Social Icons */}
-          <div className="flex items-center justify-center md:justify-end gap-6 text-lg mt-5">
-            
-            <a
-              href="https://github.com/KanthariaDhruti"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-navy-900 transition-colors duration-300"
-              title="GitHub"
-            >
-              <i className="fa-brands fa-github"></i>
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/dhruti-kantharia-759700255/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-navy-900 transition-colors duration-300"
-              title="LinkedIn"
-            >
-              <i className="fa-brands fa-linkedin"></i>
-            </a>
-
-            <a
-              href="mailto:your-email@example.com"
-              className="hover:text-navy-900 transition-colors duration-300"
-              title="Email"
-            >
-              <i className="fa-solid fa-envelope"></i>
-            </a>
+          <div data-footer-item className="sm:col-span-4">
+            <span className="eyebrow">Elsewhere</span>
+            <div className="mt-4 flex items-center gap-5">
+              {socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="text-muted transition-colors duration-300 hover:text-ink"
+                >
+                  <social.Icon size={20} />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Copyright */}
-      <div className="border-t border-pearl/20 mt-7 pt-5 text-center font-medium text-xs sm:text-sm">
-        <p>
-          © {currentYear} Dhruti Kantharia. All rights reserved.
-        </p>
+        <div
+          data-footer-item
+          className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6"
+        >
+          <p className="eyebrow">
+            © {new Date().getFullYear()} Dhruti Kantharia
+          </p>
+          <button
+            type="button"
+            onClick={() => scrollTo(0)}
+            className="eyebrow link-wipe cursor-pointer bg-transparent p-0 transition-colors duration-300 hover:text-ink"
+          >
+            Back to top
+          </button>
+        </div>
       </div>
     </footer>
   );
