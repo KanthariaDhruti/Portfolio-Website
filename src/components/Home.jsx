@@ -121,11 +121,11 @@ function Home() {
             Graphic Designer <span className="text-brown">&</span> Web Developer
           </h2>
 
-          <p className="text-ocean font-outfit text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl text-justify md:text-left">
+          {/* <p className="text-ocean font-outfit text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl text-justify md:text-left">
             I turn creative thoughts into responsive, clean code and visually
             stunning interactive web designs. Blending technical accuracy with
             strong layout aesthetics to craft unforgettable digital journeys.
-          </p>
+          </p> */}
 
           {/* Interactive Buttons */}
           <div

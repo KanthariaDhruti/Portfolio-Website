@@ -41,7 +41,7 @@ function About() {
         scrollTrigger: {
           trigger: headingRef.current,
           start: "top 85%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
         },
       });
 
@@ -58,7 +58,7 @@ function About() {
           scrollTrigger: {
             trigger: textSectionRef.current,
             start: "top 80%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
           opacity: 1,
           x: 0,
@@ -76,7 +76,7 @@ function About() {
             scrollTrigger: {
               trigger: cardsRef.current,
               start: "top 80%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
             opacity: 1,
             y: 0,
@@ -119,7 +119,7 @@ function About() {
           {/* Left Text Block */}
           <div
             ref={textSectionRef}
-            className="w-full lg:w-1/2 flex flex-col justify-center space-y-6"
+            className="w-full  flex flex-col justify-center space-y-6"
           >
             <h3 className="text-2xl font-bold font-playwrite text-navy-900">
               Hi, I'm <span className="text-brown">Dhruti Kantharia</span>
@@ -150,7 +150,7 @@ function About() {
           </div>
 
           {/* Right Cards Grid */}
-          <div className="w-full lg:w-1/2 flex items-center">
+          {/* <div className="w-full lg:w-1/2 flex items-center">
             <div
               ref={cardsRef}
               className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full"
@@ -172,7 +172,7 @@ function About() {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
