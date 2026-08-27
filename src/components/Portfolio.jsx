@@ -144,7 +144,7 @@ function Portfolio() {
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center border-b border-ocean/10 anim-section">
         {/* Logos Grid on Left */}
         <div className="lg:col-span-6 grid grid-cols-3 gap-6">
-          {["/icon-frame.webp", "/whisk-and-crumb-logo.webp"].map((icon, idx) => (
+          {["/icon-frame.webp"].map((icon, idx) => (
             <div
               key={idx}
               className="aspect-square bg-white border border-ocean/5 rounded-2xl flex items-center justify-center text-2xl text-[#4a3b32] hover:text-[#5D768B] transition-colors duration-300 shadow-sm"
