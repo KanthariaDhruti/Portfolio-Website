@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import SmartImage from "./SmartImage";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { projectsData } from "../data/projectsData";
 import { gsap } from "gsap";
@@ -109,8 +110,9 @@ function ProjectDetail() {
       {/* Hero Exhibition Banner (Full height/width header banner overlay) */}
       <section className="relative w-full h-[50vh] md:h-[65vh] overflow-hidden flex items-end justify-center py-16 px-6">
         <div className="absolute inset-0 z-0">
-          <img 
+          <SmartImage
             src={project.heroImage}
+            sizes="100vw"
             alt={`${project.title} Hero Showcase`}
             fetchpriority="high"
             decoding="async"
@@ -134,8 +136,9 @@ function ProjectDetail() {
         {/* Sketchbook / Illustration on Left */}
         <div className="lg:col-span-5 flex justify-center">
           <div className="w-full max-w-md bg-white p-4 rounded-3xl border border-ocean/10 shadow-[0_12px_40px_rgba(0,0,0,0.06)] overflow-hidden">
-            <img
+            <SmartImage
               src={project.aboutBrandImg}
+              sizes="(min-width: 1024px) 40vw, 100vw"
               alt={`About ${project.title}`}
               width="400"
               height="300"
@@ -170,8 +173,9 @@ function ProjectDetail() {
               key={idx}
               className="overflow-hidden rounded-3xl border border-ocean/10 shadow-lg aspect-[16/10] bg-pearl"
             >
-              <img
+              <SmartImage
                 src={img}
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 alt={`${project.title} design showcase ${idx + 1}`}
                 width="600"
                 height="375"
@@ -216,8 +220,9 @@ function ProjectDetail() {
               key={idx}
               className="flex-shrink-0 w-120  aspect-[4/3] bg-white rounded-2xl border border-ocean/10 overflow-hidden shadow-md group"
             >
-              <img
+              <SmartImage
                 src={img}
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 alt={`${project.title} gallery artifact ${idx + 1}`}
                 width="480"
                 height="360"
@@ -294,8 +299,9 @@ function ProjectDetail() {
 
       {/* Section 8: Large Full Width Banner Image */}
       <section className="reveal-section w-full h-[300px] md:h-[450px] overflow-hidden relative">
-        <img
+        <SmartImage
           src={project.fullBannerImg}
+          sizes="100vw"
           alt={`${project.title} Full Banner`}
           loading="lazy"
           decoding="async"

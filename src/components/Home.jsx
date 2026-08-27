@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import SmartImage from "./SmartImage";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Link } from "react-scroll";
@@ -201,8 +202,9 @@ function Home() {
             <div className="absolute inset-0 rounded-full scale-[0.985]"></div>
 
             {/* Real profile image */}
-            <img
+            <SmartImage
               src="/dhrutiImg1.jpg"
+              sizes="350px"
               alt="Dhruti Kantharia - Graphic Designer & Web Developer"
               width="350"
               height="350"

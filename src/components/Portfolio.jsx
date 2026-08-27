@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import SmartImage from "./SmartImage";
 import { Link } from "react-router-dom";
 import { projectsData } from "../data/projectsData";
 import { gsap } from "gsap";
@@ -71,7 +72,7 @@ function Portfolio() {
       <header className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center py-6 border-b border-ocean/10 relative z-20">
         <Link to="/">
           <img
-            src="/logo-color.png"
+            src="/logo-color.webp"
             alt="Dhruti Kantharia Studio Logo"
             height="40"
             decoding="async"
@@ -114,6 +115,7 @@ function Portfolio() {
               <div className="w-full aspect-[16/10] overflow-hidden rounded-3l bg-pearl shadow-sm transition-shadow duration-300 group-hover:shadow-md">
                 <img
                   src={project.thumbnail}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   alt={project.title}
                   width="600"
                   height="375"
@@ -142,7 +144,7 @@ function Portfolio() {
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center border-b border-ocean/10 anim-section">
         {/* Logos Grid on Left */}
         <div className="lg:col-span-6 grid grid-cols-3 gap-6">
-          {["/icon-frame.png"].map((icon, idx) => (
+          {["/icon-frame.webp", "/whisk-and-crumb-logo.webp"].map((icon, idx) => (
             <div
               key={idx}
               className="aspect-square bg-white border border-ocean/5 rounded-2xl flex items-center justify-center text-2xl text-[#4a3b32] hover:text-[#5D768B] transition-colors duration-300 shadow-sm"
