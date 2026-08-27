@@ -39,7 +39,7 @@ function Projects() {
     },
     // {
     //   img: "/whisk-branding.png",
-    //   head: "Whisk & Crumb Brand Identity",
+    //   head: "Butter and Bloom Brand Identity",
     //   desc: "A warm and playful bakery brand identity designed to create a cohesive visual presence across packaging, print, and digital touchpoints.",
     //   techSpan: ["Figma", "Illustrator", "InDesign"],
     //   type: "branding",
@@ -58,14 +58,14 @@ function Projects() {
       techSpan: ["Figma"],
       type: "Social Media Carousel",
     },
-    {
-      img: "/Wanderlust.png",
-      head: "Wanderlust – Explore Stays",
-      desc: "A travel platform prototype offering responsive listings and a sleek user interface for discoverability and hotel bookings.",
-      techSpan: ["MERN Stack", "Tailwind CSS", "Express"],
-      link: "https://github.com/KanthariaDhruti/WanderLust",
-      urlDesc: "View Code",
-    },
+    // {
+    //   img: "/Wanderlust.png",
+    //   head: "Wanderlust – Explore Stays",
+    //   desc: "A travel platform prototype offering responsive listings and a sleek user interface for discoverability and hotel bookings.",
+    //   techSpan: ["MERN Stack", "Tailwind CSS", "Express"],
+    //   link: "https://github.com/KanthariaDhruti/WanderLust",
+    //   urlDesc: "View Code",
+    // },
     {
       img: "/fashion-m/mag1.png",
       head: "Fashion Editorial Concept",
@@ -86,7 +86,7 @@ function Projects() {
             scrollTrigger: {
               trigger: cardsRef.current,
               start: "top 80%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
             opacity: 1,
             y: 0,
@@ -136,16 +136,16 @@ function Projects() {
         {/* Project Cards Grid */}
         <div
           ref={cardsRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 items-stretch"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-15 mb-20 items-stretch"
         >
           {projectsData.map((project, index) => (
             <div
               key={index}
               onClick={(e) => handleCardClick(e, index)}
-              className={`project-card-anim group relative overflow-hidden rounded-3xl bg-pearl border transition-all duration-500 flex flex-col h-[400px] cursor-pointer ${
+              className={`project-card-anim group relative overflow-hidden rounded-3x bg-pearl bordr transition-all duration-500 flex flex-col h-auto cursor-pointer ${
                 activeCardIndex === index
                   ? "shadow-2xl -translate-y-2 border-ocean/50"
-                  : "border-ocean/20 shadow-md hover:shadow-2xl hover:-translate-y-2"
+                  : "border-ocean/20 shadowmd hover:shadow-lg hover:-translate-y-2"
               }`}
             >
               {/* Image Side */}
@@ -169,7 +169,7 @@ function Projects() {
               </div>
 
               {/* Lower Info Area (Visible before hover) */}
-              <div className="p-6 flex flex-col justify-between flex-1 text-left">
+              <div className="mt-3 flex flex-col justify-between flex-1 text-left">
                 <div>
                   <h3 className="text-lg font-playwrite font-bold transition-colors line-clamp-1 mb-2">
                     {project.head}
@@ -178,11 +178,11 @@ function Projects() {
                     {project.desc}
                   </p>
                 </div>
-                <div className="flex flex-wrap gap-1.5 mt-4">
+                <div className="flex flex-wrap gap-1.5 mt-2">
                   {project.techSpan.slice(0, 3).map((item, i) => (
                     <span
                       key={i}
-                      className="bg-ocean text-pearl text-[10px] px-2.5 py-1 rounded-full"
+                      className=" text-brown text-xs px-2.5 py-1 rounded-full"
                     >
                       {item}
                     </span>
@@ -192,7 +192,7 @@ function Projects() {
 
               {/* Overlay Curtain Slide (Reveals on Hover / Active touch) */}
               <div
-                className={`absolute inset-0 bg-gradient-to-b from-[#fdfdfd] to-[#e0e0e5] flex flex-col justify-between p-8 transition-all duration-500 z-20 text-left ${
+                className={`absolute inset-0 bg-pearl flex flex-col justify-between p-8 transition-all duration-500 z-20 text-left ${
                   activeCardIndex === index
                     ? "translate-y-0"
                     : "translate-y-full group-hover:translate-y-0"
@@ -212,7 +212,7 @@ function Projects() {
                     {project.techSpan.map((item, i) => (
                       <span
                         key={i}
-                        className="bg-pearl/50 border border-ocean/20 text-navy-800 text-[10px] px-2.5 py-1 rounded-full font-medium"
+                        className=" text-brown text-xs pr-2 py-1 rounded-full font-medium"
                       >
                         {item}
                       </span>
@@ -228,7 +228,6 @@ function Projects() {
                       className="inline-flex items-center justify-center gap-2 bg-cyan-650 border border-ocean/20 hover:bg-navy-750 font-bold py-2 px-6 rounded-full text-xs transition-all duration-300 shadow-md cursor-pointer text-center"
                     >
                       <span>{project.urlDesc}</span>
-                      <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                     </a>
                   ) : (
                     <span className="text-xs font-semibold text-navy-750 block">
@@ -241,7 +240,7 @@ function Projects() {
           ))}
 
           {/* And More Showcase Card */}
-          <div className="project-card-anim group flex flex-col items-center justify-center rounded-3xl bg-pearl border border-ocean/20 hover:border-ocean/40 shadow-lg transition-all duration-500 p-6 h-[400px] cursor-pointer">
+          {/* <div className="project-card-anim group flex flex-col items-center justify-center rounded-3xl bg-pearl border border-ocean/20 hover:border-ocean/40 shadow-lg transition-all duration-500 p-6 h-[400px] cursor-pointer">
             <div className="w-16 h-16 rounded-2xl bg-ocean flex items-center justify-center mb-4 text-pearl group-hover:scale-110 group-hover:bg-pearl group-hover:text-ocean transition-all duration-300 border border-ocean/10">
               <i className="fa-solid fa-layer-group text-2xl"></i>
             </div>
@@ -251,7 +250,7 @@ function Projects() {
             <p className="text-navy-700  max-w-[200px] text-center leading-relaxed">
               Explore extra concepts, coding sandboxes, and graphics templates
             </p>
-          </div>
+          </div> */}
         </div>
 
         {/* Buttons / Navigation Links */}

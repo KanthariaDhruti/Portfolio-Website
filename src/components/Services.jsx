@@ -124,7 +124,7 @@ function Services() {
             ref={headingRef}
             className="text-4xl md:text-5xl font-playwrite font-extrabold text-navy-900 tracking-tight"
           >
-            Services & Expertise
+            Services
           </h2>
           <div className="w-16 h-1 mx-auto mt-4 rounded-full"></div>
           <p
@@ -144,7 +144,7 @@ function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="serv-card bg-pearl border border-brown/20 rounded-3xl p-8 hover:border-brown/40 shadow-md hover:-translate-y-2 transition-all duration-300 flex flex-col group "
+              className="serv-card bg-pearl border border-transparent rounded-3x p-8 hover:border-brown/40 hover:shadow-md hover:-translate-y-2 transition-all duration-300 flex flex-col group "
             >
               <div className=" text-4xl mb-5 w-12 h-12 rounded-xl bg-brown flex items-center justify-center text-pearl group-hover:scale-110 transition-transform duration-300">
                 <i className={`${service.icon} text-2xl`}></i>
@@ -158,8 +158,7 @@ function Services() {
               <ul className="space-y-2 text-navy-800  border-t border-navy-200/50 pt-4">
                 {service.list.map((item, i) => (
                   <li key={i}>
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-650"></span>
-                    <span>{item}</span>
+                    <span className="text-brown">{item}</span>
                   </li>
                 ))}
               </ul>

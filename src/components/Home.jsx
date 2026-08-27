@@ -59,8 +59,8 @@ function Home() {
 
       // Continuous float animation for profile image
       gsap.to(imgRef.current, {
-        y: -15,
-        duration: 3,
+        y: -1,
+        duration: 5,
         ease: "sine.inOut",
         repeat: -1,
         yoyo: true,
@@ -195,7 +195,7 @@ function Home() {
         <div className="w-full md:w-2/5 flex justify-center items-center z-10">
           <div
             ref={imgRef}
-            className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-[350px] lg:h-[350px] p-2 rounded-full shadow-[0_8px_30px_rgba(93,118,139,0.12)] flex items-center justify-center hover:scale-[1.02] transition-transform duration-500 ease-out"
+            className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-110 lg:h-110 p-2 rounded-full shadow-[0_8px_30px_rgba(93,118,139,0.12)] flex items-center justify-center hover:scale-[1.02] transition-transform duration-500 ease-out"
           >
             {/* Soft backdrop overlay */}
             <div className="absolute inset-0 rounded-full scale-[0.985]"></div>

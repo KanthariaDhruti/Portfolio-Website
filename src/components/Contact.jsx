@@ -118,7 +118,7 @@ function Contact() {
           {/* Left Side - Contact Info */}
           <div
             ref={leftRef}
-            className="bg-[#FFFDFC] border border-dashed border-brown shadow-sm rounded-2xl p-8 flex-1 flex flex-col justify-between relative mt-6 lg:mt-0"
+            className="bg-[#FFFDFC] border border-dashed border-brown shadow-sm rounded-2x p-8 flex-1 flex flex-col justify-between relative mt-6 lg:mt-0"
           >
             <div>
               <h4 className="text-2xl font-bold font-playwrite text-navy-900 mb-4">
@@ -268,7 +268,7 @@ function Contact() {
                   id="contact-form-subject"
                   type="text"
                   name="subject"
-                  placeholder="Subject"
+                  placeholder="Your idea/brief"
                   aria-label="Subject"
                   className="w-full border  border-brown/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brown bg-brown/2 text-navy-900 placeholder-ocean/50 transition-all duration-300"
                   required

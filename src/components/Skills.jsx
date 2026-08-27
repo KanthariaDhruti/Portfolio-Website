@@ -9,225 +9,217 @@ function Skills() {
   const skillsRef = useRef(null);
   const headingRef = useRef(null);
   const subtitleRef = useRef(null);
-  const cardsRef = useRef(null);
-  const achievementRef = useRef(null);
+  const capabilitiesRef = useRef(null);
+  const certsRef = useRef(null);
 
-  const skillsData = [
+  const capabilities = [
     {
-      icon: "fa-solid fa-globe",
-      head: "Web Development",
-      skillSpan: [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "React",
-        "Node.js",
-        "SQL",
-        "MongoDB",
-      ],
+      category: "Graphic Design",
+      items: "Brand Identity, Editorial Layout, Figma, Illustrator, InDesign",
     },
     {
-      icon: "fa-regular fa-object-group",
-      head: "UI/UX Design",
-      skillSpan: ["Figma", "Responsive Design", "Webflow", "Prototyping"],
+      category: "Interface",
+      items: "UI / UX, Prototyping, Responsive Design, Webflow",
     },
     {
-      icon: "fa-solid fa-code",
-      head: "Other Languages",
-      skillSpan: ["Python", "Java"],
+      category: "Development",
+      items: "HTML, CSS, JavaScript, React, Node.js, MongoDB, SQL",
     },
     {
-      icon: "fa-solid fa-compass-drafting",
-      head: "Graphic Design",
-      skillSpan: ["Adobe Illustrator", "Adobe InDesign", "Figma"],
+      category: "Also",
+      items: "Python, Java",
+    },
+  ];
+
+  const certifications = [
+    {
+      title: "Complete Web Design: Figma to Webflow",
+      date: "JANUARY 2025",
+      description:
+        "End-to-end interface design, structure and high-performance Webflow layouts.",
+    },
+    {
+      title: "Full Stack Development — MERN",
+      date: "NOVEMBER 2025",
+      description:
+        "Completed advanced training covering MongoDB databases, Express frameworks, React interfaces, and Node.js server architectures.",
     },
   ];
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
+      // --------------------------------
+      // HEADING ANIMATION
+      // --------------------------------
+      const headingTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: headingRef.current,
           start: "top 85%",
-          toggleActions: "play none none reverse",
+          once: true,
         },
       });
 
-      tl.fromTo(
+      headingTimeline.fromTo(
         [headingRef.current, subtitleRef.current],
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, stagger: 0.15, duration: 0.8, ease: "power3.out" },
+        {
+          opacity: 0,
+          y: 30,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.15,
+          duration: 0.8,
+          ease: "power3.out",
+        }
       );
 
-      const cards = cardsRef.current?.querySelectorAll(".skill-card");
-      if (cards && cards.length > 0) {
+      // --------------------------------
+      // CAPABILITIES ANIMATION
+      // --------------------------------
+      const rows =
+        capabilitiesRef.current?.querySelectorAll(".capability-row");
+
+      if (rows && rows.length > 0) {
         gsap.fromTo(
-          cards,
-          { opacity: 0, y: 50 },
+          rows,
           {
+            opacity: 0,
+            y: 20,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            stagger: 0.1,
+            duration: 0.8,
+            ease: "power2.out",
             scrollTrigger: {
-              trigger: cardsRef.current,
-              start: "top 80%",
-              toggleActions: "play none none reverse",
+              trigger: capabilitiesRef.current,
+              start: "top 85%",
+              once: true,
             },
+          }
+        );
+      }
+
+      // --------------------------------
+      // CERTIFICATIONS ANIMATION
+      // --------------------------------
+      const certItems = certsRef.current?.querySelectorAll(".cert-item");
+
+      if (certItems && certItems.length > 0) {
+        gsap.fromTo(
+          certItems,
+          {
+            opacity: 0,
+            y: 25,
+          },
+          {
             opacity: 1,
             y: 0,
             stagger: 0.12,
             duration: 0.8,
             ease: "power2.out",
-          },
-        );
-
-        // Sub-elements tags animation inside cards
-        cards.forEach((card, index) => {
-          const tags = card.querySelectorAll(".skill-tag");
-          if (tags && tags.length > 0) {
-            gsap.fromTo(
-              tags,
-              { opacity: 0, scale: 0.8 },
-              {
-                scrollTrigger: {
-                  trigger: card,
-                  start: "top 82%",
-                  toggleActions: "play none none reverse",
-                },
-                opacity: 1,
-                scale: 1,
-                stagger: 0.04,
-                duration: 0.5,
-                delay: 0.2 + index * 0.1,
-                ease: "back.out(1.5)",
-              },
-            );
+            scrollTrigger: {
+              trigger: certsRef.current,
+              start: "top 85%",
+              once: true,
+            },
           }
-        });
+        );
       }
-
-      gsap.fromTo(
-        achievementRef.current,
-        { opacity: 0, y: 40, scale: 0.96 },
-        {
-          scrollTrigger: {
-            trigger: achievementRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1,
-          ease: "power3.out",
-        },
-      );
     },
-    { scope: skillsRef },
+    {
+      scope: skillsRef,
+    }
   );
 
   return (
     <section
       ref={skillsRef}
       id="skills"
-      className="relative bg-pearl font-outfit text-ocean py-24 px-6 md:px-16 lg:px-32 text-center overflow-hidden border-b border-navy-200"
+      className="relative bg-pearl font-outfit text-ocean py-24 px-6 md:px-16 lg:px-32 border-b border-navy-200"
     >
-      {/* Decorative ambient background glows */}
-      <div className="absolute top-1/3 left-10 w-96 h-96 bg-ocean/10 blur-[120px] rounded-full pointer-events-none"></div>
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-ocean/10 blur-[100px] rounded-full pointer-events-none"></div>
-
-      <div className="max-w-7xl mx-auto z-10 relative">
-        {/* Section Header */}
-        <div className="mb-16">
-          <h2 ref={headingRef} className="text-4xl font-playwrite md:text-5xl font-extrabold">
-            Skills & Expertise
-          </h2>
-          <p
-            ref={subtitleRef}
-            className="max-w-2xl mx-auto text-base md:text-xl mt-10  font-normal "
-          >
-            My current technical skills, software expertise, and engineering
-            disciplines
-          </p>
-        </div>
-
-        {/* Skill Cards Grid */}
-        <div
-          ref={cardsRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
+      {/* HEADER */}
+      <div className="mb-16">
+        <h2
+          ref={headingRef}
+          className="text-4xl md:text-5xl text-center font-playwrite font-extrabold"
         >
-          {skillsData.map((skill, index) => (
-            <div
-              key={index}
-              className="skill-card bg-[#FDFDFD] border border-brown/20 rounded-2xl p-6.5 shadow-sm hover:shadow-md  transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col items-center text-center group"
-            >
-              <div className="w-12 h-12 rounded-xl bg-brown text-pearl text-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                <i className={skill.icon}></i>
-              </div>
-              <h3 className="text-lg font-bold font-playwrite mb-4">{skill.head}</h3>
-              <div className="flex flex-wrap justify-center  gap-2 mt-auto">
-                {skill.skillSpan.map((item, i) => (
-                  <span
-                    key={i}
-                    className="skill-tag bg-brown/10 text-sm font-semibold px-3 py-1 rounded-full transition-all duration-300"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+          Skills & Expertise
+        </h2>
 
-        {/* Achievements Timeline */}
-        <div
-          ref={achievementRef}
-          className="recent text-left bg-ocean/70 p-8 md:p-12 rounded-3xl max-w-4xl mx-auto shadow-md text-pearl relative overflow-hidden backdrop-blur-md"
+        <p
+          ref={subtitleRef}
+          className="max-w-2xl mx-auto md:text-xl text-center mt-10 font-normal"
         >
-          {/* Subtle overlay glow */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-pearl/15 blur-[80px] pointer-events-none rounded-full"></div>
+          My current technical skills, software expertise and engineering
+          disciplines
+        </p>
+      </div>
 
-          <h3 className="text-2xl font-playwrite font-bold mb-8 flex items-center gap-3 relative z-10">
-            <i className="fa-solid fa-graduation-cap"></i>
-            <span>Certifications</span>
+      <div className="max-w-7xl mx-auto z-10 relative grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        {/* CAPABILITIES SECTION */}
+        <div ref={capabilitiesRef}>
+          <h3 className="text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase text-ocean/50 mb-10">
+            Skills
           </h3>
 
-          <ol className="relative border-l border-pearl pl-6 sm:pl-8 space-y-8 ml-2 relative z-10">
-            <li className="relative group">
-              <span className="absolute -left-[30px] sm:-left-[39px] top-1.5 w-3 h-3 bg-pearl rounded-full shadow-[0_0_10px_rgba(93,118,139,0.3)] group-hover:scale-125 transition-transform duration-300"></span>
-              <div className="flex flex-col space-y-1">
-                <p className="font-semibold  font-playwrite text-lg transition-colors">
-                  Complete Web Design: Figma to Webflow
-                </p>
-                <p className="text-xs font-medium uppercase tracking-wider">
-                  January 2025
-                </p>
-                <p className=" max-w-2xl leading-relaxed mt-1">
-                  Earned competency in end-to-end user experience design,
-                  building interface structures, and setting up high-performance
-                  layouts on Webflow.
-                </p>
-              </div>
-            </li>
+          <div className="space-y-6 sm:space-y-8">
+            {capabilities.map((item, index) => (
+              <div
+                key={index}
+                className="capability-row grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-ocean/10 pb-6 last:border-b-0"
+              >
+                <div className="sm:col-span-4 text-base sm:text-lg font-medium text-ocean">
+                  {item.category}
+                </div>
 
-            <li className="relative group">
-              <span className="absolute -left-[30px] sm:-left-[39px] top-1.5 w-3 h-3 bg-pearl rounded-full shadow-[0_0_10px_rgba(93,118,139,0.3)] group-hover:scale-125 transition-transform duration-300"></span>
-              <div className="flex flex-col space-y-1">
-                <p className="font-semibold font-playwrite text-lg transition-colors">
-                  Full Stack Development (MERN Stack)
+                <div className="sm:col-span-8 text-base text-ocean/70 leading-relaxed font-light">
+                  {item.items}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CERTIFICATIONS SECTION */}
+        <div
+          className="pt-12 lg:pt-0 border-t lg:border-t-0 lg:border-l border-ocean/15 lg:pl-12"
+          ref={certsRef}
+        >
+          <h3 className="text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase text-ocean/50 mb-10">
+            CERTIFICATIONS
+          </h3>
+
+          <div className="space-y-8">
+            {certifications.map((cert, index) => (
+              <div
+                key={index}
+                className={`cert-item pb-8 ${
+                  index !== certifications.length - 1
+                    ? "border-b border-ocean/10"
+                    : ""
+                }`}
+              >
+                <h4 className="text-lg sm:text-xl font-medium text-ocean mb-1">
+                  {cert.title}
+                </h4>
+
+                <p className="text-xs font-semibold tracking-wider uppercase text-ocean/45 mb-3">
+                  {cert.date}
                 </p>
-                <p className="text-xs font-medium uppercase tracking-wider">
-                  November 2025
-                </p>
-                <p className=" max-w-2xl leading-relaxed mt-1">
-                  Completed advanced training at Apna College, covering MongoDB
-                  databases, Express frameworks, React interfaces, and Node.js
-                  server architectures.
+
+                <p className="text-base text-ocean/70 leading-relaxed font-light">
+                  {cert.description}
                 </p>
               </div>
-            </li>
-          </ol>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-export default Skills;
+export default Skills;
