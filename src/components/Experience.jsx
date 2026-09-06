@@ -45,7 +45,7 @@ function Experience() {
           scrollTrigger: {
             trigger: headingRef.current,
             start: "top 85%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
           opacity: 1,
           y: 0,
@@ -91,7 +91,7 @@ function Experience() {
             scrollTrigger: {
               trigger: node,
               start: "top 80%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
           },
         );
@@ -108,7 +108,7 @@ function Experience() {
             scrollTrigger: {
               trigger: node,
               start: "top 80%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
           },
         );
@@ -125,7 +125,7 @@ function Experience() {
             scrollTrigger: {
               trigger: node,
               start: "top 80%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
           },
         );
@@ -151,7 +151,7 @@ function Experience() {
     <section
       id="experience"
       ref={sectionRef}
-      className="relative bg-pearl text-ocean font-outfit py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
+      className="relative bg-almond select-none text-ocean font-outfit py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
     >
       {/* Decorative Grid Patterns & Canvas indicators */}
       <div className="absolute inset-0 bg-grid-dark pointer-events-none opacity-40 z-0"></div>

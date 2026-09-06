@@ -6,27 +6,25 @@ export const projectsData = [
     subtitle: "",
     description:
       "A personal design identity created to bring together creativity, clarity, and thoughtful visual communication under one distinctive brand.",
-    thumbnail: "/dhruti-b/dhruti-branding.png",
-    heroImage: "/dhruti-b/designed-by-dhruti.png",
+    thumbnail: "/dhruti-b/dhruti-branding.webp",
+    heroImage: "/dhruti-b/designed-by-dhruti.webp",
     aboutBrandText:
       "Designed by Dhruti is a personal creative brand that reflects my approach to design: simple, expressive, and purposeful. The identity brings together my work across branding, print, social media, and digital design while keeping a consistent and recognizable visual language.",
-    aboutBrandImg: "/dhruti-b/dhruti-branding1.png",
+    aboutBrandImg: "/dhruti-b/dhruti-branding1.webp",
     designsText:
       "The visual identity focuses on balancing personality with professionalism. Clean typography, a warm yet contemporary palette, and carefully crafted graphic elements create a brand that feels creative, approachable, and distinctly personal.",
     designsImages: [
-      "/dhruti-b/dhruti-branding4.png",
-      "/dhruti-b/dhruti-branding6.png",
+      "/dhruti-b/dhruti-branding4.webp",
+      "/dhruti-b/dhruti-branding6.webp",
     ],
     carouselImages: [
-      "/dhruti-b/dhruti-branding5.png",
-      "/dhruti-b/dhruti-branding3.png",
-      "/dhruti-b/dhruti-branding8.png",
-      "/dhruti-b/dhruti-branding9.png",
+      "/dhruti-b/dhruti-branding5.webp",
+      "/dhruti-b/dhruti-branding3.webp",
+      "/dhruti-b/dhruti-branding8.webp",
+      "/dhruti-b/dhruti-branding9.webp",
     ],
     testimonial: {
-      quote:
-        "Reduced our drop-off rates by 40% immediately. Visual cues make booking super straightforward.",
-      author: "Product Designer, PayFlow",
+      quote: "",
     },
     showcaseImg: "/fintech.png",
     brandIcons: [
@@ -37,7 +35,48 @@ export const projectsData = [
       "fa-solid fa-clock",
       "fa-solid fa-circle-check",
     ],
-    fullBannerImg: "/dhruti-b/dhruti-branding7.png",
+    fullBannerImg: "/dhruti-b/dhruti-branding7.webp",
+  },
+  {
+    id: "the granny's hobby",
+    title: "The Granny's Hobby",
+    category: "Branding",
+    subtitle: "",
+    description:
+      "A warm and playful crochet brand identity created to bring handmade creativity and a cozy personality to life.",
+    thumbnail: "/granny-b/thumbnail.webp",
+    heroImage:
+      "https://i.pinimg.com/736x/70/bc/1a/70bc1a94a85468fcb236c04a54578ba4.jpg",
+    aboutBrandText:
+      "The Granny's Hobby is a handmade crochet brand inspired by the warmth, creativity, and charm of handcrafted pieces. The identity brings together a playful visual language with a cozy and approachable feel.",
+    aboutBrandImg: "/granny-b/hero.webp",
+    designsText:
+      "The visual identity combines soft colors, playful typography, and crochet-inspired elements to create a warm, cheerful, and recognizable brand across packaging, print, and digital touchpoints.",
+    designsImages: [
+      "/granny-b/4.webp",
+      "/granny-b/2.webp",
+    ],
+    carouselImages: [
+      "/granny-b/3.webp",
+      "/granny-b/5.webp",
+      "/granny-b/6.webp",
+      "/granny-b/1.webp",
+    ],
+    testimonial: {
+      quote:
+        "Thank you so much for designing such a beautiful logo for my business! Your creativity and attention to detail made it exactly what I was looking for. In the beginning, i was bit confused about what I wanted but I truly appreciate the time and effort you put into bringing life to my small business",
+      author: "Founder, The Granny's Hobby",
+    },
+    showcaseImg: "/fintech.png",
+    brandIcons: [
+      "fa-solid fa-wallet",
+      "fa-solid fa-credit-card",
+      "fa-solid fa-hand-holding-dollar",
+      "fa-solid fa-user-tie",
+      "fa-solid fa-clock",
+      "fa-solid fa-circle-check",
+    ],
+    fullBannerImg: "/granny-b/5.webp",
   },
   // {
   //   id: "Whisk and crumb",
@@ -80,19 +119,19 @@ export const projectsData = [
     subtitle: "Creative Editorial Print layout",
     description:
       "An avant-garde editorial magazine concept. Adapts asymmetrical grids, vertical typography guides, and large font titles to display lifestyle imagery.",
-    thumbnail: "/fashion-m/mag3.png",
+    thumbnail: "/fashion-m/3.webp",
     heroImage:
       "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=1600",
     aboutBrandText:
       "Crafting a luxury print layout with clean editorial visual lines, emphasizing asymmetrical column grids, custom headline letterspacing, and large atmospheric negative spaces. The objective was to elevate lifestyle storytelling to an art form.",
-    aboutBrandImg: "/fashion-m/magazine.png",
+    aboutBrandImg: "/fashion-m/3.webp",
     designsText:
       "We focused on a layout where images dictate text flows. Monospaced annotations run vertically down the pages to act as secondary elements, letting high-fashion photography take full center stage. Body copies are set in readable sans-serifs, contrasted with extreme-serif headings.",
     designsImages: [],
     carouselImages: [
-      "/fashion-m/mag4.png",
-      "/fashion-m/mag1.png",
-      "/fashion-m/mag2.png",
+      "/fashion-m/4.webp",
+      "/fashion-m/1.webp",
+      "/fashion-m/2.webp",
     ],
     testimonial: {
       // quote: "The layout captures our design philosophy perfectly. Clean, daring, and absolutely beautiful to flip through.",
@@ -113,24 +152,24 @@ export const projectsData = [
     subtitle: "Company Technical Brochure",
     description:
       "A product brochure designed to introduce and communicate the key capabilities of a Laboratory Information Management System.",
-    thumbnail: "/adrta-lims/bro1.png",
+    thumbnail: "/adrta-lims/1.webp",
     heroImage:
       "https://i.pinimg.com/736x/08/ae/d6/08aed66450d69595d40eda0c5694375c.jpg",
     aboutBrandText:
       "For a tech company that I worked in, LIMS was one of their product. We required a clean, informative print media architecture. The focus lay on transforming complex database management terms into simple, readable graphic blocks that communicate software benefits to decision makers. *Also, the original text of the brochure is changed due to NDA policy and dummy text is placed.",
-    aboutBrandImg: "/adrta-lims/bro3.png",
+    aboutBrandImg: "/adrta-lims/3.webp",
     designsText:
       "The design applies technical cyan-blue lines, strict tabular hierarchies, and clear screenshot mockups. Soft drop shadows and thin grid separations ensure the text density remains comfortable to read.",
-    designsImages: ["/adrta-lims/bro2.png", "/adrta-lims/bro4.png"],
+    designsImages: ["/adrta-lims/2.webp", "/adrta-lims/4.webp"],
     carouselImages: [
-      "/adrta-lims/bro1.png",
-      "/adrta-lims/bro4.png",
-      "/adrta-lims/bro5.png",
+      "/adrta-lims/1.webp",
+      "/adrta-lims/4.webp",
+      "/adrta-lims/5.webp",
     ],
     testimonial: {
-      quote:
-        "Our clients love the brochure format. It makes complex laboratory workflows clear and visually compelling.",
-      author: "Product Head, Adrta Technologies",
+      // quote:
+      //   "Our clients love the brochure format. It makes complex laboratory workflows clear and visually compelling.",
+      // author: "Product Head, Adrta Technologies",
     },
     showcaseImg: "/adrta-lims/LIMS.jpg",
     brandIcons: [
@@ -151,24 +190,25 @@ export const projectsData = [
     subtitle: "Market Complaint ",
     description:
       "A product brochure designed to present a Clinical Trial Management Software and its role in streamlining trial planning.",
-    thumbnail: "/adrta-c/care1.png",
+    thumbnail: "/adrta-c/1.webp",
     heroImage:
       "https://images.unsplash.com/photo-1639754390580-2e7437267698?q=80&w=841&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     aboutBrandText:
       "Managing market complaints requires more than efficient reporting. This solution streamlines complaint handling with clear workflows, structured documentation, and compliance-focused processes for faster resolution. *Also, the original text of the brochure is changed due to NDA policy and dummy text is placed.",
-    aboutBrandImg: "/adrta-c/care1.png",
+    aboutBrandImg: "/adrta-c/1.webp",
     designsText:
       "Warm orange and yellow tones create an energetic yet professional visual identity. Clean layouts and minimal vector elements highlight complaint workflows, regulatory processes, and key product features with clarity.",
-    designsImages: ["/adrta-c/care2.png", "/adrta-c/care3.png"],
+    designsImages: ["/adrta-c/2.webp", "/adrta-c/3.webp"],
     carouselImages: [
-      "/adrta-c/care4.png",
-      "/adrta-c/care3.png",
-      "/adrta-c/care1.png",
+      "/adrta-c/4.webp",
+      "/adrta-c/3.webp",
+      "/adrta-c/1.webp",
     ],
     testimonial: {
-      quote:
-        "Simplifies key clinical points in a clean document architecture. Excellent representation of our software.",
-      author: "Manager, Vista Clinical Research",
+      // quote:
+        // "Simplifies key clinical points in a clean document architecture. Excellent representation of our software.",
+      // author: 
+      // "Manager, Vista Clinical Research",
     },
     showcaseImg: "/Vista.pg",
     brandIcons: [
@@ -189,24 +229,24 @@ export const projectsData = [
     subtitle: "Social Media Posts ",
     description:
       "A collection of engaging social media designs created to communicate ideas clearly, strengthen brand presence, and connect with audiences through thoughtful visual storytelling",
-    thumbnail: "/carousel/car7.png",
+    thumbnail: "/carousel/car2.webp",
     heroImage:
       "https://i.pinimg.com/736x/d8/36/29/d83629916d2b1293d322bcf1f8f5a40b.jpg",
     aboutBrandText:
       "Social media creatives designed to build brand awareness, communicate key messages, and maintain a consistent visual presence across digital platforms.",
-    aboutBrandImg: "/carousel/car2.png",
+    aboutBrandImg: "/carousel/car7.webp",
     designsText:
       "These carousel posts use clear hierarchies, bold typography, and subtle gradients to capture attention quickly. Each design balances brand colors with negative space, ensuring the core message stands out while maintaining a professional look suitable for technology and healthcare audiences.",
-    designsImages: ["/carousel/car3.png", "/carousel/car4.png"],
+    designsImages: ["/carousel/car3.webp", "/carousel/car4.webp"],
     carouselImages: [
-      "/carousel/car1.png",
-      "/carousel/car5.png",
-      "/carousel/car6.png",
+      "/carousel/car1.webp",
+      "/carousel/car5.webp",
+      "/carousel/car6.webp",
     ],
     testimonial: {
-      quote:
-        "Simplifies key clinical points in a clean document architecture. Excellent representation of our software.",
-      author: "Manager, Vista Clinical Research",
+      // quote:
+      //   "Simplifies key clinical points in a clean document architecture. Excellent representation of our software.",
+      // author: "Manager, Vista Clinical Research",
     },
     showcaseImg: "/Vsta.jpg",
     brandIcons: [
@@ -220,106 +260,13 @@ export const projectsData = [
     fullBannerImg:
       "https://i.pinimg.com/1200x/b7/d6/2d/b7d62dc6548fb10efa1fdef835f1bd33.jpg",
   },
-  // {
-  //   id: "social-media",
-  //   title: "Social Media Posts",
-  //   category: "Graphic Design",
-  //   subtitle: "Figma",
-  //   description:
-  //     "A custom chatbot branding layout and lead generation page, designed in Figma and coded to Webflow.",
-  //   thumbnail: "/chat.png",
-  //   heroImage:
-  //     "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1600",
-  //   aboutBrandText:
-  //     "A futuristic AI companion app landing page designed to optimize sign-up conversions. Featuring soft glassmorphism panels, glowing neon elements, and sleek message bubbles.",
-  //   aboutBrandImg: "/chat.png",
-  //   designsText:
-  //     "Coded directly in Webflow using a solid client-first design system. Smooth entrance triggers, custom interactive states, and a clean mobile-responsive layout.",
-  //   designsImages: ["/chat.png", "/team.png"],
-  //   carouselImages: ["/chat.png", "/team.png", "/chat.png"],
-  //   testimonial: {
-  //     quote:
-  //       "A stunning layout that converts extremely well. Visual flow and micro-interactions are perfect.",
-  //     author: "Founder, Chatify AI",
-  //   },
-  //   showcaseImg: "/chat.png",
-  //   brandIcons: [
-  //     "fa-solid fa-robot",
-  //     "fa-solid fa-comment-dots",
-  //     "fa-solid fa-bolt",
-  //     "fa-solid fa-headset",
-  //     "fa-solid fa-share-nodes",
-  //     "fa-solid fa-keyboard",
-  //   ],
-  //   fullBannerImg:
-  //     "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1600",
-  // },
-  // {
-  //   id: "team-app",
-  //   title: "Team App Workspace",
-  //   category: "Branding & Web Design",
-  //   subtitle: "Collaborative SaaS Layout",
-  //   description:
-  //     "A futuristic web dashboard mockup optimized for collaboration, featuring metrics widgets and chat feeds.",
-  //   thumbnail: "/team.png",
-  //   heroImage:
-  //     "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1600",
-  //   aboutBrandText:
-  //     "Modern SaaS platforms require high usability. The Team App dashboard concept organizes team chat, calendar boards, and metrics into a single unified visual grid.",
-  //   aboutBrandImg: "/team.png",
-  //   designsText:
-  //     "Using Figma UI components, we created a clean layout with dark and light themes, ensuring high-contrast data visualization and smooth list transitions.",
-  //   designsImages: ["/team.png", "/chat.png"],
-  //   carouselImages: ["/team.png", "/chat.png", "/team.png"],
-  //   testimonial: {
-  //     quote:
-  //       "The interface layout is incredibly intuitive and visually polished. Best dashboard concept we've seen.",
-  //     author: "CEO, CollabSphere",
-  //   },
-  //   showcaseImg: "/team.png",
-  //   brandIcons: [
-  //     "fa-solid fa-users",
-  //     "fa-solid fa-square-poll-vertical",
-  //     "fa-solid fa-calendar-days",
-  //     "fa-solid fa-paperclip",
-  //     "fa-solid fa-magnifying-glass",
-  //     "fa-solid fa-bell",
-  //   ],
-  //   fullBannerImg:
-  //     "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=1600",
-  // },
-  // {
-  //   id: "wanderlust-stays",
-  //   title: "Wanderlust – Explore Stays",
-  //   category: "Web Design & Development",
-  //   subtitle: "MERN Stack Design Integration",
-  //   description:
-  //     "A complete lodging catalog platform showcasing list elements, interactive map elements, and high-fidelity search components.",
-  //   thumbnail: "/Wanderlust.png",
-  //   heroImage:
-  //     "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=1600",
-  //   aboutBrandText:
-  //     "A high-fidelity travel marketplace where users can find vacation rentals, interact with maps, and post reviews. The visual concept focuses on high-quality images and bold cards.",
-  //   aboutBrandImg: "/Wanderlust.png",
-  //   designsText:
-  //     "Built using React, Node.js, Express, and MongoDB. Coded using responsive CSS grids, animated map indicators, and absolute image card proportions.",
-  //   designsImages: ["/Wanderlust.png", "/magazine.png"],
-  //   carouselImages: ["/Wanderlust.png", "/magazine.png", "/Wanderlust.png"],
-  //   testimonial: {
-  //     quote:
-  //       "Beautiful UI design integrated with a fully robust backend application. An exceptional project.",
-  //     author: "Review Board, GU Lab",
-  //   },
-  //   showcaseImg: "/Wanderlust.png",
-  //   brandIcons: [
-  //     "fa-solid fa-umbrella-beach",
-  //     "fa-solid fa-hotel",
-  //     "fa-solid fa-map-pin",
-  //     "fa-solid fa-star",
-  //     "fa-solid fa-sliders",
-  //     "fa-solid fa-earth-americas",
-  //   ],
-  //   fullBannerImg:
-  //     "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=1600",
-  // },
+];
+
+export const testimonialsData = [
+  {
+    id: 1,
+    quote:
+      "Thank you so much for designing such a beautiful logo for my business! Your creativity and attention to detail made it exactly what I was looking for. In the beginning, i was bit confused about what I wanted but I truly appreciate the time and effort you put into bringing life to my small business",
+    author: "- Founder, The Granny's Hobby",
+  },
 ];

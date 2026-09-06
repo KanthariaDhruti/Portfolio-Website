@@ -84,7 +84,7 @@ function Home() {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen flex flex-col justify-center items-center bg-pearl px-6 sm:px-12 md:px-20 lg:px-32 py-24 overflow-hidden border-b border-ocean/50"
+      className="relative min-h-screen flex flex-col justify-center items-center bg-almond select-none px-6 sm:px-12 md:px-20 lg:px-32 py-24 overflow-hidden border-b border-ocean/50"
     >
       {/* Ambient background glows */}
       <div
@@ -203,7 +203,7 @@ function Home() {
 
             {/* Real profile image */}
             <SmartImage
-              src="/dhrutiImg1.jpg"
+              src="/dhrutiImg1.webp"
               sizes="350px"
               alt="Dhruti Kantharia - Graphic Designer & Web Developer"
               width="350"

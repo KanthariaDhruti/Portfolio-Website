@@ -94,7 +94,7 @@ function About() {
     <section
       ref={aboutRef}
       id="about"
-      className="relative bg-pearl text-ocean font-outfit py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
+      className="relative bg-almond select-none text-ocean font-outfit py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
     >
       <div className="max-w-7xl mx-auto text-center z-10 relative">
         {/* Section Header */}

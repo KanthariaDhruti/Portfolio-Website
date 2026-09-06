@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import SmartImage from "./SmartImage";
 import { Link } from "react-router-dom";
-import { projectsData } from "../data/projectsData";
+import { projectsData, testimonialsData } from "../data/projectsData";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -11,6 +11,34 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Portfolio() {
   const pageRef = useRef(null);
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(null);
+
+  const nextTestimonial = () => {
+    setCurrentTestimonialIndex((prev) => (prev + 1) % testimonialsData.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonialIndex(
+      (prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length,
+    );
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (diff > 50) {
+      nextTestimonial();
+    } else if (diff < -50) {
+      prevTestimonial();
+    }
+    setTouchStartX(null);
+  };
 
   useGSAP(
     () => {
@@ -61,7 +89,7 @@ function Portfolio() {
   return (
     <div
       ref={pageRef}
-      className="min-h-screen bg-pearl text-ocean studio-noise-bg font-outfit relative overflow-x-hidden pt-12"
+      className="min-h-screen bg-almond select-none text-ocean studio-noise-bg font-outfit relative overflow-x-hidden pt-12"
     >
       <SEO
         title="Visual Design & UI Portfolio"
@@ -72,7 +100,7 @@ function Portfolio() {
       <header className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center py-6 border-b border-ocean/10 relative z-20">
         <Link to="/">
           <img
-            src="/logo-color.webp"
+            src="/logos/dhruti/logo-color.webp"
             alt="Dhruti Kantharia Studio Logo"
             height="40"
             decoding="async"
@@ -139,24 +167,87 @@ function Portfolio() {
       </section>
 
       {/* Testimonial Quote slider strip (Dark brown background banner in Image 1) */}
+      {/* Client Testimonials Section */}
+      <div
+        className="w-full bg-ocean text-pearl py-10 mt-20 relative overflow-hidden select-none"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div className="mx-5 flex flex-col items-center justify-center text-center relative z-10">
+          {/* Heart Speech Bubble Icon */}
+          <i className="fa-solid fa-quote-left text-6xl mb-5 text-white/80"></i>
+
+          {/* Testimonial Slider Content */}
+          <div className="w-full flex items-center justify-between">
+            {/* Left Arrow */}
+            <button
+              onClick={prevTestimonial}
+              aria-label="Previous Testimonial"
+              className="p-2 sm:p-3 text-pearl/80 hover:scale-110 active:scale-95 transition-all cursor-pointer shrink-0"
+            >
+              <i className="fa-solid fa-arrow-left-long text-2xl"></i>
+            </button>
+
+            {/* Testimonial Quote & Author */}
+            <div className="flex-1 max-w-4xl min-h-[140px] sm:min-h-[120px] flex flex-col items-center justify-center transition-all duration-500 ease-in-out">
+              <p className="text-sm sm:text-base md:text-lg font-outfit text-pearl leading-relaxed tracking-wide font-normal">
+                {testimonialsData[currentTestimonialIndex].quote}
+              </p>
+              <span className="text-xs sm:text-sm text-white/80 font-playwrite mt-6 block">
+                {testimonialsData[currentTestimonialIndex].author}
+              </span>
+            </div>
+
+            {/* Right Arrow */}
+            <button
+              onClick={nextTestimonial}
+              aria-label="Next Testimonial"
+              className="p-2 sm:p-3 text-pearl hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer shrink-0"
+            >
+              <i className="fa-solid fa-arrow-right-long text-2xl"></i>
+            </button>
+          </div>
+
+          {/* Slider Dots */}
+          <div className="flex items-center justify-center gap-2 mt-8">
+            {testimonialsData.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentTestimonialIndex(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  currentTestimonialIndex === idx
+                    ? "w-6 bg-white"
+                    : "w-2 bg-white/40 hover:bg-white/70"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* Logofolio Section (Image 1 layout) */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center border-b border-ocean/10 anim-section">
-        {/* Logos Grid on Left */}
-        <div className="lg:col-span-6 grid grid-cols-3 gap-6">
-          {["/icon-frame.webp"].map((icon, idx) => (
+        {/* Logos Flex Container on Left */}
+        <div className="lg:col-span-6 bg-pearl shadow-sm rounded-2xl flex flex-wrap items-center justify-between gap-8 sm:gap-12 p-8 sm:p-12">
+          {[
+            "/logos/dhruti/icon-frame.webp",
+            "/logos/granny/Group.webp",
+            "/logos/dhruti/logo-color.webp",
+            "/logos/granny/Group-1.webp",
+            "logos/dhruti/Vector.webp",
+            "logos/granny/Vector.webp"
+          ].map((icon, idx) => (
             <div
               key={idx}
-              className="aspect-square bg-white border border-ocean/5 rounded-2xl flex items-center justify-center text-2xl text-[#4a3b32] hover:text-[#5D768B] transition-colors duration-300 shadow-sm"
+              className="flex items-center justify-center transition-colors duration-300"
             >
               <img
                 src={icon}
                 alt="Brand logo icon mark"
-                width="120"
-                height="120"
                 loading="lazy"
                 decoding="async"
-                className="h-30"
+                className="h-10 w-auto object-contain hover:scale-105 transition-transform duration-300"
               />
             </div>
           ))}
@@ -171,12 +262,12 @@ function Portfolio() {
             identity designs. Built for purpose-driven businesses looking to
             stand out in a busy, crowded market.
           </p>
-          {/* <Link
-            to="/portfolio"
+          <Link
+            to="/portfolio/logofolio"
             className="inline-flex items-center justify-center border border-ocean text-ocean font-bold px-6 py-2.5 rounded-full hover:bg-ocean hover:text-white transition-all duration-300 no-underline text-xs uppercase font-"
           >
             Go to Logofolio
-          </Link> */}
+          </Link>
         </div>
       </section>
 

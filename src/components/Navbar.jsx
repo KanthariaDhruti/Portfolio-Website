@@ -82,7 +82,7 @@ function Navbar() {
   return (
     <nav
       ref={navRef}
-      className={`w-full fixed font-playwrite top-0 left-0 z-50 transition-all duration-300 ${
+      className={`w-full fixed font-playwrite select-none top-0 left-0 z-50 transition-all duration-300 ${
         scrolled
           ? "py-3 backdrop-blur-lg border-b border-ocean/50 shadow-[0_8px_20px_-8px_rgba(93,118,139,0.15)]"
           : "py-5 bg-transparent"
@@ -96,7 +96,7 @@ function Navbar() {
           className="text-xl md:text-2xl font-extrabold text-ocean hover:text-ocean/80 transition-colors duration-300 select-none no-underline flex items-center gap-2"
         >
           <img
-            src="/logo-color.webp"
+            src="/logos/dhruti/logo-color.webp"
             alt="Dhruti Kantharia Logo"
             height="40"
             decoding="async"

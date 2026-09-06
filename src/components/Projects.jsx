@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { testimonialsData } from "../data/projectsData";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +12,34 @@ function Projects() {
   const containerRef = useRef(null);
   const cardsRef = useRef(null);
   const [activeCardIndex, setActiveCardIndex] = useState(null);
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(null);
+
+  const nextTestimonial = () => {
+    setCurrentTestimonialIndex((prev) => (prev + 1) % testimonialsData.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonialIndex(
+      (prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length,
+    );
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (diff > 50) {
+      nextTestimonial();
+    } else if (diff < -50) {
+      prevTestimonial();
+    }
+    setTouchStartX(null);
+  };
 
   useEffect(() => {
     if (activeCardIndex === null) return;
@@ -30,7 +59,7 @@ function Projects() {
 
   const projectsData = [
     {
-      img: "/dhruti-b/dhruti-branding.png",
+      img: "/dhruti-b/dhruti-branding.webp",
       head: "Personal Brand Identity",
       desc: "A distinctive personal brand identity designed to create a professional and cohesive visual presence across digital and print.",
       techSpan: ["Figma", "Illustrator", "InDesign"],
@@ -38,22 +67,17 @@ function Projects() {
       // urlDesc: "Live Site",
       type: "branding",
     },
-    // {
-    //   img: "/whisk-branding.png",
-    //   head: "Butter and Bloom Brand Identity",
-    //   desc: "A warm and playful bakery brand identity designed to create a cohesive visual presence across packaging, print, and digital touchpoints.",
-    //   techSpan: ["Figma", "Illustrator", "InDesign"],
-    //   type: "branding",
-    // },
     {
-      img: "/adrta-c/care1.png",
-      head: "Market Complaint Reporting Software",
-      desc: "Managing market complaints requires more than efficient reporting. This solution streamlines complaint handling with clear workflows, structured documentation, and compliance-focused processes for faster resolution.",
-      techSpan: ["Figma"],
-      type: "Brochure",
+      img: "/granny-b/5.webp",
+      head: "The Granny's Hobby",
+      desc: "The Granny's Hobby is a handmade crochet brand inspired by the warmth, creativity, and charm of handcrafted pieces. The identity brings together a playful visual language with a cozy and approachable feel.",
+      techSpan: ["Figma", "Illustrator", "InDesign"],
+      // link: "https:// dhrutis-team-app.webflow.io/",
+      // urlDesc: "Live Site",
+      type: "branding",
     },
     {
-      img: "/carousel-projects.png",
+      img: "/carousel-projects.webp",
       head: "Social Media Carousel Design",
       desc: "A visually engaging carousel designed to communicate ideas clearly through thoughtful layouts, typography, and creative visual storytelling.",
       techSpan: ["Figma"],
@@ -68,7 +92,7 @@ function Projects() {
     //   urlDesc: "View Code",
     // },
     {
-      img: "/fashion-m/mag1.png",
+      img: "/fashion-m/1.webp",
       head: "Fashion Editorial Concept",
       desc: "A creative editorial layout designed for digital and print magazine pages, focusing on modern trends and bold storytelling layouts.",
       techSpan: ["Adobe InDesign"],
@@ -105,7 +129,7 @@ function Projects() {
     <section
       id="projects"
       ref={containerRef}
-      className="relative bg-pearl text-ocean font-outfit py-24 px-6 md:px-16 lg:px-32 text-center border-b border-navy-200"
+      className="relative bg-almond text-ocean select-none font-outfit pt-24 text-center border-b border-navy-200"
     >
       {/* Decorative Grid Patterns & Canvas indicators */}
       <div className="absolute inset-0 bg-grid-light pointer-events-none opacity-40 z-0"></div>
@@ -137,7 +161,7 @@ function Projects() {
         {/* Project Cards Grid */}
         <div
           ref={cardsRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-15 mb-20 items-stretch"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-15 mx-10 mb-20 items-stretch"
         >
           {projectsData.map((project, index) => (
             <div
@@ -274,6 +298,65 @@ function Projects() {
             <i className="fa-regular fa-folder-open text-lg"></i>
             <span>View My Full Portfolio</span>
           </Link>
+        </div>
+      </div>
+
+      {/* Client Testimonials Section */}
+      <div
+        className="w-full bg-ocean text-pearl py-10 mt-20 relative overflow-hidden "
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div className="mx-5 flex flex-col items-center justify-center text-center relative z-10">
+          {/* Heart Speech Bubble Icon */}
+          <i className="fa-solid fa-quote-left text-6xl mb-5 text-white/80"></i>
+
+          {/* Testimonial Slider Content */}
+          <div className="w-full flex items-center justify-between">
+            {/* Left Arrow */}
+            <button
+              onClick={prevTestimonial}
+              aria-label="Previous Testimonial"
+              className="p-2 sm:p-3 text-pearl/80 hover:scale-110 active:scale-95 transition-all cursor-pointer shrink-0"
+            >
+              <i className="fa-solid fa-arrow-left-long text-2xl"></i>
+            </button>
+
+            {/* Testimonial Quote & Author */}
+            <div className="flex-1 max-w-4xl min-h-[140px] sm:min-h-[120px] flex flex-col items-center justify-center transition-all duration-500 ease-in-out">
+              <p className="text-sm sm:text-base md:text-lg font-outfit text-pearl leading-relaxed tracking-wide font-normal">
+                {testimonialsData[currentTestimonialIndex].quote}
+              </p>
+              <span className="text-xs sm:text-sm text-white/80 font-playwrite mt-6 block">
+                {testimonialsData[currentTestimonialIndex].author}
+              </span>
+            </div>
+
+            {/* Right Arrow */}
+            <button
+              onClick={nextTestimonial}
+              aria-label="Next Testimonial"
+              className="p-2 sm:p-3 text-pearl hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer shrink-0"
+            >
+              <i className="fa-solid fa-arrow-right-long text-2xl"></i>
+            </button>
+          </div>
+
+          {/* Slider Dots */}
+          <div className="flex items-center justify-center gap-2 mt-8">
+            {testimonialsData.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentTestimonialIndex(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  currentTestimonialIndex === idx
+                    ? "w-6 bg-white"
+                    : "w-2 bg-white/40 hover:bg-white/70"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

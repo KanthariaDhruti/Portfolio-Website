@@ -54,7 +54,7 @@ function Services() {
         scrollTrigger: {
           trigger: headingRef.current,
           start: "top 85%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
         },
       });
 
@@ -73,7 +73,7 @@ function Services() {
             scrollTrigger: {
               trigger: cardsRef.current,
               start: "top 80%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
             opacity: 1,
             y: 0,
@@ -91,7 +91,7 @@ function Services() {
           scrollTrigger: {
             trigger: ctaRef.current,
             start: "top 85%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
           opacity: 1,
           y: 0,
@@ -108,7 +108,7 @@ function Services() {
     <section
       id="services"
       ref={containerRef}
-      className="relative bg-pearl font-outfit text-ocean py-24 px-6 md:px-16 lg:px-32 text-center overflow-hidden border-b border-navy-200"
+      className="relative bg-almond select-none font-outfit text-ocean py-24 px-6 md:px-16 lg:px-32 text-center overflow-hidden border-b border-navy-200"
     >
       {/* Decorative Grid Patterns & Canvas indicators */}
       <div className="absolute inset-0 bg-grid-dark pointer-events-none opacity-40 z-0"></div>
@@ -144,7 +144,7 @@ function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="serv-card bg-pearl border border-transparent rounded-3x p-8 hover:border-brown/40 hover:shadow-md hover:-translate-y-2 transition-all duration-300 flex flex-col group "
+              className="serv-card border border-transparent rounded-3x p-8 hover:border-brown/40 hover:shadow-md hover:-translate-y-2 transition-all duration-300 flex flex-col group "
             >
               <div className=" text-4xl mb-5 w-12 h-12 rounded-xl bg-brown flex items-center justify-center text-pearl group-hover:scale-110 transition-transform duration-300">
                 <i className={`${service.icon} text-2xl`}></i>

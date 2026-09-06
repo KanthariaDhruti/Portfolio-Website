@@ -43,7 +43,7 @@ function Contact() {
         scrollTrigger: {
           trigger: headingRef.current,
           start: "top 85%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
         },
       });
 
@@ -60,7 +60,7 @@ function Contact() {
           scrollTrigger: {
             trigger: leftRef.current,
             start: "top 80%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
           opacity: 1,
           x: 0,
@@ -76,7 +76,7 @@ function Contact() {
           scrollTrigger: {
             trigger: rightRef.current,
             start: "top 80%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
           opacity: 1,
           x: 0,
@@ -92,7 +92,7 @@ function Contact() {
     <section
       id="contact"
       ref={containerRef}
-      className="relative bg-pearl text-ocean py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
+      className="relative bg-almond select-none text-ocean py-24 px-6 md:px-16 lg:px-32 overflow-hidden border-b border-navy-200"
     >
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Section Header */}

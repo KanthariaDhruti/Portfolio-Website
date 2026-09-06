@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "../App.css";
 import Home from "./Home";
 import About from "./About";
@@ -11,6 +12,23 @@ import Footer from "./Footer";
 import SEO from "./SEO";
 
 function Landing() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.replace("#", "");
+      const timer = setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 150);
+      return () => clearTimeout(timer);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [location]);
+
   return (
     <>
       <SEO
@@ -25,7 +43,6 @@ function Landing() {
       <Projects />
       <Services />
       <Contact />
-      <Footer />
     </>
   );
 }

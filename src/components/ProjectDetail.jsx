@@ -59,7 +59,7 @@ function ProjectDetail() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-pearl text-ocean flex flex-col items-center justify-center p-6 text-center">
+      <div className="min-h-screen bg-almond text-ocean select-none flex flex-col items-center justify-center p-6 text-center">
         <h2 className="font-syne text-4xl font-black mb-4">
           CASE STUDY NOT FOUND
         </h2>
@@ -89,7 +89,7 @@ function ProjectDetail() {
   return (
     <div
       ref={pageRef}
-      className="min-h-screen bg-pearl font-outfit text-ocean studio-noise-bg  relative overflow-x-hidden pt-12 pb-24 selection:bg-pearl selection:text-ocean"
+      className="min-h-screen bg-almond font-outfit select-none text-ocean studio-noise-bg  relative overflow-x-hidden pt-12 pb-24 selection:bg-pearl selection:text-ocean"
     >
       <SEO
         title={project.title}
@@ -205,7 +205,7 @@ function ProjectDetail() {
       </section>
 
       {/* Section 4: Scrollable Showcase Carousel */}
-      <section className="reveal-section w-full bg-pearl py-16 overflow-hidden border-y border-ocean/10">
+      <section className="reveal-section w-full py-16 overflow-hidden border-y border-ocean/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8">
           <span className="font-mono text-[10px] text-ocean/50 font-bold uppercase tracking-widest block mb-1">
             [ SHOWCASE GALLERY ]
@@ -236,17 +236,21 @@ function ProjectDetail() {
       </section>
 
       {/* Section 5: Kind Words Testimonial */}
-      {/* <section className="reveal-section max-w-5xl mx-auto px-6 py-24 text-center">
-        <div className="w-12 h-12 rounded-full bg-[#5D768B] text-white flex items-center justify-center mx-auto mb-6 text-xl">
-          <i className="fa-solid fa-quote-left"></i>
-        </div>
-        <h3 className="font-serif-editorial italic text-3xl md:text-5xl text-[#c2593f] leading-snug mb-6 max-w-3xl mx-auto">
-          "{project.testimonial.quote}"
-        </h3>
-        <span className="font-mono text-xs uppercase tracking-wider text-ocean/60">
-          — {project.testimonial.author}
-        </span>
-      </section> */}
+      {project.testimonial?.quote && project.testimonial.quote.trim() !== "" && (
+        <section className="reveal-section font-outfit max-w-5xl mx-auto px-6 py-24 text-center">
+          <div className="w-12 h-12 rounded-full bg-ocean text-white flex items-center justify-center mx-auto mb-6 text-xl">
+            <i className="fa-solid fa-quote-left"></i>
+          </div>
+          <h3 className=" text-3xl text-ocean leading-snug mb-6 max-w-5xl mx-auto">
+            "{project.testimonial.quote}"
+          </h3>
+          {project.testimonial.author && (
+            <span className="font-playwrite text-xs uppercase tracking-wider text-ocean/80">
+              — {project.testimonial.author}
+            </span>
+          )}
+        </section>
+      )}
 
       {/* Section 6: Logo Grid and Icons */}
       {/* <section className="reveal-section max-w-7xl mx-auto px-6 md:px-12 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border-t border-ocean/10">

@@ -2,6 +2,7 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 // Lazy load page components for route-level code splitting
 const Landing = lazy(() => import("./components/Landing"));
@@ -40,6 +41,7 @@ function App() {
           <Route path="/portfolio/:id" element={<ProjectDetail />} />
         </Routes>
       </Suspense>
+      <Footer/>
     </Router>
   );
 }

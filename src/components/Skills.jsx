@@ -15,7 +15,7 @@ function Skills() {
   const capabilities = [
     {
       category: "Graphic Design",
-      items: "Brand Identity, Editorial Layout, Figma, Illustrator, InDesign",
+      items: "Brand Identity, Editorial Layout, Social Media, Figma, Illustrator, InDesign",
     },
     {
       category: "Interface",
@@ -23,7 +23,7 @@ function Skills() {
     },
     {
       category: "Development",
-      items: "HTML, CSS, JavaScript, React, Node.js, MongoDB, SQL",
+      items: "HTML, CSS, JavaScript, React",
     },
     {
       category: "Also",
@@ -138,7 +138,7 @@ function Skills() {
     <section
       ref={skillsRef}
       id="skills"
-      className="relative bg-pearl font-outfit text-ocean py-24 px-6 md:px-16 lg:px-32 border-b border-navy-200"
+      className="relative bg-almond font-outfit select-none text-ocean py-24 px-6 md:px-16 lg:px-32 border-b border-navy-200"
     >
       {/* HEADER */}
       <div className="mb-16">
@@ -222,4 +222,4 @@ function Skills() {
   );
 }
 
-export default Skills;
+export default Skills;
