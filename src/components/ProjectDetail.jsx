@@ -136,16 +136,32 @@ function ProjectDetail() {
         {/* Sketchbook / Illustration on Left */}
         <div className="lg:col-span-5 flex justify-center">
           <div className="w-full max-w-md bg-white p-4 rounded-3xl border border-ocean/10 shadow-[0_12px_40px_rgba(0,0,0,0.06)] overflow-hidden">
-            <SmartImage
-              src={project.aboutBrandImg}
-              sizes="(min-width: 1024px) 40vw, 100vw"
-              alt={`About ${project.title}`}
-              width="400"
-              height="300"
-              loading="lazy"
-              decoding="async"
-              className="w-full aspect-[4/3] object-cover rounded-2xl shadow-sm transition-transform duration-500 hover:scale-103"
-            />
+            {project.aboutBrandImg?.toLowerCase().endsWith(".webm") ||
+            project.aboutBrandImg?.toLowerCase().endsWith(".mp4") ? (
+              <video
+                src={project.aboutBrandImg}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={`About ${project.title}`}
+                className="w-full aspect-[4/3] object-cover rounded-2xl shadow-sm"
+              >
+                Your browser does not support video playback.
+              </video>
+            ) : (
+              <SmartImage
+                src={project.aboutBrandImg}
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                alt={`About ${project.title}`}
+                width="400"
+                height="300"
+                loading="lazy"
+                decoding="async"
+                className="w-full aspect-[4/3] object-cover rounded-2xl shadow-sm transition-transform duration-500 hover:scale-103"
+              />
+            )}
           </div>
         </div>
         {/* Brand Text on Right */}
@@ -210,47 +226,64 @@ function ProjectDetail() {
           <span className="font-mono text-[10px] text-ocean/50 font-bold uppercase tracking-widest block mb-1">
             [ SHOWCASE GALLERY ]
           </span>
-          <h3 className="text-xl font-bold text-ocean">
-            Visual Artifacts
-          </h3>
+          <h3 className="text-xl font-bold text-ocean">Visual Artifacts</h3>
         </div>
         <div className="flex gap-6 overflow-x-auto pb-8 px-6 md:px-12 max-w-7xl mx-auto scrollbar-thin">
-          {project.carouselImages.map((img, idx) => (
-            <div
-              key={idx}
-              className="flex-shrink-0 w-120  aspect-[4/3] bg-white rounded-2xl border border-ocean/10 overflow-hidden shadow-md group"
-            >
-              <SmartImage
-                src={img}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                alt={`${project.title} gallery artifact ${idx + 1}`}
-                width="480"
-                height="360"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-          ))}
+          
+{project.carouselImages.map((img, idx) => (
+  <div
+    key={idx}
+    className="flex-shrink-0 w-120 aspect-[4/3] bg-white rounded-2xl border border-ocean/10 overflow-hidden shadow-md group"
+  >
+    {img.toLowerCase().endsWith(".webm") ||
+    img.toLowerCase().endsWith(".mp4") ? (
+      <video
+        src={img}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-label={`${project.title} gallery video ${idx + 1}`}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      >
+        Your browser does not support video playback.
+      </video>
+    ) : (
+      <SmartImage
+        src={img}
+        sizes="(min-width: 1024px) 50vw, 100vw"
+        alt={`${project.title} gallery artifact ${idx + 1}`}
+        width="480"
+        height="360"
+        loading="lazy"
+        decoding="async"
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+    )}
+  </div>
+))}
+
         </div>
       </section>
 
       {/* Section 5: Kind Words Testimonial */}
-      {project.testimonial?.quote && project.testimonial.quote.trim() !== "" && (
-        <section className="reveal-section font-outfit max-w-5xl mx-auto px-6 py-24 text-center">
-          <div className="w-12 h-12 rounded-full bg-ocean text-white flex items-center justify-center mx-auto mb-6 text-xl">
-            <i className="fa-solid fa-quote-left"></i>
-          </div>
-          <h3 className=" text-3xl text-ocean leading-snug mb-6 max-w-5xl mx-auto">
-            "{project.testimonial.quote}"
-          </h3>
-          {project.testimonial.author && (
-            <span className="font-playwrite text-xs uppercase tracking-wider text-ocean/80">
-              — {project.testimonial.author}
-            </span>
-          )}
-        </section>
-      )}
+      {project.testimonial?.quote &&
+        project.testimonial.quote.trim() !== "" && (
+          <section className="reveal-section font-outfit max-w-5xl mx-auto px-6 py-24 text-center">
+            <div className="w-12 h-12 rounded-full bg-ocean text-white flex items-center justify-center mx-auto mb-6 text-xl">
+              <i className="fa-solid fa-quote-left"></i>
+            </div>
+            <h3 className=" text-3xl text-ocean leading-snug mb-6 max-w-5xl mx-auto">
+              "{project.testimonial.quote}"
+            </h3>
+            {project.testimonial.author && (
+              <span className="font-playwrite text-xs uppercase tracking-wider text-ocean/80">
+                — {project.testimonial.author}
+              </span>
+            )}
+          </section>
+        )}
 
       {/* Section 6: Logo Grid and Icons */}
       {/* <section className="reveal-section max-w-7xl mx-auto px-6 md:px-12 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border-t border-ocean/10">

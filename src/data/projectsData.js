@@ -248,7 +248,7 @@ export const projectsData = [
       //   "Simplifies key clinical points in a clean document architecture. Excellent representation of our software.",
       // author: "Manager, Vista Clinical Research",
     },
-    showcaseImg: "/Vsta.jpg",
+    showcaseImg: "",
     brandIcons: [
       "fa-solid fa-notes-medical",
       "fa-solid fa-stethoscope",
@@ -259,6 +259,44 @@ export const projectsData = [
     ],
     fullBannerImg:
       "https://i.pinimg.com/1200x/b7/d6/2d/b7d62dc6548fb10efa1fdef835f1bd33.jpg",
+  },
+  {
+    id: "cove",
+    title: "Cove",
+    category: "Branding",
+    subtitle: "",
+    description:
+      "A private messaging experience designed to make conversations feel personal, secure, and free from unnecessary distractions.",
+    thumbnail: "/cove/Minimal-App-Icon-Mockup.webp",
+    heroImage: "/cove/Macbook-Mockup-on-Rocks-Boho-Interior.webp",
+    aboutBrandText:
+      "Cove is a personal messaging app built around privacy, simplicity, and meaningful connections. The concept focuses on creating a quieter space for conversations with the people who matter, keeping communication personal while prioritizing data protection and a seamless user experience.",
+    aboutBrandImg: "/cove/splash-screen.webm",
+    designsText:
+      "The visual identity reflects Cove’s calm and understated personality through clean typography, a soft contemporary palette, and minimal graphic elements. Every detail is designed to feel intuitive, elegant, and approachable, creating a consistent identity that communicates trust without unnecessary complexity.",
+    designsImages: [
+      "/cove/bottle.webp",
+      "/cove/Poster_Frame_Mockup_1.webp",
+    ],
+    carouselImages: [
+      "/cove/Smartphone-Mockup.webp",
+      "/cove/icons.webm",
+      "/cove/tote-bag.webp",
+      "/cove/Coffee_Mug_Mockup_5.webp",
+    ],
+    testimonial: {
+      quote: "",
+    },
+    showcaseImg: "/fintech.png",
+    brandIcons: [
+      "fa-solid fa-wallet",
+      "fa-solid fa-credit-card",
+      "fa-solid fa-hand-holding-dollar",
+      "fa-solid fa-user-tie",
+      "fa-solid fa-clock",
+      "fa-solid fa-circle-check",
+    ],
+    fullBannerImg: "/cove/Lanyard_Mockup_1.webp",
   },
 ];
 

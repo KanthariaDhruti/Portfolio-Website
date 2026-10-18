@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 const Landing = lazy(() => import("./components/Landing"));
 const Portfolio = lazy(() => import("./components/Portfolio"));
 const ProjectDetail = lazy(() => import("./components/ProjectDetail"));
+const Logofolio = lazy(() => import("./components/Logofolio"));
 
 // Minimal loading spinner fallback
 const PageLoader = () => (
@@ -38,6 +39,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio/logofolio" element={<Logofolio />} />
           <Route path="/portfolio/:id" element={<ProjectDetail />} />
         </Routes>
       </Suspense>

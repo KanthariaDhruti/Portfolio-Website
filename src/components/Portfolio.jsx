@@ -233,10 +233,14 @@ function Portfolio() {
           {[
             "/logos/dhruti/icon-frame.webp",
             "/logos/granny/Group.webp",
-            "/logos/dhruti/logo-color.webp",
+            "/logos/dhruti/logo-color1.webp",
             "/logos/granny/Group-1.webp",
             "logos/dhruti/Vector.webp",
-            "logos/granny/Vector.webp"
+            "logos/granny/Vector.webp",
+            "logos/cove/i.webp",
+            "logos/cove/mono.webp",
+            "logos/cove/prime.webp",
+            "logos/cove/word.webp",
           ].map((icon, idx) => (
             <div
               key={idx}
@@ -247,7 +251,7 @@ function Portfolio() {
                 alt="Brand logo icon mark"
                 loading="lazy"
                 decoding="async"
-                className="h-10 w-auto object-contain hover:scale-105 transition-transform duration-300"
+                className="h-12 w-auto object-contain hover:scale-105 transition-transform duration-300"
               />
             </div>
           ))}
